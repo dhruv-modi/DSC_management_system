@@ -1,0 +1,14 @@
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\DSC_management.exe.config
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\DSC_management.exe
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\DSC_management.pdb
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Properties.Resources.resources
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.csproj.GenerateResource.cache
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.csproj.CoreCompileInputs.cache
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.exe
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.pdb
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.csprojAssemblyReference.cache
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\System.Data.SQLite.dll
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\System.Data.SQLite.xml
+C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.csproj.CopyComplete
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form1.resources

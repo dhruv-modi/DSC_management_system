@@ -177,6 +177,7 @@ namespace DSC_management
             label4.Visible = false;
             label5.Visible = false;
             label6.Visible = false;
+            label7.Visible = true;
             label8.Visible = false;
             label9.Visible = false;
             label10.Visible = false;
@@ -200,6 +201,7 @@ namespace DSC_management
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
+            comboBox3.Visible = true;
             comboBox4.Visible = false;
             comboBox5.Visible = false;
             comboBox6.Visible = false;
@@ -320,6 +322,8 @@ namespace DSC_management
             button9.BackColor = System.Drawing.Color.Tomato;
             button10.BackColor = System.Drawing.Color.GreenYellow;
             button11.BackColor = System.Drawing.Color.Tomato;
+
+
         }
 
         private void button12_MouseClick(object sender, MouseEventArgs e)

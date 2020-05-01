@@ -15,12 +15,13 @@ namespace DSC_management
     {
         SQLiteCommand sqlite_cmd;
         SQLiteConnection m_dbConnection;
+        SQLiteDataReader sqlite_datareader;
         int but_stat = 0;
         public Form1(SQLiteConnection m_db)
         {
             m_dbConnection = m_db;
             sqlite_cmd = m_db.CreateCommand();
-            sqlite_cmd.CommandType = CommandType.Text;
+            
             but_stat = 0;
             InitializeComponent();
         }
@@ -84,7 +85,7 @@ namespace DSC_management
             comboBox5.Visible = false;
             comboBox6.Visible = false;
             comboBox7.Visible = false;
-
+            changeDG();
 
         }
 
@@ -328,6 +329,7 @@ namespace DSC_management
 
         private void button12_MouseClick(object sender, MouseEventArgs e)
         {
+            
             if(but_stat==3)
             {
                 if(comboBox3.SelectedItem.Equals("Active"))
@@ -348,8 +350,8 @@ namespace DSC_management
                 {
                     try
                     {
-                        MessageBox.Show("Activity field cannot be empty");
-                        sqlite_cmd.ExecuteNonQuery();
+                        
+                    int it=    sqlite_cmd.ExecuteNonQuery();
                     }
                     catch(Exception e1)
                     {
@@ -358,8 +360,49 @@ namespace DSC_management
                 }
                 textBox1.Text = "";
             }
-
+            changeDG();
             
+        }
+        private void changeDG()
+        {
+            if(but_stat==3)
+            {
+                dataGridView1.ColumnCount = 3;
+                dataGridView1.Columns[0].Name = "ID";
+                dataGridView1.Columns[1].Name = "Activity";
+                dataGridView1.Columns[2].Name = "Active Status";
+
+                sqlite_cmd.CommandText = "SELECT * FROM activity_master order by id desc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",sqlite_datareader["activity"] + "", (sqlite_datareader["active"] + "").Equals("1")?"Active":"Inactive" });
+                   
+                }
+               
+
+
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            m_dbConnection.Close();
+        }
+
+        private void button13_MouseClick(object sender, MouseEventArgs e)
+        {
+            changeDG();
+        }
+
+        private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value+"");
         }
     }
 }

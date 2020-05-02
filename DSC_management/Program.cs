@@ -38,17 +38,17 @@ namespace DSC_management
                 m_dbConnection.Open();
                 try
                 {
-                    string sql = "CREATE TABLE `activity_master` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `activity` varchar ( 20 ), `active` INTEGER DEFAULT 1, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
+                    string sql = "CREATE TABLE `activity_master` (`id`	INTEGER PRIMARY KEY AUTOINCREMENT,`activity`	varchar ( 20 ),`active`	INTEGER DEFAULT 1,`updated`	INTEGER DEFAULT current_timestamp,`usr_char_1`	varchar ( 10 ),`usr_char_2`	varchar ( 20 ),`usr_char_3`	varchar ( 50 ),`usr_int_1`	INTEGER,`usr_int_2`	INTEGER,`usr_int_3`	INTEGER,`usr_dec_1`	decimal,`usr_dec_2`	decimal,`usr_dec_3`	decimal,`usr_dt_1`	datetime,`usr_dt_2`	datetime,`usr_dt_3`	datetime);";
                     SQLiteCommand command = m_dbConnection.CreateCommand();
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
 
-                    sql = "CREATE TABLE `employee_master` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `emp_name` varchar ( 30 ), `active` INTEGER DEFAULT 1, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime ); ";
+                    sql = "CREATE TABLE 'employee_master' ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `emp_name` varchar ( 30 ), `active` INTEGER DEFAULT 1, `Updated` datetime DEFAULT current_timestamp, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime ); ";
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
-                    sql = "CREATE TABLE `make_master` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `mfg_name` varchar ( 30 ), `model` varchar ( 30 ), `color` varchar ( 10 ), `active` INTEGER DEFAULT 1, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
+                    sql = "CREATE TABLE 'make_master' ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `mfg_name` varchar ( 30 ), `model` varchar ( 30 ), `color` varchar ( 10 ), `active` INTEGER DEFAULT 1, `updated` datetime DEFAULT current_timestamp, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 

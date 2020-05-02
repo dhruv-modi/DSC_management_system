@@ -58,8 +58,8 @@ namespace DSC_management
 
             label3.Text = "Activity:";
             label7.Text = "Status:";
-           
 
+            comboBox3.Items.Clear();
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem="Active";
@@ -234,6 +234,8 @@ namespace DSC_management
 
             label3.Text = "Emp Name:";
             label7.Text = "Status:";
+
+            comboBox3.Items.Clear();
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem = "Active";
@@ -317,6 +319,8 @@ namespace DSC_management
             label4.Text = "Model:";
             label5.Text = "Color:";
             label7.Text = "Status:";
+
+            comboBox3.Items.Clear();
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem = "Active";
@@ -471,6 +475,9 @@ namespace DSC_management
             comboBox10.Visible = true;
             comboBox11.Visible = false;
 
+            comboBox8.Items.Clear();
+            comboBox9.Items.Clear();
+            comboBox10.Items.Clear();
             comboBox10.Items.Add("Active");
             comboBox10.Items.Add("Inactive");
             comboBox10.SelectedItem = "Active";
@@ -478,6 +485,8 @@ namespace DSC_management
             
             sqlite_cmd.CommandText = "SELECT id,transport_mode FROM transportation_master ";
             sqlite_datareader = sqlite_cmd.ExecuteReader();
+            comboBox8.Items.Add("---Select a mode---");
+            comboBox9.Items.Add("---Select a mode---");
             while (sqlite_datareader.Read())
             {
                 comboBox8.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["transport_mode"]);
@@ -704,7 +713,7 @@ namespace DSC_management
                 }
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '1', updated=current_timestamp where id = " + id : "update employee_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '0', updated=current_timestamp where id = " + id;
+                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '1', updated=current_timestamp where id = " + id : "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '0', updated=current_timestamp where id = " + id;
                     if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Mfg name or color cannot be empty");
@@ -730,7 +739,7 @@ namespace DSC_management
                 if (updt == 0)
                 {
                     
-                    if (textBox1.Text.Trim().Equals("") || comboBox9.SelectedIndex == -1 || comboBox8.SelectedIndex==-1)
+                    if (textBox1.Text.Trim().Equals("---Select a mode---") || comboBox9.SelectedItem.Equals("Active") || comboBox8.SelectedItem.Equals("---Select a mode---"))
                     {
                         MessageBox.Show("Name and inward/outward mode cannot be empty");
                     }
@@ -837,7 +846,12 @@ namespace DSC_management
                 textBox7.Text = "";
                 textBox9.Text = "";
                 textBox14.Text = "";
-                comboBox11.SelectedItem = "Active";
+                comboBox8.ResetText();
+                comboBox9.ResetText();
+                comboBox8.SelectedItem = -1;
+                
+                comboBox9.SelectedIndex = -1;
+                comboBox10.SelectedItem = "Active";
 
                 dataGridView1.ColumnCount = 7;
                 dataGridView1.Columns[0].Name = "ID";
@@ -881,6 +895,8 @@ namespace DSC_management
                 textBox17.Text = "";
                 textBox18.Text = "";
                 comboBox10.SelectedItem = "Active";
+                comboBox8.SelectedItem = "---Select a mode---";
+                comboBox9.SelectedItem = "---Select a mode---";
 
                 dataGridView1.ColumnCount = 18;
                 dataGridView1.Columns[0].Name = "ID";
@@ -910,6 +926,7 @@ namespace DSC_management
                     SQLiteCommand sqlite_cmd1=m_dbConnection.CreateCommand();
 
                     sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id="+ sqlite_datareader["default_inward_mode"];
+                    MessageBox.Show(sqlite_cmd1.CommandText);
                     dr = sqlite_cmd1.ExecuteReader();
                     dr.Read();
                     String inc = dr["transport_mode"] +" ( "+dr["company_name"] +" )";
@@ -1102,6 +1119,52 @@ namespace DSC_management
 
 
                 comboBox11.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                sqlite_datareader.Close();
+
+            }
+
+            if (but_stat == 9)
+            {
+                sqlite_cmd.CommandText = "SELECT * FROM owner_master where id =" + id;
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                sqlite_datareader.Read();
+
+
+                textBox1.Text = sqlite_datareader["owner_name"] + "";
+                textBox7.Text= sqlite_datareader["address1"] + "";
+                textBox8.Text = sqlite_datareader["address2"] + "";
+                textBox9.Text = sqlite_datareader["city"] + "";
+                textBox10.Text = sqlite_datareader["state"] + "";
+                textBox11.Text = sqlite_datareader["country"] + "";
+                textBox12.Text = sqlite_datareader["pincode"] + "";
+                textBox4.Text = sqlite_datareader["sms_contact"] + "";
+                textBox13.Text = sqlite_datareader["contact_name"] + "";
+                textBox14.Text = sqlite_datareader["whatsapp_contact"] + "";
+                textBox15.Text = sqlite_datareader["telegram_contact"] + "";
+                textBox16.Text = sqlite_datareader["email1"] + "";
+                textBox17.Text = sqlite_datareader["email2"] + "";
+                textBox18.Text = sqlite_datareader["owner_ref"] + "";
+
+                SQLiteDataReader dr;
+                SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
+
+                sqlite_cmd1.CommandText = "SELECT transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
+                dr = sqlite_cmd1.ExecuteReader();
+                dr.Read();
+                
+                comboBox8.SelectedItem = sqlite_datareader["default_inward_mode"] + "." + dr["transport_mode"];
+                dr.Close();
+
+                sqlite_cmd1.CommandText = "SELECT transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
+                dr = sqlite_cmd1.ExecuteReader();
+                dr.Read();
+                
+                comboBox9.SelectedItem = sqlite_datareader["default_outward_mode"] + "." + dr["transport_mode"];
+                dr.Close();
+
+
+                
+                comboBox10.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
                 sqlite_datareader.Close();
 
             }

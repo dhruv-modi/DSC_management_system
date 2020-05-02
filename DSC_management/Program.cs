@@ -60,7 +60,7 @@ namespace DSC_management
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
-                    sql = "CREATE TABLE `transportation_master` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `company_name` varchar ( 30 ), `contact_num` varchar ( 12 ), `person_of_contact` varchar ( 30 ), `transport_mode` varchar ( 30 ), `fixed_price` INTEGER, `active` INTEGER DEFAULT 1, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
+                    sql = "CREATE TABLE 'transportation_master' ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `company_name` varchar ( 30 ), `contact_num` varchar ( 12 ), `person_of_contact` varchar ( 30 ), `transport_mode` varchar ( 30 ), `fixed_price` INTEGER, `active` INTEGER DEFAULT 1, `updated` datetime DEFAULT current_timestamp, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 

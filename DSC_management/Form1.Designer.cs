@@ -95,6 +95,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.comboBox11 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -681,6 +682,7 @@
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(176, 23);
             this.textBox14.TabIndex = 68;
+            this.textBox14.Visible = false;
             // 
             // label21
             // 
@@ -767,7 +769,7 @@
             this.comboBox10.FormattingEnabled = true;
             this.comboBox10.Location = new System.Drawing.Point(138, 317);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(186, 24);
+            this.comboBox10.Size = new System.Drawing.Size(157, 24);
             this.comboBox10.TabIndex = 78;
             this.comboBox10.Visible = false;
             // 
@@ -780,6 +782,16 @@
             this.label24.Size = new System.Drawing.Size(59, 17);
             this.label24.TabIndex = 77;
             this.label24.Text = "Status:";
+            this.label24.Visible = false;
+            // 
+            // comboBox11
+            // 
+            this.comboBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox11.FormattingEnabled = true;
+            this.comboBox11.Location = new System.Drawing.Point(138, 248);
+            this.comboBox11.Name = "comboBox11";
+            this.comboBox11.Size = new System.Drawing.Size(157, 24);
+            this.comboBox11.TabIndex = 79;
             // 
             // Form1
             // 
@@ -787,6 +799,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 627);
+            this.Controls.Add(this.comboBox11);
             this.Controls.Add(this.comboBox10);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.comboBox9);
@@ -854,6 +867,7 @@
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox17);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -933,6 +947,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox comboBox10;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboBox11;
     }
 }
 

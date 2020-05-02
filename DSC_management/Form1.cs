@@ -116,6 +116,8 @@ namespace DSC_management
             comboBox8.Visible = false;
             comboBox9.Visible = false;
             comboBox10.Visible = false;
+            comboBox11.Visible = false;
+
             changeDG();
 
         }
@@ -200,6 +202,7 @@ namespace DSC_management
             comboBox8.Visible = false;
             comboBox9.Visible = false;
             comboBox10.Visible = false;
+            comboBox11.Visible = false;
 
             comboBox3.ResetText();
             comboBox3.Items.Clear();
@@ -281,6 +284,7 @@ namespace DSC_management
             comboBox8.Visible = false;
             comboBox9.Visible = false;
             comboBox10.Visible = false;
+            comboBox11.Visible = false;
 
             changeDG();
         }
@@ -361,6 +365,8 @@ namespace DSC_management
             comboBox8.Visible = false;
             comboBox9.Visible = false;
             comboBox10.Visible = false;
+            comboBox11.Visible = false;
+
             changeDG();
         }
 
@@ -453,12 +459,13 @@ namespace DSC_management
             comboBox8.Visible = true;
             comboBox9.Visible = true;
             comboBox10.Visible = true;
+            comboBox11.Visible = false;
 
         }
 
         private void button10_MouseClick(object sender, MouseEventArgs e)
         {
-            but_stat = 6;
+            but_stat = 10;
 
 
             button6.BackColor = System.Drawing.Color.Tomato;
@@ -468,7 +475,83 @@ namespace DSC_management
             button10.BackColor = System.Drawing.Color.GreenYellow;
             button11.BackColor = System.Drawing.Color.Tomato;
 
+            button1.Enabled = false;
+            button2.Enabled = false;
 
+            comboBox11.Items.Add("Active");
+            comboBox11.Items.Add("Inactive");
+            comboBox11.SelectedItem = "Active";
+
+            button12.Text = "Submit";
+            button13.Text = "Reset";
+
+            label3.Text = "Company Name:";
+            label4.Text = "Contact No:";
+
+            label7.Text = "Contact Name:";
+            label12.Text = "Fixed Price:";
+            label13.Text = "Status";
+            label17.Text = "Transport Mode:";
+
+
+
+          
+            label4.Visible = true;
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = true;
+            label8.Visible = false;
+            label9.Visible = false;
+            label10.Visible = false;
+            label11.Visible = false;
+            label12.Visible = true;
+            label13.Visible = true;
+            label14.Visible = false;
+            label15.Visible = false;
+            label17.Visible = true;
+            label18.Visible = false;
+            label19.Visible = false;
+            label20.Visible = false;
+            label21.Visible = false;
+            label22.Visible = false;
+            label23.Visible = false;
+            label24.Visible = false;
+
+            textBox1.Text = "";
+            textBox1.Visible = true;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            textBox4.Visible = true;
+            textBox5.Visible = false;
+            textBox6.Visible = false;
+            textBox7.Visible = true;
+            textBox8.Visible = false;
+            textBox9.Visible = true;
+            textBox10.Visible = false;
+            textBox11.Visible = false;
+            textBox12.Visible = false;
+            textBox13.Visible = false;
+            textBox14.Visible = true;
+            textBox15.Visible = false;
+            textBox16.Visible = false;
+            textBox17.Visible = false;
+
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
+
+            comboBox1.Visible = false;
+            comboBox2.Visible = false;
+            comboBox3.Visible = false;
+            comboBox4.Visible = false;
+            comboBox5.Visible = false;
+            comboBox6.Visible = false;
+            comboBox7.Visible = false;
+            comboBox8.Visible = false;
+            comboBox9.Visible = false;
+            comboBox10.Visible = false;
+            comboBox11.Visible = true;
+
+            changeDG();
         }
 
         private void button12_MouseClick(object sender, MouseEventArgs e)
@@ -495,8 +578,7 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    textBox1.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                   
                 }
 
 
@@ -519,11 +601,7 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    button12.Text = "Submit";
-                    button13.Text = "Reset";
-                    updt = 0;
-                    textBox1.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                   
                 }
             }
             if (but_stat == 6)
@@ -547,8 +625,7 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    textBox1.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                 
                 }
                 else
                 {
@@ -569,11 +646,7 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    button12.Text = "Submit";
-                    button13.Text = "Reset";
-                    updt = 0;
-                    textBox1.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                    
                 }
             }
             if (but_stat == 8)
@@ -597,17 +670,14 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    textBox1.Text = "";
-                    textBox5.Text = "";
-                    textBox6.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                   
                 }
                 else
                 {
                     sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '1', updated=current_timestamp where id = " + id : "update employee_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox1.Text.Trim().Equals(""))
+                    if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
                     {
-                        MessageBox.Show("Activity field cannot be empty");
+                        MessageBox.Show("Mfg name or color cannot be empty");
                     }
                     else
                     {
@@ -621,13 +691,53 @@ namespace DSC_management
                             MessageBox.Show(e1 + "");
                         }
                     }
-                    button12.Text = "Submit";
-                    button13.Text = "Reset";
-                    updt = 0;
-                    textBox1.Text = "";
-                    textBox5.Text = "";
-                    textBox6.Text = "";
-                    comboBox3.SelectedItem = "Active";
+                    
+
+                }
+            }
+            if (but_stat == 10)
+            {
+                if (updt == 0)
+                {
+                    sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "INSERT INTO transportation_master (company_name, contact_num,person_of_contact,transport_mode,fixed_price,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox9.Text + "', '" + textBox4.Text + "','" + textBox14.Text + "', 1); " : "INSERT INTO transportation_master(company_name, contact_num, person_of_contact, transport_mode, fixed_price, active) VALUES('" + textBox1.Text + "', '" + textBox7.Text + "', '" + textBox9.Text + "', '" + textBox4.Text + "', '" + textBox14.Text + "', 0); " ;
+                    if (textBox4.Text.Trim().Equals(""))
+                    {
+                        MessageBox.Show(" Transport mode cannot be blank");
+                    }
+                    else
+                    {
+                        try
+                        {
+
+                            int it = sqlite_cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception e1)
+                        {
+                            MessageBox.Show(e1 + "");
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '1', updated=current_timestamp where id = " + id : "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '0', updated=current_timestamp where id = " + id;
+                    if (textBox4.Text.Trim().Equals(""))
+                    {
+                        MessageBox.Show(" Transport mode cannot be blank");
+                    }
+                    else
+                    {
+                        try
+                        {
+
+                            int it = sqlite_cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception e1)
+                        {
+                            MessageBox.Show(e1 + "");
+                        }
+                    }
+                 
 
                 }
             }
@@ -637,8 +747,52 @@ namespace DSC_management
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
+
+            if(but_stat==10)
+            {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                textBox1.Text = "";
+                textBox4.Text = "";
+                textBox7.Text = "";
+                textBox9.Text = "";
+                textBox14.Text = "";
+                comboBox11.SelectedItem = "Active";
+
+                dataGridView1.ColumnCount = 7;
+                dataGridView1.Columns[0].Name = "ID";
+                dataGridView1.Columns[1].Name = "Company Name";
+                dataGridView1.Columns[2].Name = "Conatact Number";
+                dataGridView1.Columns[3].Name = "Person of contact";
+                dataGridView1.Columns[4].Name = "Transport Mode";
+                dataGridView1.Columns[5].Name = "Fixed Price";
+                dataGridView1.Columns[6].Name = "Status";
+
+
+                sqlite_cmd.CommandText = "SELECT * FROM transportation_master order by datetime(updated) desc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["company_name"] + "", sqlite_datareader["contact_num"] + "", sqlite_datareader["person_of_contact"] + "", sqlite_datareader["transport_mode"] + "", "₹ "+sqlite_datareader["fixed_price"] ,(sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
+
+                }
+
+                sqlite_datareader.Close();
+
+
+            }
             if(but_stat==8)
             {
+
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                textBox1.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                comboBox3.SelectedItem = "Active";
+
                 dataGridView1.ColumnCount = 5;
                 dataGridView1.Columns[0].Name = "ID";
                 dataGridView1.Columns[1].Name = "Mfg Name";
@@ -658,6 +812,12 @@ namespace DSC_management
             }
             if (but_stat == 6)
             {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                textBox1.Text = "";
+                comboBox3.SelectedItem = "Active";
+
                 dataGridView1.ColumnCount = 3;
                 dataGridView1.Columns[0].Name = "ID";
                 dataGridView1.Columns[1].Name = "Emp Name";
@@ -676,6 +836,12 @@ namespace DSC_management
             }
             if (but_stat==7)
             {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                textBox1.Text = "";
+                comboBox3.SelectedItem = "Active";
+
                 dataGridView1.ColumnCount = 3;
                 dataGridView1.Columns[0].Name = "ID";
                 dataGridView1.Columns[1].Name = "Activity";
@@ -758,6 +924,24 @@ namespace DSC_management
                 sqlite_datareader.Close();
 
             }
+            if (but_stat == 10)
+            {
+                sqlite_cmd.CommandText = "SELECT * FROM transportation_master where id =" + id;
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                sqlite_datareader.Read();
+
+
+                textBox1.Text = sqlite_datareader["company_name"] + "";
+                textBox7.Text = sqlite_datareader["contact_num"] + "";
+                textBox9.Text = sqlite_datareader["person_of_contact"] + "";
+                textBox4.Text = sqlite_datareader["transport_mode"] + "";
+                textBox14.Text = sqlite_datareader["fixed_price"] + "";
+
+
+                comboBox11.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                sqlite_datareader.Close();
+
+            }
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -779,6 +963,17 @@ namespace DSC_management
                 textBox5.Text = "";
                 textBox6.Text = "";
                 comboBox3.SelectedItem = "Active";
+            }
+            if(but_stat==10)
+            {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                textBox1.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                comboBox11.SelectedItem = "Active";
+
             }
         }
     }

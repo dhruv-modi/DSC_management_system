@@ -108,6 +108,10 @@
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.textBox22 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,7 +344,7 @@
             // 
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(657, 117);
+            this.comboBox2.Location = new System.Drawing.Point(657, 121);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 31;
@@ -926,12 +930,58 @@
             this.textBox22.Size = new System.Drawing.Size(176, 23);
             this.textBox22.TabIndex = 91;
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(566, 96);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(105, 17);
+            this.label29.TabIndex = 92;
+            this.label29.Text = "Owner Name:";
+            // 
+            // comboBox14
+            // 
+            this.comboBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.Location = new System.Drawing.Point(677, 89);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(159, 24);
+            this.comboBox14.TabIndex = 93;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Enabled = false;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label30.Location = new System.Drawing.Point(10, 394);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(103, 17);
+            this.label30.TabIndex = 94;
+            this.label30.Text = "Wrong Entry:";
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.Enabled = false;
+            this.comboBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.comboBox15.FormattingEnabled = true;
+            this.comboBox15.Location = new System.Drawing.Point(138, 391);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(159, 24);
+            this.comboBox15.TabIndex = 95;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.comboBox15);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.comboBox14);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.textBox22);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.textBox21);
@@ -1105,6 +1155,10 @@
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.ComboBox comboBox15;
     }
 }
 

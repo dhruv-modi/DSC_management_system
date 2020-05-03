@@ -26,7 +26,39 @@ namespace DSC_management
             sqlite_cmd = m_db.CreateCommand();
             
             but_stat = 0;
+
+
+
+
             InitializeComponent();
+
+            {
+                comboBox14.Items.Clear();
+                comboBox14.Items.Add("-Select-");
+
+                comboBox14.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master order by owner_name asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+
+                }
+                sqlite_datareader.Close();
+            }
+            {
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("-Select-");
+                comboBox1.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master order by emp_name asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox1.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["emp_name"] );
+
+                }
+                sqlite_datareader.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -91,6 +123,8 @@ namespace DSC_management
                 label26.Visible = false;
                 label27.Visible = false;
                 label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
 
                 textBox1.Text = "";
                 textBox1.Visible = true;
@@ -134,6 +168,8 @@ namespace DSC_management
                 comboBox11.Visible = false;
                 comboBox12.Visible = false;
                 comboBox13.Visible = false;
+                comboBox14.Visible = false;
+                comboBox15.Visible = false;
                 label3.Enabled = true;
                 label4.Enabled = true;
                 label5.Enabled = true;
@@ -215,6 +251,36 @@ namespace DSC_management
             button11.BackColor = System.Drawing.Color.GreenYellow;
 
 
+            {   comboBox14.Items.Clear();
+            comboBox14.Items.Add("-Select-");
+
+            comboBox14.SelectedItem = "-Select-";
+            sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master order by owner_name asc";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                comboBox14.Items.Add(sqlite_datareader["id"] + "."+sqlite_datareader["owner_name"] + "");
+
+            }
+            sqlite_datareader.Close();
+        }
+            {
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("-Select-");
+
+                comboBox1.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master order by emp_name asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"] );
+
+                }
+                sqlite_datareader.Close();
+
+            }
+
+
             label3.Text = "Location:";
             label4.Text = "Inward Date:";
             label5.Text = "Inward By:";
@@ -262,8 +328,10 @@ namespace DSC_management
             label26.Visible = true;
             label27.Visible = true;
             label28.Visible = true;
+            label29.Visible = true;
+            label30.Visible = true;
 
-            textBox2.Visible = true;
+                textBox2.Visible = true;
             textBox3.Visible = true;
             textBox4.Visible = true;
             textBox5.Visible = false;
@@ -303,7 +371,9 @@ namespace DSC_management
             comboBox11.Visible = false;
             comboBox12.Visible = true;
             comboBox13.Visible = true;
-            comboBox3.ResetText();
+            comboBox14.Visible = true;
+            comboBox15.Visible = true;
+                comboBox3.ResetText();
             comboBox3.Items.Clear();
 
             label22.Enabled = false;
@@ -373,6 +443,7 @@ namespace DSC_management
             label26.Enabled = false;
             label27.Enabled = false;
             label28.Enabled = false;
+                label30.Enabled = false;
 
             textBox19.Enabled = false;
             textBox20.Enabled = false;
@@ -382,6 +453,8 @@ namespace DSC_management
 
             comboBox12.Enabled = false;
             comboBox13.Enabled = false;
+
+                comboBox15.Enabled = false;
 
             dateTimePicker3.Enabled = false;
         }
@@ -438,6 +511,8 @@ namespace DSC_management
                 label26.Visible = false;
                 label27.Visible = false;
                 label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
 
                 textBox2.Visible = false;
                 textBox3.Visible = false;
@@ -479,6 +554,8 @@ namespace DSC_management
                 comboBox11.Visible = false;
                 comboBox12.Visible = false;
                 comboBox13.Visible = false;
+                comboBox14.Visible = false;
+                comboBox15.Visible = false;
                 label3.Enabled = true;
                 label4.Enabled = true;
                 label5.Enabled = true;
@@ -596,6 +673,8 @@ namespace DSC_management
                 label26.Visible = false;
                 label27.Visible = false;
                 label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
 
                 textBox1.Visible = true;
                 textBox2.Visible = false;
@@ -637,6 +716,8 @@ namespace DSC_management
                 comboBox11.Visible = false;
                 comboBox12.Visible = false;
                 comboBox13.Visible = false;
+                comboBox14.Visible = false;
+                comboBox15.Visible = false;
                 label3.Enabled = true;
                 label4.Enabled = true;
                 label5.Enabled = true;
@@ -764,6 +845,8 @@ namespace DSC_management
                 label26.Visible = false;
                 label27.Visible = false;
                 label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
 
                 textBox1.Visible = true;
                 textBox2.Visible = false;
@@ -805,6 +888,8 @@ namespace DSC_management
                 comboBox11.Visible = false;
                 comboBox12.Visible = false;
                 comboBox13.Visible = false;
+                comboBox14.Visible = false;
+                comboBox15.Visible = false;
                 label3.Enabled = true;
                 label4.Enabled = true;
                 label5.Enabled = true;
@@ -875,7 +960,7 @@ namespace DSC_management
             comboBox10.SelectedItem = "Active";
 
             
-            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master ";
+            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 ";
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             comboBox8.Items.Add("---Select a mode---");
             comboBox9.Items.Add("---Select a mode---");
@@ -952,6 +1037,8 @@ namespace DSC_management
                 label26.Visible = false;
                 label27.Visible = false;
                 label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
 
 
                 textBox1.Text = "";
@@ -995,6 +1082,8 @@ namespace DSC_management
                 comboBox11.Visible = true;
                 comboBox12.Visible = false;
                 comboBox13.Visible = false;
+                comboBox14.Visible = false;
+                comboBox15.Visible = false;
                 label3.Enabled = true;
                 label4.Enabled = true;
                 label5.Enabled = true;
@@ -1061,7 +1150,7 @@ namespace DSC_management
 
         private void button12_MouseClick(object sender, MouseEventArgs e)
         {
-
+            int stat = 0;
             if (but_stat == 7)
             {
                 if (updt == 0)
@@ -1070,6 +1159,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Activity field cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1093,6 +1183,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Activity field cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1117,6 +1208,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Emp name cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1138,6 +1230,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Emp name cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1162,6 +1255,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals("" ))
                     {
                         MessageBox.Show("Mfg name or color cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1183,6 +1277,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Mfg name or color cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1208,6 +1303,7 @@ namespace DSC_management
                     if (textBox1.Text.Trim().Equals("---Select a mode---") || comboBox9.SelectedItem.Equals("Active") || comboBox8.SelectedItem.Equals("---Select a mode---"))
                     {
                         MessageBox.Show("Name and inward/outward mode cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1230,9 +1326,10 @@ namespace DSC_management
                 else
                 {
                     
-                    if (textBox1.Text.Trim().Equals(""))
+                    if (textBox1.Text.Trim().Equals("---Select a mode---") || comboBox9.SelectedItem.Equals("Active") || comboBox8.SelectedItem.Equals("---Select a mode---"))
                     {
                         MessageBox.Show("Name cannot be empty");
+                        stat = 1;
                     }
                     else
                     {
@@ -1255,9 +1352,10 @@ namespace DSC_management
                 if (updt == 0)
                 {
                     sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "INSERT INTO transportation_master (company_name, contact_num,person_of_contact,transport_mode,fixed_price,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox9.Text + "', '" + textBox4.Text + "','" + textBox14.Text + "', 1); " : "INSERT INTO transportation_master(company_name, contact_num, person_of_contact, transport_mode, fixed_price, active) VALUES('" + textBox1.Text + "', '" + textBox7.Text + "', '" + textBox9.Text + "', '" + textBox4.Text + "', '" + textBox14.Text + "', 0); " ;
-                    if (textBox4.Text.Trim().Equals(""))
+                    if (textBox4.Text.Trim().Equals("")|| textBox1.Text.Trim().Equals(""))
                     {
-                        MessageBox.Show(" Transport mode cannot be blank");
+                        MessageBox.Show(" Transport mode or Company Name cannot be blank");
+                        stat = 1;
                     }
                     else
                     {
@@ -1276,9 +1374,10 @@ namespace DSC_management
                 else
                 {
                     sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '1', updated=current_timestamp where id = " + id : "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox4.Text.Trim().Equals(""))
+                    if (textBox4.Text.Trim().Equals("") || textBox1.Text.Trim().Equals(""))
                     {
-                        MessageBox.Show(" Transport mode cannot be blank");
+                        MessageBox.Show(" Transport mode or Company Name cannot be blank");
+                        stat = 1;
                     }
                     else
                     {
@@ -1296,7 +1395,53 @@ namespace DSC_management
 
                 }
             }
-            changeDG();
+
+            if(but_stat==11 && inco==0)
+            {
+
+                if (updt == 0)
+                {
+                   
+                    if (textBox1.Text.Trim().Equals(""))
+                    {
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 0); ";
+                        MessageBox.Show("Activity field cannot be empty");
+                        stat = 1;
+                    }
+                    else
+                    {
+                        try
+                        {
+
+                            int it = sqlite_cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception e1)
+                        {
+                            MessageBox.Show(e1 + "");
+                        }
+                    }
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+            if (stat == 1)
+            {
+
+            }
+            else
+            {
+                
+                changeDG();
+            }
         }
         private void changeDG()
         {
@@ -1639,19 +1784,19 @@ namespace DSC_management
 
         private void button13_Click(object sender, EventArgs e)
         {
+            updt = 0;
+            button12.Text = "Submit";
+            button13.Text = "Reset";
+
             if (but_stat == 6 || but_stat == 7)
             {
-                button12.Text = "Submit";
-                button13.Text = "Reset";
-                updt = 0;
+                
                 textBox1.Text = "";
                 comboBox3.SelectedItem = "Active";
             }
             if(but_stat==8)
             {
-                button12.Text = "Submit";
-                button13.Text = "Reset";
-                updt = 0;
+                
                 textBox1.Text = "";
                 textBox5.Text = "";
                 textBox6.Text = "";
@@ -1659,9 +1804,7 @@ namespace DSC_management
             }
             if(but_stat==10)
             {
-                button12.Text = "Submit";
-                button13.Text = "Reset";
-                updt = 0;
+                
                 textBox1.Text = "";
                 textBox5.Text = "";
                 textBox6.Text = "";
@@ -1678,7 +1821,7 @@ namespace DSC_management
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
             inco = 0;
-
+            { 
             label3.Enabled = true;
             label4.Enabled = true;
             label5.Enabled = true;
@@ -1727,6 +1870,7 @@ namespace DSC_management
             label26.Enabled = false;
             label27.Enabled = false;
             label28.Enabled = false;
+            label30.Enabled = false;
 
             textBox19.Enabled = false;
             textBox20.Enabled = false;
@@ -1736,73 +1880,78 @@ namespace DSC_management
 
             comboBox12.Enabled = false;
             comboBox13.Enabled = false;
+            comboBox15.Enabled = false;
 
             dateTimePicker3.Enabled = false;
+        }
         }
 
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
             inco = 1;
-
-            label3.Enabled = false;
-            label4.Enabled = false;
-            label5.Enabled = false;
-            label6.Enabled = false;
-            label7.Enabled = false;
-            label8.Enabled = false;
-            label9.Enabled = false;
-            label10.Enabled = false;
-            label12.Enabled = false;
-            label13.Enabled = false;
-            label14.Enabled = false;
-            label15.Enabled = false;
-            label17.Enabled = false;
-            label18.Enabled = false;
-            label19.Enabled = false;
-            label20.Enabled = false;
-
-
-            textBox1.Enabled = false;
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = false;
-            textBox10.Enabled = false;
-            textBox11.Enabled = false;
-            textBox12.Enabled = false;
+            {
+                label3.Enabled = false;
+                label4.Enabled = false;
+                label5.Enabled = false;
+                label6.Enabled = false;
+                label7.Enabled = false;
+                label8.Enabled = false;
+                label9.Enabled = false;
+                label10.Enabled = false;
+                label12.Enabled = false;
+                label13.Enabled = false;
+                label14.Enabled = false;
+                label15.Enabled = false;
+                label17.Enabled = false;
+                label18.Enabled = false;
+                label19.Enabled = false;
+                label20.Enabled = false;
 
 
-
-            comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
-            comboBox5.Enabled = false;
-            comboBox6.Enabled = false;
-            comboBox7.Enabled = false;
-
-
-            dateTimePicker1.Enabled = false;
-            dateTimePicker2.Enabled = false;
+                textBox1.Enabled = false;
+                textBox2.Enabled = false;
+                textBox3.Enabled = false;
+                textBox4.Enabled = false;
+                textBox10.Enabled = false;
+                textBox11.Enabled = false;
+                textBox12.Enabled = false;
 
 
-            label22.Enabled = true;
-            label23.Enabled = true;
-            label24.Enabled = true;
-            label25.Enabled = true;
-            label26.Enabled = true;
-            label27.Enabled = true;
-            label28.Enabled = true;
 
-            textBox19.Enabled = true;
-            textBox20.Enabled = true;
-            textBox21.Enabled = true;
-            textBox22.Enabled = true;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                comboBox3.Enabled = false;
+                comboBox4.Enabled = false;
+                comboBox5.Enabled = false;
+                comboBox6.Enabled = false;
+                comboBox7.Enabled = false;
 
 
-            comboBox12.Enabled = true;
-            comboBox13.Enabled = true;
+                dateTimePicker1.Enabled = false;
+                dateTimePicker2.Enabled = false;
 
-            dateTimePicker3.Enabled = true;
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+                label30.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+                comboBox15.Enabled = true;
+
+                dateTimePicker3.Enabled = true;
+            }
         }
     }
 }

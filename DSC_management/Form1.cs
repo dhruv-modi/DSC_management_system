@@ -84,6 +84,9 @@ namespace DSC_management
             label23.Visible = false;
             label24.Visible = false;
             label25.Visible = false;
+            label26.Visible = false;
+            label27.Visible = false;
+            label28.Visible = false;
 
             textBox1.Text = "";
             textBox1.Visible = true;
@@ -104,9 +107,15 @@ namespace DSC_management
             textBox16.Visible = false;
             textBox17.Visible = false;
             textBox18.Visible = false;
+            textBox19.Visible = false;
+            textBox20.Visible = false;
+            textBox21.Visible = false;
+            textBox22.Visible = false;
+
 
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            dateTimePicker3.Visible = false;
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
@@ -119,7 +128,8 @@ namespace DSC_management
             comboBox9.Visible = false;
             comboBox10.Visible = false;
             comboBox11.Visible = false;
-
+            comboBox12.Visible = false;
+            comboBox13.Visible = false;
             changeDG();
 
         }
@@ -127,6 +137,10 @@ namespace DSC_management
         private void button11_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 1;
+
+            button1.Enabled = true;
+            button2.Enabled = true;
+
 
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.Tomato;
@@ -151,11 +165,12 @@ namespace DSC_management
             label15.Text = "days";
          //   label16.Text = "";
             label17.Text = "DSC UID:";
-            label21.Visible = false;
-            label22.Visible = false;
-            label23.Visible = false;
-            label24.Visible = false;
-            label25.Visible = false;
+            label22.Text = "Outward Charge:";
+            label23.Text = "Collected By:";
+            label25.Text = "Outward date:";
+            label26.Text = "Outward Mode:";
+            label24.Text = "Courier Name:";
+            label28.Text = "Courier Track id:";
 
             label3.Visible = true;
             label4.Visible = true;
@@ -174,6 +189,14 @@ namespace DSC_management
             label18.Visible = false;
             label19.Visible = false;
             label20.Visible = false;
+            label21.Visible = false;
+            label22.Visible = true;
+            label23.Visible = true;
+            label24.Visible = true;
+            label25.Visible = true;
+            label26.Visible = true;
+            label27.Visible = true;
+            label28.Visible = true;
 
             textBox2.Visible = true;
             textBox3.Visible = true;
@@ -192,9 +215,15 @@ namespace DSC_management
             textBox16.Visible = false;
             textBox17.Visible = false;
             textBox18.Visible = false;
+            textBox19.Visible = true;
+            textBox20.Visible = true;
+            textBox21.Visible = true;
+            textBox22.Visible = true;
+
 
             dateTimePicker1.Visible = true;
             dateTimePicker2.Visible = true;
+            dateTimePicker3.Visible = true;
 
             comboBox1.Visible = true;
             comboBox2.Visible = true;
@@ -207,7 +236,8 @@ namespace DSC_management
             comboBox9.Visible = false;
             comboBox10.Visible = false;
             comboBox11.Visible = false;
-
+            comboBox12.Visible = true;
+            comboBox13.Visible = true;
             comboBox3.ResetText();
             comboBox3.Items.Clear();
 
@@ -260,6 +290,9 @@ namespace DSC_management
             label23.Visible = false;
             label24.Visible = false;
             label25.Visible = false;
+            label26.Visible = false;
+            label27.Visible = false;
+            label28.Visible = false;
 
             textBox2.Visible = false;
             textBox3.Visible = false;
@@ -278,9 +311,15 @@ namespace DSC_management
             textBox16.Visible = false;
             textBox17.Visible = false;
             textBox18.Visible = false;
+            textBox19.Visible = false;
+            textBox20.Visible = false;
+            textBox21.Visible = false;
+            textBox22.Visible = false;
 
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            dateTimePicker3.Visible = false;
+
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
@@ -293,6 +332,8 @@ namespace DSC_management
             comboBox9.Visible = false;
             comboBox10.Visible = false;
             comboBox11.Visible = false;
+            comboBox12.Visible = false;
+            comboBox13.Visible = false;
 
             changeDG();
         }
@@ -344,6 +385,9 @@ namespace DSC_management
             label23.Visible = false;
             label24.Visible = false;
             label25.Visible = false;
+            label26.Visible = false;
+            label27.Visible = false;
+            label28.Visible = false;
 
             textBox1.Visible = true;
             textBox2.Visible = false;
@@ -363,9 +407,14 @@ namespace DSC_management
             textBox16.Visible = false;
             textBox17.Visible = false;
             textBox18.Visible = false;
+            textBox19.Visible = false;
+            textBox20.Visible = false;
+            textBox21.Visible = false;
+            textBox22.Visible = false;
 
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            dateTimePicker3.Visible = false;
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
@@ -378,6 +427,8 @@ namespace DSC_management
             comboBox9.Visible = false;
             comboBox10.Visible = false;
             comboBox11.Visible = false;
+            comboBox12.Visible = false;
+            comboBox13.Visible = false;
 
             changeDG();
         }
@@ -440,6 +491,9 @@ namespace DSC_management
             label23.Visible = true;
             label24.Visible = true;
             label25.Visible = true;
+            label26.Visible = false;
+            label27.Visible = false;
+            label28.Visible = false;
 
             textBox1.Visible = true;
             textBox2.Visible = false;
@@ -459,9 +513,14 @@ namespace DSC_management
             textBox16.Visible = true;
             textBox17.Visible = true;
             textBox18.Visible = true;
+            textBox19.Visible = false;
+            textBox20.Visible = false;
+            textBox21.Visible = false;
+            textBox22.Visible = false;
 
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            dateTimePicker3.Visible = false;
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
@@ -474,6 +533,8 @@ namespace DSC_management
             comboBox9.Visible = true;
             comboBox10.Visible = true;
             comboBox11.Visible = false;
+            comboBox12.Visible = false;
+            comboBox13.Visible = false;
 
             comboBox8.Items.Clear();
             comboBox9.Items.Clear();
@@ -483,14 +544,14 @@ namespace DSC_management
             comboBox10.SelectedItem = "Active";
 
             
-            sqlite_cmd.CommandText = "SELECT id,transport_mode FROM transportation_master ";
+            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master ";
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             comboBox8.Items.Add("---Select a mode---");
             comboBox9.Items.Add("---Select a mode---");
             while (sqlite_datareader.Read())
             {
-                comboBox8.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["transport_mode"]);
-                comboBox9.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] );
+                comboBox8.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["transport_mode"]+" ("+ sqlite_datareader["company_name"] + ")");
+                comboBox9.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
 
             }
@@ -555,6 +616,11 @@ namespace DSC_management
             label22.Visible = false;
             label23.Visible = false;
             label24.Visible = false;
+            label25.Visible = false;
+            label26.Visible = false;
+            label27.Visible = false;
+            label28.Visible = false;
+
 
             textBox1.Text = "";
             textBox1.Visible = true;
@@ -574,9 +640,15 @@ namespace DSC_management
             textBox15.Visible = false;
             textBox16.Visible = false;
             textBox17.Visible = false;
+            textBox18.Visible = false;
+            textBox19.Visible = false;
+            textBox20.Visible = false;
+            textBox21.Visible = false;
+            textBox22.Visible = false;
 
             dateTimePicker1.Visible = false;
             dateTimePicker2.Visible = false;
+            dateTimePicker3.Visible = false;
 
             comboBox1.Visible = false;
             comboBox2.Visible = false;
@@ -589,6 +661,8 @@ namespace DSC_management
             comboBox9.Visible = false;
             comboBox10.Visible = false;
             comboBox11.Visible = true;
+            comboBox12.Visible = false;
+            comboBox13.Visible = false;
 
             changeDG();
         }
@@ -763,13 +837,14 @@ namespace DSC_management
 
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update activity_master set activity = '" + textBox1.Text + "', active = '1', updated=current_timestamp where id = " + id : "update activity_master set activity = '" + textBox1.Text + "', active = '0', updated=current_timestamp where id = " + id;
+                    
                     if (textBox1.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Name cannot be empty");
                     }
                     else
                     {
+                        sqlite_cmd.CommandText = (comboBox10.SelectedItem.Equals("Active")) ? "update owner_master set owner_name = '" + textBox1.Text + "',address1 = '" + textBox7.Text + "',address2 = '" + textBox8.Text + "',city = '" + textBox9.Text + "',state = '" + textBox10.Text + "',country = '" + textBox11.Text + "',pincode = '" + textBox12.Text + "',sms_contact = '" + textBox4.Text + "',contact_name = '" + textBox13.Text + "',whatsapp_contact = '" + textBox14.Text + "',telegram_contact = '" + textBox15.Text + "',email1 = '" + textBox16.Text + "',email2 = '" + textBox17.Text + "',owner_ref= '" + textBox18.Text + "',default_inward_mode = '" + comboBox8.SelectedItem.ToString().Split('.')[0] + "',default_outward_mode='" + comboBox9.SelectedItem.ToString().Split('.')[0] + "', active = '1', updated=current_timestamp where id = " + id : "update owner_master set owner_name = '" + textBox1.Text + "',address1 = '" + textBox7.Text + "',address2 = '" + textBox8.Text + "',city = '" + textBox9.Text + "',state = '" + textBox10.Text + "',country = '" + textBox11.Text + "',pincode = '" + textBox12.Text + "',sms_contact = '" + textBox4.Text + "',contact_name = '" + textBox13.Text + "',whatsapp_contact = '" + textBox14.Text + "',telegram_contact = '" + textBox15.Text + "',email1 = '" + textBox16.Text + "',email2 = '" + textBox17.Text + "',owner_ref= '" + textBox18.Text + "',default_inward_mode = '" + comboBox8.SelectedItem.ToString().Split('.')[0] + "',default_outward_mode='" + comboBox9.SelectedItem.ToString().Split('.')[0] + "', active = '0', updated=current_timestamp where id = " + id;
                         try
                         {
 
@@ -923,10 +998,10 @@ namespace DSC_management
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
-                    SQLiteCommand sqlite_cmd1=m_dbConnection.CreateCommand();
+                    SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
 
-                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id="+ sqlite_datareader["default_inward_mode"];
-                    MessageBox.Show(sqlite_cmd1.CommandText);
+                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"]; 
+                   
                     dr = sqlite_cmd1.ExecuteReader();
                     dr.Read();
                     String inc = dr["transport_mode"] +" ( "+dr["company_name"] +" )";
@@ -1148,18 +1223,18 @@ namespace DSC_management
                 SQLiteDataReader dr;
                 SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
 
-                sqlite_cmd1.CommandText = "SELECT transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
+                sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
                 dr = sqlite_cmd1.ExecuteReader();
                 dr.Read();
                 
-                comboBox8.SelectedItem = sqlite_datareader["default_inward_mode"] + "." + dr["transport_mode"];
+                comboBox8.SelectedItem = sqlite_datareader["default_inward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")"; 
                 dr.Close();
 
-                sqlite_cmd1.CommandText = "SELECT transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
+                sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
                 dr = sqlite_cmd1.ExecuteReader();
                 dr.Read();
                 
-                comboBox9.SelectedItem = sqlite_datareader["default_outward_mode"] + "." + dr["transport_mode"];
+                comboBox9.SelectedItem = sqlite_datareader["default_outward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")";
                 dr.Close();
 
 
@@ -1201,6 +1276,11 @@ namespace DSC_management
                 comboBox11.SelectedItem = "Active";
 
             }
+        }
+
+        private void button5_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
         }
     }
 }

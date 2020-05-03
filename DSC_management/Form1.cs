@@ -13,6 +13,7 @@ namespace DSC_management
 {
     public partial class Form1 : Form
     {
+        int inco = 0;
         int id = 0;
         int updt = 0;
         SQLiteCommand sqlite_cmd;
@@ -46,6 +47,8 @@ namespace DSC_management
             button1.Enabled = false;
             button2.Enabled=false;
 
+            button1.BackColor = System.Drawing.Color.White;
+            button2.BackColor = System.Drawing.Color.White;
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.GreenYellow;
             button8.BackColor = System.Drawing.Color.Tomato;
@@ -63,85 +66,147 @@ namespace DSC_management
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem="Active";
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
-            label7.Visible = true;
-            label8.Visible = false;
-            label9.Visible = false;
-            label10.Visible = false;
-            label11.Visible = false;
-            label12.Visible = false;
-            label13.Visible = false;
-            label14.Visible = false;
-            label15.Visible = false;
-            label17.Visible = false;
-            label18.Visible = false;
-            label19.Visible = false;
-            label20.Visible = false;
-            label21.Visible = false;
-            label22.Visible = false;
-            label23.Visible = false;
-            label24.Visible = false;
-            label25.Visible = false;
-            label26.Visible = false;
-            label27.Visible = false;
-            label28.Visible = false;
+            {
+                label4.Visible = false;
+                label5.Visible = false;
+                label6.Visible = false;
+                label7.Visible = true;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                label13.Visible = false;
+                label14.Visible = false;
+                label15.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
 
-            textBox1.Text = "";
-            textBox1.Visible = true;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = false;
-            textBox8.Visible = false;
-            textBox9.Visible = false;
-            textBox10.Visible = false;
-            textBox11.Visible = false;
-            textBox12.Visible = false;
-            textBox13.Visible = false;
-            textBox14.Visible = false;
-            textBox15.Visible = false;
-            textBox16.Visible = false;
-            textBox17.Visible = false;
-            textBox18.Visible = false;
-            textBox19.Visible = false;
-            textBox20.Visible = false;
-            textBox21.Visible = false;
-            textBox22.Visible = false;
+                textBox1.Text = "";
+                textBox1.Visible = true;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = false;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox13.Visible = false;
+                textBox14.Visible = false;
+                textBox15.Visible = false;
+                textBox16.Visible = false;
+                textBox17.Visible = false;
+                textBox18.Visible = false;
+                textBox19.Visible = false;
+                textBox20.Visible = false;
+                textBox21.Visible = false;
+                textBox22.Visible = false;
 
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker2.Visible = false;
-            dateTimePicker3.Visible = false;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
 
-            comboBox1.Visible = false;
-            comboBox2.Visible = false;
-            comboBox3.Visible = true;
-            comboBox4.Visible = false;
-            comboBox5.Visible = false;
-            comboBox6.Visible = false;
-            comboBox7.Visible = false;
-            comboBox8.Visible = false;
-            comboBox9.Visible = false;
-            comboBox10.Visible = false;
-            comboBox11.Visible = false;
-            comboBox12.Visible = false;
-            comboBox13.Visible = false;
-            changeDG();
+                comboBox1.Visible = false;
+                comboBox2.Visible = false;
+                comboBox3.Visible = true;
+                comboBox4.Visible = false;
+                comboBox5.Visible = false;
+                comboBox6.Visible = false;
+                comboBox7.Visible = false;
+                comboBox8.Visible = false;
+                comboBox9.Visible = false;
+                comboBox10.Visible = false;
+                comboBox11.Visible = false;
+                comboBox12.Visible = false;
+                comboBox13.Visible = false;
+                label3.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+                label6.Enabled = true;
+                label7.Enabled = true;
+                label8.Enabled = true;
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                label15.Enabled = true;
+                label17.Enabled = true;
+                label18.Enabled = true;
+                label19.Enabled = true;
+                label20.Enabled = true;
+
+
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox10.Enabled = true;
+                textBox11.Enabled = true;
+                textBox12.Enabled = true;
+
+
+
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+                comboBox6.Enabled = true;
+                comboBox7.Enabled = true;
+
+
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+
+                dateTimePicker3.Enabled = true;
+            }
+                changeDG();
 
         }
 
         private void button11_MouseClick(object sender, MouseEventArgs e)
         {
-            but_stat = 1;
+            but_stat = 11;
 
             button1.Enabled = true;
             button2.Enabled = true;
 
-
+            button1.BackColor = System.Drawing.Color.GreenYellow;
+            button2.BackColor = System.Drawing.Color.Tomato;
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.Tomato;
             button8.BackColor = System.Drawing.Color.Tomato;
@@ -163,7 +228,7 @@ namespace DSC_management
             label13.Text = "Return on";
             label14.Text = "or in ";
             label15.Text = "days";
-         //   label16.Text = "";
+            //   label16.Text = "";
             label17.Text = "DSC UID:";
             label22.Text = "Outward Charge:";
             label23.Text = "Collected By:";
@@ -172,7 +237,7 @@ namespace DSC_management
             label24.Text = "Courier Name:";
             label28.Text = "Courier Track id:";
 
-            label3.Visible = true;
+            {  label3.Visible = true;
             label4.Visible = true;
             label5.Visible = true;
             label6.Visible = true;
@@ -241,8 +306,85 @@ namespace DSC_management
             comboBox3.ResetText();
             comboBox3.Items.Clear();
 
+            label22.Enabled = false;
+            label23.Enabled = false;
+            label24.Enabled = false;
+            label25.Enabled = false;
+            label26.Enabled = false;
+            label27.Enabled = false;
+            label28.Enabled = false;
+
+            textBox19.Enabled = false;
+            textBox20.Enabled = false;
+            textBox21.Enabled = false;
+            textBox22.Enabled = false;
 
 
+            comboBox12.Enabled = false;
+            comboBox13.Enabled = false;
+
+            dateTimePicker3.Enabled = false;
+
+
+            label3.Enabled = true;
+            label4.Enabled = true;
+            label5.Enabled = true;
+            label6.Enabled = true;
+            label7.Enabled = true;
+            label8.Enabled = true;
+            label9.Enabled = true;
+            label10.Enabled = true;
+            label12.Enabled = true;
+            label13.Enabled = true;
+            label14.Enabled = true;
+            label15.Enabled = true;
+            label17.Enabled = true;
+            label18.Enabled = true;
+            label19.Enabled = true;
+            label20.Enabled = true;
+
+
+            textBox1.Enabled = true;
+            textBox2.Enabled = true;
+            textBox3.Enabled = true;
+            textBox4.Enabled = true;
+            textBox10.Enabled = true;
+            textBox11.Enabled = true;
+            textBox12.Enabled = true;
+
+
+
+            comboBox1.Enabled = true;
+            comboBox2.Enabled = true;
+            comboBox3.Enabled = true;
+            comboBox4.Enabled = true;
+            comboBox5.Enabled = true;
+            comboBox6.Enabled = true;
+            comboBox7.Enabled = true;
+
+
+            dateTimePicker1.Enabled = true;
+            dateTimePicker2.Enabled = true;
+
+            label22.Enabled = false;
+            label23.Enabled = false;
+            label24.Enabled = false;
+            label25.Enabled = false;
+            label26.Enabled = false;
+            label27.Enabled = false;
+            label28.Enabled = false;
+
+            textBox19.Enabled = false;
+            textBox20.Enabled = false;
+            textBox21.Enabled = false;
+            textBox22.Enabled = false;
+
+
+            comboBox12.Enabled = false;
+            comboBox13.Enabled = false;
+
+            dateTimePicker3.Enabled = false;
+        }
         }
 
         private void button6_MouseClick(object sender, MouseEventArgs e)
@@ -252,6 +394,8 @@ namespace DSC_management
             button1.Enabled = false;
             button2.Enabled = false;
 
+            button1.BackColor = System.Drawing.Color.White;
+            button2.BackColor = System.Drawing.Color.White;
             button6.BackColor = System.Drawing.Color.GreenYellow;
             button7.BackColor = System.Drawing.Color.Tomato;
             button8.BackColor = System.Drawing.Color.Tomato;
@@ -269,73 +413,134 @@ namespace DSC_management
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem = "Active";
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
-            label7.Visible = true;
-            label8.Visible = false;
-            label9.Visible = false;
-            label10.Visible = false;
-            label11.Visible = false;
-            label12.Visible = false;
-            label13.Visible = false;
-            label14.Visible = false;
-            label15.Visible = false;
-            label17.Visible = false;
-            label18.Visible = false;
-            label19.Visible = false;
-            label20.Visible = false;
-            label21.Visible = false;
-            label22.Visible = false;
-            label23.Visible = false;
-            label24.Visible = false;
-            label25.Visible = false;
-            label26.Visible = false;
-            label27.Visible = false;
-            label28.Visible = false;
+            {
+                label4.Visible = false;
+                label5.Visible = false;
+                label6.Visible = false;
+                label7.Visible = true;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                label13.Visible = false;
+                label14.Visible = false;
+                label15.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
 
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = false;
-            textBox8.Visible = false;
-            textBox9.Visible = false;
-            textBox10.Visible = false;
-            textBox11.Visible = false;
-            textBox12.Visible = false;
-            textBox13.Visible = false;
-            textBox14.Visible = false;
-            textBox15.Visible = false;
-            textBox16.Visible = false;
-            textBox17.Visible = false;
-            textBox18.Visible = false;
-            textBox19.Visible = false;
-            textBox20.Visible = false;
-            textBox21.Visible = false;
-            textBox22.Visible = false;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = false;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox13.Visible = false;
+                textBox14.Visible = false;
+                textBox15.Visible = false;
+                textBox16.Visible = false;
+                textBox17.Visible = false;
+                textBox18.Visible = false;
+                textBox19.Visible = false;
+                textBox20.Visible = false;
+                textBox21.Visible = false;
+                textBox22.Visible = false;
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker2.Visible = false;
-            dateTimePicker3.Visible = false;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
 
 
-            comboBox1.Visible = false;
-            comboBox2.Visible = false;
-            comboBox3.Visible = true;
-            comboBox4.Visible = false;
-            comboBox5.Visible = false;
-            comboBox6.Visible = false;
-            comboBox7.Visible = false;
-            comboBox8.Visible = false;
-            comboBox9.Visible = false;
-            comboBox10.Visible = false;
-            comboBox11.Visible = false;
-            comboBox12.Visible = false;
-            comboBox13.Visible = false;
+                comboBox1.Visible = false;
+                comboBox2.Visible = false;
+                comboBox3.Visible = true;
+                comboBox4.Visible = false;
+                comboBox5.Visible = false;
+                comboBox6.Visible = false;
+                comboBox7.Visible = false;
+                comboBox8.Visible = false;
+                comboBox9.Visible = false;
+                comboBox10.Visible = false;
+                comboBox11.Visible = false;
+                comboBox12.Visible = false;
+                comboBox13.Visible = false;
+                label3.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+                label6.Enabled = true;
+                label7.Enabled = true;
+                label8.Enabled = true;
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                label15.Enabled = true;
+                label17.Enabled = true;
+                label18.Enabled = true;
+                label19.Enabled = true;
+                label20.Enabled = true;
 
-            changeDG();
+
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox10.Enabled = true;
+                textBox11.Enabled = true;
+                textBox12.Enabled = true;
+
+
+
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+                comboBox6.Enabled = true;
+                comboBox7.Enabled = true;
+
+
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+
+                dateTimePicker3.Enabled = true;
+            }
+
+                changeDG();
         }
 
         private void button8_MouseClick(object sender, MouseEventArgs e)
@@ -345,6 +550,8 @@ namespace DSC_management
             button1.Enabled = false;
             button2.Enabled = false;
 
+            button1.BackColor = System.Drawing.Color.White;
+            button2.BackColor = System.Drawing.Color.White;
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.Tomato;
             button8.BackColor = System.Drawing.Color.GreenYellow;
@@ -365,72 +572,133 @@ namespace DSC_management
             comboBox3.Items.Add("Active");
             comboBox3.Items.Add("Inactive");
             comboBox3.SelectedItem = "Active";
-            label4.Visible = true;
-            label5.Visible = true;
-            label6.Visible = false;
-            label8.Visible = false;
-            label9.Visible = false;
-            label10.Visible = false;
-            label11.Visible = false;
-            label12.Visible = false;
-            label13.Visible = false;
-            label14.Visible = false;
-            label15.Visible = false;
-            label17.Visible = false;
-            label18.Visible = false;
-            label19.Visible = false;
-            label20.Visible = false;
-            label21.Visible = false;
-            label22.Visible = false;
-            label23.Visible = false;
-            label24.Visible = false;
-            label25.Visible = false;
-            label26.Visible = false;
-            label27.Visible = false;
-            label28.Visible = false;
+            {
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = false;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                label13.Visible = false;
+                label14.Visible = false;
+                label15.Visible = false;
+                label17.Visible = false;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
 
-            textBox1.Visible = true;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = false;
-            textBox5.Visible = true;
-            textBox6.Visible = true;
-            textBox7.Visible = false;
-            textBox8.Visible = false;
-            textBox9.Visible = false;
-            textBox10.Visible = false;
-            textBox11.Visible = false;
-            textBox12.Visible = false;
-            textBox13.Visible = false;
-            textBox14.Visible = false;
-            textBox15.Visible = false;
-            textBox16.Visible = false;
-            textBox17.Visible = false;
-            textBox18.Visible = false;
-            textBox19.Visible = false;
-            textBox20.Visible = false;
-            textBox21.Visible = false;
-            textBox22.Visible = false;
+                textBox1.Visible = true;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = false;
+                textBox5.Visible = true;
+                textBox6.Visible = true;
+                textBox7.Visible = false;
+                textBox8.Visible = false;
+                textBox9.Visible = false;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox13.Visible = false;
+                textBox14.Visible = false;
+                textBox15.Visible = false;
+                textBox16.Visible = false;
+                textBox17.Visible = false;
+                textBox18.Visible = false;
+                textBox19.Visible = false;
+                textBox20.Visible = false;
+                textBox21.Visible = false;
+                textBox22.Visible = false;
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker2.Visible = false;
-            dateTimePicker3.Visible = false;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
 
-            comboBox1.Visible = false;
-            comboBox2.Visible = false;
-            comboBox3.Visible = true;
-            comboBox4.Visible = false;
-            comboBox5.Visible = false;
-            comboBox6.Visible = false;
-            comboBox7.Visible = false;
-            comboBox8.Visible = false;
-            comboBox9.Visible = false;
-            comboBox10.Visible = false;
-            comboBox11.Visible = false;
-            comboBox12.Visible = false;
-            comboBox13.Visible = false;
+                comboBox1.Visible = false;
+                comboBox2.Visible = false;
+                comboBox3.Visible = true;
+                comboBox4.Visible = false;
+                comboBox5.Visible = false;
+                comboBox6.Visible = false;
+                comboBox7.Visible = false;
+                comboBox8.Visible = false;
+                comboBox9.Visible = false;
+                comboBox10.Visible = false;
+                comboBox11.Visible = false;
+                comboBox12.Visible = false;
+                comboBox13.Visible = false;
+                label3.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+                label6.Enabled = true;
+                label7.Enabled = true;
+                label8.Enabled = true;
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                label15.Enabled = true;
+                label17.Enabled = true;
+                label18.Enabled = true;
+                label19.Enabled = true;
+                label20.Enabled = true;
 
-            changeDG();
+
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox10.Enabled = true;
+                textBox11.Enabled = true;
+                textBox12.Enabled = true;
+
+
+
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+                comboBox6.Enabled = true;
+                comboBox7.Enabled = true;
+
+
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+
+                dateTimePicker3.Enabled = true;
+            }
+
+                changeDG();
         }
 
         private void button9_MouseClick(object sender, MouseEventArgs e)
@@ -440,6 +708,8 @@ namespace DSC_management
             button1.Enabled = false;
             button2.Enabled = false;
 
+            button1.BackColor = System.Drawing.Color.White;
+            button2.BackColor = System.Drawing.Color.White;
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.Tomato;
             button8.BackColor = System.Drawing.Color.Tomato;
@@ -468,74 +738,135 @@ namespace DSC_management
             label25.Text = "Owner Reference Mark:";
 
 
+            {
+                label4.Visible = true;
+                label5.Visible = false;
+                label6.Visible = true;
+                label7.Visible = true;
+                label8.Visible = false;
+                label9.Visible = true;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = true;
+                label13.Visible = true;
+                label14.Visible = true;
+                label15.Visible = false;
+                label17.Visible = true;
 
-            label4.Visible = true;
-            label5.Visible = false;
-            label6.Visible = true;
-            label7.Visible = true;
-            label8.Visible = false;
-            label9.Visible = true;
-            label10.Visible = false;
-            label11.Visible = false;
-            label12.Visible = true;
-            label13.Visible = true;
-            label14.Visible = true;
-            label15.Visible = false;
-            label17.Visible = true;
+                label18.Visible = true;
+                label19.Visible = true;
+                label20.Visible = true;
+                label21.Visible = true;
+                label22.Visible = true;
+                label23.Visible = true;
+                label24.Visible = true;
+                label25.Visible = true;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
 
-            label18.Visible = true;
-            label19.Visible = true;
-            label20.Visible = true;
-            label21.Visible = true;
-            label22.Visible = true;
-            label23.Visible = true;
-            label24.Visible = true;
-            label25.Visible = true;
-            label26.Visible = false;
-            label27.Visible = false;
-            label28.Visible = false;
+                textBox1.Visible = true;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = true;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = true;
+                textBox8.Visible = true;
+                textBox9.Visible = true;
+                textBox10.Visible = true;
+                textBox11.Visible = true;
+                textBox12.Visible = true;
+                textBox13.Visible = true;
+                textBox14.Visible = true;
+                textBox15.Visible = true;
+                textBox16.Visible = true;
+                textBox17.Visible = true;
+                textBox18.Visible = true;
+                textBox19.Visible = false;
+                textBox20.Visible = false;
+                textBox21.Visible = false;
+                textBox22.Visible = false;
 
-            textBox1.Visible = true;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = true;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = true;
-            textBox8.Visible = true;
-            textBox9.Visible = true;
-            textBox10.Visible = true;
-            textBox11.Visible = true;
-            textBox12.Visible = true;
-            textBox13.Visible = true;
-            textBox14.Visible = true;
-            textBox15.Visible = true;
-            textBox16.Visible = true;
-            textBox17.Visible = true;
-            textBox18.Visible = true;
-            textBox19.Visible = false;
-            textBox20.Visible = false;
-            textBox21.Visible = false;
-            textBox22.Visible = false;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker2.Visible = false;
-            dateTimePicker3.Visible = false;
+                comboBox1.Visible = false;
+                comboBox2.Visible = false;
+                comboBox3.Visible = false;
+                comboBox4.Visible = false;
+                comboBox5.Visible = false;
+                comboBox6.Visible = false;
+                comboBox7.Visible = false;
+                comboBox8.Visible = true;
+                comboBox9.Visible = true;
+                comboBox10.Visible = true;
+                comboBox11.Visible = false;
+                comboBox12.Visible = false;
+                comboBox13.Visible = false;
+                label3.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+                label6.Enabled = true;
+                label7.Enabled = true;
+                label8.Enabled = true;
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                label15.Enabled = true;
+                label17.Enabled = true;
+                label18.Enabled = true;
+                label19.Enabled = true;
+                label20.Enabled = true;
 
-            comboBox1.Visible = false;
-            comboBox2.Visible = false;
-            comboBox3.Visible = false;
-            comboBox4.Visible = false;
-            comboBox5.Visible = false;
-            comboBox6.Visible = false;
-            comboBox7.Visible = false;
-            comboBox8.Visible = true;
-            comboBox9.Visible = true;
-            comboBox10.Visible = true;
-            comboBox11.Visible = false;
-            comboBox12.Visible = false;
-            comboBox13.Visible = false;
 
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox10.Enabled = true;
+                textBox11.Enabled = true;
+                textBox12.Enabled = true;
+
+
+
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+                comboBox6.Enabled = true;
+                comboBox7.Enabled = true;
+
+
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+
+
+                dateTimePicker3.Enabled = true;
+
+            }
             comboBox8.Items.Clear();
             comboBox9.Items.Clear();
             comboBox10.Items.Clear();
@@ -567,7 +898,8 @@ namespace DSC_management
         {
             but_stat = 10;
 
-
+            button1.BackColor = System.Drawing.Color.White;
+            button2.BackColor = System.Drawing.Color.White;
             button6.BackColor = System.Drawing.Color.Tomato;
             button7.BackColor = System.Drawing.Color.Tomato;
             button8.BackColor = System.Drawing.Color.Tomato;
@@ -595,76 +927,136 @@ namespace DSC_management
 
 
 
-          
-            label4.Visible = true;
-            label5.Visible = false;
-            label6.Visible = false;
-            label7.Visible = true;
-            label8.Visible = false;
-            label9.Visible = false;
-            label10.Visible = false;
-            label11.Visible = false;
-            label12.Visible = true;
-            label13.Visible = true;
-            label14.Visible = false;
-            label15.Visible = false;
-            label17.Visible = true;
-            label18.Visible = false;
-            label19.Visible = false;
-            label20.Visible = false;
-            label21.Visible = false;
-            label22.Visible = false;
-            label23.Visible = false;
-            label24.Visible = false;
-            label25.Visible = false;
-            label26.Visible = false;
-            label27.Visible = false;
-            label28.Visible = false;
+            {
+                label4.Visible = true;
+                label5.Visible = false;
+                label6.Visible = false;
+                label7.Visible = true;
+                label8.Visible = false;
+                label9.Visible = false;
+                label10.Visible = false;
+                label11.Visible = false;
+                label12.Visible = true;
+                label13.Visible = true;
+                label14.Visible = false;
+                label15.Visible = false;
+                label17.Visible = true;
+                label18.Visible = false;
+                label19.Visible = false;
+                label20.Visible = false;
+                label21.Visible = false;
+                label22.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
 
 
-            textBox1.Text = "";
-            textBox1.Visible = true;
-            textBox2.Visible = false;
-            textBox3.Visible = false;
-            textBox4.Visible = true;
-            textBox5.Visible = false;
-            textBox6.Visible = false;
-            textBox7.Visible = true;
-            textBox8.Visible = false;
-            textBox9.Visible = true;
-            textBox10.Visible = false;
-            textBox11.Visible = false;
-            textBox12.Visible = false;
-            textBox13.Visible = false;
-            textBox14.Visible = true;
-            textBox15.Visible = false;
-            textBox16.Visible = false;
-            textBox17.Visible = false;
-            textBox18.Visible = false;
-            textBox19.Visible = false;
-            textBox20.Visible = false;
-            textBox21.Visible = false;
-            textBox22.Visible = false;
+                textBox1.Text = "";
+                textBox1.Visible = true;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                textBox4.Visible = true;
+                textBox5.Visible = false;
+                textBox6.Visible = false;
+                textBox7.Visible = true;
+                textBox8.Visible = false;
+                textBox9.Visible = true;
+                textBox10.Visible = false;
+                textBox11.Visible = false;
+                textBox12.Visible = false;
+                textBox13.Visible = false;
+                textBox14.Visible = true;
+                textBox15.Visible = false;
+                textBox16.Visible = false;
+                textBox17.Visible = false;
+                textBox18.Visible = false;
+                textBox19.Visible = false;
+                textBox20.Visible = false;
+                textBox21.Visible = false;
+                textBox22.Visible = false;
 
-            dateTimePicker1.Visible = false;
-            dateTimePicker2.Visible = false;
-            dateTimePicker3.Visible = false;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                dateTimePicker3.Visible = false;
 
-            comboBox1.Visible = false;
-            comboBox2.Visible = false;
-            comboBox3.Visible = false;
-            comboBox4.Visible = false;
-            comboBox5.Visible = false;
-            comboBox6.Visible = false;
-            comboBox7.Visible = false;
-            comboBox8.Visible = false;
-            comboBox9.Visible = false;
-            comboBox10.Visible = false;
-            comboBox11.Visible = true;
-            comboBox12.Visible = false;
-            comboBox13.Visible = false;
+                comboBox1.Visible = false;
+                comboBox2.Visible = false;
+                comboBox3.Visible = false;
+                comboBox4.Visible = false;
+                comboBox5.Visible = false;
+                comboBox6.Visible = false;
+                comboBox7.Visible = false;
+                comboBox8.Visible = false;
+                comboBox9.Visible = false;
+                comboBox10.Visible = false;
+                comboBox11.Visible = true;
+                comboBox12.Visible = false;
+                comboBox13.Visible = false;
+                label3.Enabled = true;
+                label4.Enabled = true;
+                label5.Enabled = true;
+                label6.Enabled = true;
+                label7.Enabled = true;
+                label8.Enabled = true;
+                label9.Enabled = true;
+                label10.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+                label15.Enabled = true;
+                label17.Enabled = true;
+                label18.Enabled = true;
+                label19.Enabled = true;
+                label20.Enabled = true;
 
-            changeDG();
+
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox10.Enabled = true;
+                textBox11.Enabled = true;
+                textBox12.Enabled = true;
+
+
+
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+                comboBox6.Enabled = true;
+                comboBox7.Enabled = true;
+
+
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+
+
+                label22.Enabled = true;
+                label23.Enabled = true;
+                label24.Enabled = true;
+                label25.Enabled = true;
+                label26.Enabled = true;
+                label27.Enabled = true;
+                label28.Enabled = true;
+
+                textBox19.Enabled = true;
+                textBox20.Enabled = true;
+                textBox21.Enabled = true;
+                textBox22.Enabled = true;
+
+
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+
+                dateTimePicker3.Enabled = true;
+            }
+
+                changeDG();
         }
 
         private void button12_MouseClick(object sender, MouseEventArgs e)
@@ -1281,6 +1673,136 @@ namespace DSC_management
         private void button5_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            inco = 0;
+
+            label3.Enabled = true;
+            label4.Enabled = true;
+            label5.Enabled = true;
+            label6.Enabled = true;
+            label7.Enabled = true;
+            label8.Enabled = true;
+            label9.Enabled = true;
+            label10.Enabled = true;
+            label12.Enabled = true;
+            label13.Enabled = true;
+            label14.Enabled = true;
+            label15.Enabled = true;
+            label17.Enabled = true;
+            label18.Enabled = true;
+            label19.Enabled = true;
+            label20.Enabled = true;
+
+
+            textBox1.Enabled = true;
+            textBox2.Enabled = true;
+            textBox3.Enabled = true;
+            textBox4.Enabled = true;
+            textBox10.Enabled = true;
+            textBox11.Enabled = true;
+            textBox12.Enabled = true;
+
+
+
+            comboBox1.Enabled = true;
+            comboBox2.Enabled = true;
+            comboBox3.Enabled = true;
+            comboBox4.Enabled = true;
+            comboBox5.Enabled = true;
+            comboBox6.Enabled = true;
+            comboBox7.Enabled = true;
+
+
+            dateTimePicker1.Enabled = true;
+            dateTimePicker2.Enabled = true;
+
+
+            label22.Enabled = false;
+            label23.Enabled = false;
+            label24.Enabled = false;
+            label25.Enabled = false;
+            label26.Enabled = false;
+            label27.Enabled = false;
+            label28.Enabled = false;
+
+            textBox19.Enabled = false;
+            textBox20.Enabled = false;
+            textBox21.Enabled = false;
+            textBox22.Enabled = false;
+
+
+            comboBox12.Enabled = false;
+            comboBox13.Enabled = false;
+
+            dateTimePicker3.Enabled = false;
+        }
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
+        {
+            inco = 1;
+
+            label3.Enabled = false;
+            label4.Enabled = false;
+            label5.Enabled = false;
+            label6.Enabled = false;
+            label7.Enabled = false;
+            label8.Enabled = false;
+            label9.Enabled = false;
+            label10.Enabled = false;
+            label12.Enabled = false;
+            label13.Enabled = false;
+            label14.Enabled = false;
+            label15.Enabled = false;
+            label17.Enabled = false;
+            label18.Enabled = false;
+            label19.Enabled = false;
+            label20.Enabled = false;
+
+
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+            textBox4.Enabled = false;
+            textBox10.Enabled = false;
+            textBox11.Enabled = false;
+            textBox12.Enabled = false;
+
+
+
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+            comboBox3.Enabled = false;
+            comboBox4.Enabled = false;
+            comboBox5.Enabled = false;
+            comboBox6.Enabled = false;
+            comboBox7.Enabled = false;
+
+
+            dateTimePicker1.Enabled = false;
+            dateTimePicker2.Enabled = false;
+
+
+            label22.Enabled = true;
+            label23.Enabled = true;
+            label24.Enabled = true;
+            label25.Enabled = true;
+            label26.Enabled = true;
+            label27.Enabled = true;
+            label28.Enabled = true;
+
+            textBox19.Enabled = true;
+            textBox20.Enabled = true;
+            textBox21.Enabled = true;
+            textBox22.Enabled = true;
+
+
+            comboBox12.Enabled = true;
+            comboBox13.Enabled = true;
+
+            dateTimePicker3.Enabled = true;
         }
     }
 }

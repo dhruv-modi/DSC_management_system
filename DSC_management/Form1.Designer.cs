@@ -247,25 +247,29 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Tomato;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(1053, 166);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(179, 53);
             this.button2.TabIndex = 20;
             this.button2.Text = "OUTGOING";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.YellowGreen;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(1053, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(179, 53);
             this.button1.TabIndex = 19;
             this.button1.Text = "INCOMING";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // label3
             // 
@@ -344,7 +348,6 @@
             // comboBox3
             // 
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(138, 152);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 24);
@@ -439,7 +442,6 @@
             // comboBox7
             // 
             this.comboBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(138, 217);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(121, 24);
@@ -462,7 +464,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(157, 23);
             this.dateTimePicker2.TabIndex = 45;
-            this.dateTimePicker2.Value = new System.DateTime(2020, 4, 24, 16, 12, 3, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2020, 5, 3, 0, 0, 0, 0);
             // 
             // label13
             // 
@@ -737,6 +739,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Enabled = false;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(12, 320);
             this.label22.Name = "label22";
@@ -747,7 +750,6 @@
             // comboBox8
             // 
             this.comboBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Location = new System.Drawing.Point(141, 320);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(186, 24);
@@ -767,6 +769,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.Enabled = false;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(346, 320);
             this.label23.Name = "label23";
@@ -787,6 +790,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.Enabled = false;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(12, 356);
             this.label24.Name = "label24";
@@ -807,6 +811,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
+            this.label25.Enabled = false;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(12, 284);
             this.label25.Name = "label25";
@@ -825,6 +830,7 @@
             // 
             // dateTimePicker3
             // 
+            this.dateTimePicker3.Enabled = false;
             this.dateTimePicker3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker3.Location = new System.Drawing.Point(138, 282);
             this.dateTimePicker3.Name = "dateTimePicker3";
@@ -834,6 +840,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.Enabled = false;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(301, 284);
             this.label26.Name = "label26";
@@ -843,6 +850,7 @@
             // 
             // comboBox12
             // 
+            this.comboBox12.Enabled = false;
             this.comboBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox12.FormattingEnabled = true;
             this.comboBox12.Location = new System.Drawing.Point(424, 281);
@@ -853,6 +861,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.Enabled = false;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(587, 284);
             this.label27.Name = "label27";
@@ -862,6 +871,7 @@
             // 
             // comboBox13
             // 
+            this.comboBox13.Enabled = false;
             this.comboBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox13.FormattingEnabled = true;
             this.comboBox13.Location = new System.Drawing.Point(689, 281);
@@ -871,6 +881,7 @@
             // 
             // textBox19
             // 
+            this.textBox19.Enabled = false;
             this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox19.Location = new System.Drawing.Point(138, 317);
             this.textBox19.Name = "textBox19";
@@ -879,6 +890,7 @@
             // 
             // textBox20
             // 
+            this.textBox20.Enabled = false;
             this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox20.Location = new System.Drawing.Point(460, 320);
             this.textBox20.Name = "textBox20";
@@ -887,6 +899,7 @@
             // 
             // textBox21
             // 
+            this.textBox21.Enabled = false;
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox21.Location = new System.Drawing.Point(138, 353);
             this.textBox21.Name = "textBox21";
@@ -896,6 +909,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.Enabled = false;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(339, 356);
             this.label28.Name = "label28";
@@ -905,6 +919,7 @@
             // 
             // textBox22
             // 
+            this.textBox22.Enabled = false;
             this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox22.Location = new System.Drawing.Point(475, 353);
             this.textBox22.Name = "textBox22";
@@ -938,7 +953,6 @@
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox13);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.label20);
@@ -946,9 +960,6 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button13);
@@ -988,15 +999,19 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox17);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.comboBox11);
             this.Controls.Add(this.textBox16);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Form1";

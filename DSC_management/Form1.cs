@@ -32,12 +32,16 @@ namespace DSC_management
 
             InitializeComponent();
 
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
+            dateTimePicker3.Value = DateTime.Today;
+            
             {
                 comboBox14.Items.Clear();
                 comboBox14.Items.Add("-Select-");
 
                 comboBox14.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master order by owner_name asc";
+                sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
@@ -45,12 +49,12 @@ namespace DSC_management
 
                 }
                 sqlite_datareader.Close();
-            }
+            }//owner
             {
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add("-Select-");
                 comboBox1.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master order by emp_name asc";
+                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
@@ -58,7 +62,56 @@ namespace DSC_management
 
                 }
                 sqlite_datareader.Close();
-            }
+            }//employee
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Items.Add("-Select-");
+
+                comboBox2.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+
+                }
+                sqlite_datareader.Close();
+
+            }//transport
+            {
+                comboBox3.Items.Clear();
+                comboBox3.Items.Add("-Select-");
+
+                comboBox3.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox3.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+
+                }
+                sqlite_datareader.Close();
+            }//activty
+            {
+                comboBox7.Items.Clear();
+                comboBox7.Items.Add("Yes");
+                comboBox7.Items.Add("No");
+                comboBox7.SelectedItem = "Yes";
+            }//return
+            {
+                comboBox5.Items.Clear();
+                comboBox5.Items.Add("-Select-");
+
+                comboBox5.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+
+                }
+                sqlite_datareader.Close();
+            }//make
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -250,35 +303,82 @@ namespace DSC_management
             button10.BackColor = System.Drawing.Color.Tomato;
             button11.BackColor = System.Drawing.Color.GreenYellow;
 
-
-            {   comboBox14.Items.Clear();
-            comboBox14.Items.Add("-Select-");
-
-            comboBox14.SelectedItem = "-Select-";
-            sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master order by owner_name asc";
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
             {
-                comboBox14.Items.Add(sqlite_datareader["id"] + "."+sqlite_datareader["owner_name"] + "");
+                comboBox14.Items.Clear();
+                comboBox14.Items.Add("-Select-");
 
-            }
-            sqlite_datareader.Close();
-        }
-            {
-                comboBox1.Items.Clear();
-                comboBox1.Items.Add("-Select-");
-
-                comboBox1.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master order by emp_name asc";
+                comboBox14.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
-                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"] );
+                    comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+
+                }
+                sqlite_datareader.Close();
+            }//owner
+            {
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("-Select-");
+                comboBox1.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+
+                }
+                sqlite_datareader.Close();
+            }//employee
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Items.Add("-Select-");
+
+                comboBox2.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
                 }
                 sqlite_datareader.Close();
 
-            }
+            }//transport
+            {
+                comboBox3.Items.Clear();
+                comboBox3.Items.Add("-Select-");
+                
+                comboBox3.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                   comboBox3.Items.Add(""+sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+
+                }
+                sqlite_datareader.Close();
+            }//activty
+            {
+                comboBox7.Items.Clear();
+                comboBox7.Items.Add("Yes");
+                comboBox7.Items.Add("No");
+                comboBox7.SelectedItem = "Yes";
+            }//return
+            {
+                comboBox5.Items.Clear();
+                comboBox5.Items.Add("-Select-");
+
+                comboBox5.SelectedItem = "-Select-";
+                sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+
+                }
+                sqlite_datareader.Close();
+            }//make
 
 
             label3.Text = "Location:";
@@ -310,7 +410,7 @@ namespace DSC_management
             label7.Visible = true;
             label8.Visible = true;
             label9.Visible = true;
-            label10.Visible = true;
+            label10.Visible = false;
             label11.Visible = true;
             label12.Visible = true;
             label13.Visible = true;
@@ -373,8 +473,8 @@ namespace DSC_management
             comboBox13.Visible = true;
             comboBox14.Visible = true;
             comboBox15.Visible = true;
-                comboBox3.ResetText();
-            comboBox3.Items.Clear();
+                
+           
 
             label22.Enabled = false;
             label23.Enabled = false;
@@ -401,7 +501,7 @@ namespace DSC_management
             label5.Enabled = true;
             label6.Enabled = true;
             label7.Enabled = true;
-            label8.Enabled = true;
+            label8.Enabled = false;
             label9.Enabled = true;
             label10.Enabled = true;
             label12.Enabled = true;
@@ -427,9 +527,9 @@ namespace DSC_management
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             comboBox3.Enabled = true;
-            comboBox4.Enabled = true;
+            comboBox4.Enabled = false;
             comboBox5.Enabled = true;
-            comboBox6.Enabled = true;
+            comboBox6.Enabled = false;
             comboBox7.Enabled = true;
 
 
@@ -960,7 +1060,7 @@ namespace DSC_management
             comboBox10.SelectedItem = "Active";
 
             
-            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 ";
+            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             comboBox8.Items.Add("---Select a mode---");
             comboBox9.Items.Add("---Select a mode---");
@@ -1404,12 +1504,40 @@ namespace DSC_management
                    
                     if (textBox1.Text.Trim().Equals(""))
                     {
-                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 0); ";
-                        MessageBox.Show("Activity field cannot be empty");
+                       
+                        MessageBox.Show("Location cannot be empty");
+                        stat = 1;
+                    }
+                    else if(comboBox14.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select an owner");
+                        stat = 1;
+
+                    }
+                    else if(comboBox1.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select a name in inward by");
+                        stat = 1;
+                    }
+                    else if (comboBox2.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select an inward mode");
+                        stat = 1;
+                    }
+                    else if (comboBox3.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select the activity to be performed");
+                        stat = 1;
+                    }
+                    else if (comboBox5.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select dsc make");
                         stat = 1;
                     }
                     else
                     {
+                        sqlite_cmd.CommandText =  ;
+
                         try
                         {
 
@@ -1820,9 +1948,36 @@ namespace DSC_management
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
+
+            button1.BackColor= System.Drawing.Color.GreenYellow;
+            button2.BackColor= System.Drawing.Color.Tomato;
             inco = 0;
-            { 
-            label3.Enabled = true;
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox19.Text = "";
+                textBox20.Text = "";
+                textBox21.Text = "";
+                textBox22.Text = "";
+
+                dateTimePicker1.Value = DateTime.Today;
+                dateTimePicker2.Value = DateTime.Today;
+                dateTimePicker3.Value = DateTime.Today;
+                comboBox14.SelectedItem = "-Select-";
+                comboBox1.SelectedItem = "-Select-";
+                comboBox2.SelectedItem = "-Select-";
+                comboBox3.SelectedItem = "-Select-";
+                comboBox5.SelectedItem = "-Select-";
+                comboBox4.SelectedItem = "";
+                comboBox6.SelectedItem = "";
+                comboBox7.SelectedItem = "Yes";
+                comboBox12.SelectedItem = "-Select-";
+                comboBox13.SelectedItem = "-Select-";
+                comboBox15.SelectedItem = "No";
+
+                label3.Enabled = true;
             label4.Enabled = true;
             label5.Enabled = true;
             label6.Enabled = true;
@@ -1884,12 +2039,312 @@ namespace DSC_management
 
             dateTimePicker3.Enabled = false;
         }
+            {
+                but_stat = 11;
+
+                button1.Enabled = true;
+                button2.Enabled = true;
+
+                button1.BackColor = System.Drawing.Color.GreenYellow;
+                button2.BackColor = System.Drawing.Color.Tomato;
+                button6.BackColor = System.Drawing.Color.Tomato;
+                button7.BackColor = System.Drawing.Color.Tomato;
+                button8.BackColor = System.Drawing.Color.Tomato;
+                button9.BackColor = System.Drawing.Color.Tomato;
+                button10.BackColor = System.Drawing.Color.Tomato;
+                button11.BackColor = System.Drawing.Color.GreenYellow;
+
+                {
+                    comboBox14.Items.Clear();
+                    comboBox14.Items.Add("-Select-");
+
+                    comboBox14.SelectedItem = "-Select-";
+                    sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+
+                    }
+                    sqlite_datareader.Close();
+                }//owner
+                {
+                    comboBox1.Items.Clear();
+                    comboBox1.Items.Add("-Select-");
+                    comboBox1.SelectedItem = "-Select-";
+                    sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+
+                    }
+                    sqlite_datareader.Close();
+                }//employee
+                {
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add("-Select-");
+
+                    comboBox2.SelectedItem = "-Select-";
+                    sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+
+                    }
+                    sqlite_datareader.Close();
+
+                }//transport
+                {
+                    comboBox3.Items.Clear();
+                    comboBox3.Items.Add("-Select-");
+
+                    comboBox3.SelectedItem = "-Select-";
+                    sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox3.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+
+                    }
+                    sqlite_datareader.Close();
+                }//activty
+                {
+                    comboBox7.Items.Clear();
+                    comboBox7.Items.Add("Yes");
+                    comboBox7.Items.Add("No");
+                    comboBox7.SelectedItem = "Yes";
+                }//return
+                {
+                    comboBox5.Items.Clear();
+                    comboBox5.Items.Add("-Select-");
+
+                    comboBox5.SelectedItem = "-Select-";
+                    sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+
+                    }
+                    sqlite_datareader.Close();
+                }//make
+
+
+                label3.Text = "Location:";
+                label4.Text = "Inward Date:";
+                label5.Text = "Inward By:";
+                label6.Text = "Receive mode:";
+                label7.Text = "Activity:";
+                label8.Text = "DSC model:";
+                label9.Text = "DSC make:";
+                label10.Text = "DSC color:";
+                label11.Text = "Inward charge:";
+                label12.Text = "Initialize return:";
+                label13.Text = "Return on";
+                label14.Text = "or in ";
+                label15.Text = "days";
+                //   label16.Text = "";
+                label17.Text = "DSC UID:";
+                label22.Text = "Outward Charge:";
+                label23.Text = "Collected By:";
+                label25.Text = "Outward date:";
+                label26.Text = "Outward Mode:";
+                label24.Text = "Courier Name:";
+                label28.Text = "Courier Track id:";
+
+                {
+                    label3.Visible = true;
+                    label4.Visible = true;
+                    label5.Visible = true;
+                    label6.Visible = true;
+                    label7.Visible = true;
+                    label8.Visible = true;
+                    label9.Visible = true;
+                    label10.Visible = true;
+                    label11.Visible = true;
+                    label12.Visible = true;
+                    label13.Visible = true;
+                    label14.Visible = true;
+                    label15.Visible = true;
+                    label17.Visible = true;
+                    label18.Visible = false;
+                    label19.Visible = false;
+                    label20.Visible = false;
+                    label21.Visible = false;
+                    label22.Visible = true;
+                    label23.Visible = true;
+                    label24.Visible = true;
+                    label25.Visible = true;
+                    label26.Visible = true;
+                    label27.Visible = true;
+                    label28.Visible = true;
+                    label29.Visible = true;
+                    label30.Visible = true;
+
+                    textBox2.Visible = true;
+                    textBox3.Visible = true;
+                    textBox4.Visible = true;
+                    textBox5.Visible = false;
+                    textBox6.Visible = false;
+                    textBox7.Visible = false;
+                    textBox8.Visible = false;
+                    textBox9.Visible = false;
+                    textBox10.Visible = false;
+                    textBox11.Visible = false;
+                    textBox12.Visible = false;
+                    textBox13.Visible = false;
+                    textBox14.Visible = false;
+                    textBox15.Visible = false;
+                    textBox16.Visible = false;
+                    textBox17.Visible = false;
+                    textBox18.Visible = false;
+                    textBox19.Visible = true;
+                    textBox20.Visible = true;
+                    textBox21.Visible = true;
+                    textBox22.Visible = true;
+
+
+                    dateTimePicker1.Visible = true;
+                    dateTimePicker2.Visible = true;
+                    dateTimePicker3.Visible = true;
+
+                    comboBox1.Visible = true;
+                    comboBox2.Visible = true;
+                    comboBox3.Visible = true;
+                    comboBox4.Visible = true;
+                    comboBox5.Visible = true;
+                    comboBox6.Visible = true;
+                    comboBox7.Visible = true;
+                    comboBox8.Visible = false;
+                    comboBox9.Visible = false;
+                    comboBox10.Visible = false;
+                    comboBox11.Visible = false;
+                    comboBox12.Visible = true;
+                    comboBox13.Visible = true;
+                    comboBox14.Visible = true;
+                    comboBox15.Visible = true;
+
+
+
+                    label22.Enabled = false;
+                    label23.Enabled = false;
+                    label24.Enabled = false;
+                    label25.Enabled = false;
+                    label26.Enabled = false;
+                    label27.Enabled = false;
+                    label28.Enabled = false;
+
+                    textBox19.Enabled = false;
+                    textBox20.Enabled = false;
+                    textBox21.Enabled = false;
+                    textBox22.Enabled = false;
+
+
+                    comboBox12.Enabled = false;
+                    comboBox13.Enabled = false;
+
+                    dateTimePicker3.Enabled = false;
+
+
+                    label3.Enabled = true;
+                    label4.Enabled = true;
+                    label5.Enabled = true;
+                    label6.Enabled = true;
+                    label7.Enabled = true;
+                    label8.Enabled = false;
+                    label9.Enabled = true;
+                    label10.Enabled = false;
+                    label12.Enabled = true;
+                    label13.Enabled = true;
+                    label14.Enabled = true;
+                    label15.Enabled = true;
+                    label17.Enabled = true;
+                    label18.Enabled = true;
+                    label19.Enabled = true;
+                    label20.Enabled = true;
+
+
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
+                    textBox3.Enabled = true;
+                    textBox4.Enabled = true;
+                    textBox10.Enabled = true;
+                    textBox11.Enabled = true;
+                    textBox12.Enabled = true;
+
+
+
+                    comboBox1.Enabled = true;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox4.Enabled = false;
+                    comboBox5.Enabled = true;
+                    comboBox6.Enabled = false;
+                    comboBox7.Enabled = true;
+
+
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
+
+                    label22.Enabled = false;
+                    label23.Enabled = false;
+                    label24.Enabled = false;
+                    label25.Enabled = false;
+                    label26.Enabled = false;
+                    label27.Enabled = false;
+                    label28.Enabled = false;
+                    label30.Enabled = false;
+
+                    textBox19.Enabled = false;
+                    textBox20.Enabled = false;
+                    textBox21.Enabled = false;
+                    textBox22.Enabled = false;
+
+
+                    comboBox12.Enabled = false;
+                    comboBox13.Enabled = false;
+
+                    comboBox15.Enabled = false;
+
+                    dateTimePicker3.Enabled = false;
+                }
+            }//code from transc button
         }
 
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
             inco = 1;
+            button1.BackColor = System.Drawing.Color.Tomato;
+            button2.BackColor = System.Drawing.Color.GreenYellow;
+
             {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox19.Text = "";
+                textBox20.Text = "";
+                textBox21.Text = "";
+                textBox22.Text = "";
+
+                dateTimePicker1.Value = DateTime.Today;
+                dateTimePicker2.Value = DateTime.Today;
+                dateTimePicker3.Value = DateTime.Today;
+                comboBox14.SelectedItem = "-Select-";
+                comboBox1.SelectedItem = "-Select-";
+                comboBox2.SelectedItem = "-Select-";
+                comboBox3.SelectedItem = "-Select-";
+                comboBox5.SelectedItem = "-Select-";
+                comboBox4.SelectedItem = "";
+                comboBox6.SelectedItem = "";
+                comboBox7.SelectedItem = "Yes";
+                comboBox12.SelectedItem = "-Select-";
+                comboBox13.SelectedItem = "-Select-";
+                comboBox15.SelectedItem = "No";
+
+
                 label3.Enabled = false;
                 label4.Enabled = false;
                 label5.Enabled = false;
@@ -1952,6 +2407,47 @@ namespace DSC_management
 
                 dateTimePicker3.Enabled = true;
             }
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            if(!comboBox5.SelectedItem.Equals("-Select-"))
+            {
+                comboBox4.Enabled = true;
+                comboBox6.Enabled = true;
+                label8.Enabled = true;
+                label10.Enabled = true;
+
+                comboBox4.Items.Clear();
+                comboBox4.Items.Add("");
+
+                comboBox6.Items.Clear();
+                comboBox6.Items.Add("");
+
+                comboBox4.SelectedItem = "";
+                comboBox6.SelectedItem = "";
+
+                sqlite_cmd.CommandText = "SELECT model,color FROM make_master where id="+comboBox5.Text.Split('.')[0]+" ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    comboBox4.Items.Add("" + sqlite_datareader["model"] );
+                    comboBox6.Items.Add("" + sqlite_datareader["color"]);
+                 
+
+                }
+                sqlite_datareader.Close();
+            }
+            else
+            {
+                comboBox4.Enabled = false;
+                comboBox6.Enabled = false;
+                label8.Enabled = false;
+                label10.Enabled = false;
+
+            }
+
         }
     }
 }

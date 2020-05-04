@@ -25,7 +25,7 @@ namespace DSC_management
             m_dbConnection = m_db;
             sqlite_cmd = m_db.CreateCommand();
             
-            but_stat = 0;
+            but_stat = 11;
 
 
 
@@ -35,7 +35,10 @@ namespace DSC_management
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
             dateTimePicker3.Value = DateTime.Today;
-            
+            //MessageBox.Show((dateTimePicker1.Value.ToString("yyyy-dd-MM")));
+           
+                //== (dateTimePicker1.Value.Month) )? "0" + dateTimePicker1.Value.Month : dateTimePicker1.Value.Month);
+                //   MessageBox.Show(dateTimePicker1.Value.Year + "-" + (dateTimePicker1.Value.Month.ToString().Length == 1) ? "0" + dateTimePicker1.Value.Month : dateTimePicker1.Value.Month + "-" + dateTimePicker1.Value.Day);
             {
                 comboBox14.Items.Clear();
                 comboBox14.Items.Add("-Select-");
@@ -112,6 +115,19 @@ namespace DSC_management
                 }
                 sqlite_datareader.Close();
             }//make
+            {
+                comboBox4.Items.Add("");
+                comboBox4.SelectedItem = "";
+
+                comboBox6.Items.Add("");
+                comboBox6.SelectedItem = "";
+
+
+            }
+            
+           // MessageBox.Show(textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-dd-MM") : dateTimePicker2.Value.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-dd-MM"));
+
+            changeDG();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -178,6 +194,7 @@ namespace DSC_management
                 label28.Visible = false;
                 label29.Visible = false;
                 label30.Visible = false;
+                label31.Visible = false;
 
                 textBox1.Text = "";
                 textBox1.Visible = true;
@@ -202,6 +219,7 @@ namespace DSC_management
                 textBox20.Visible = false;
                 textBox21.Visible = false;
                 textBox22.Visible = false;
+                textBox23.Visible = false;
 
 
                 dateTimePicker1.Visible = false;
@@ -366,6 +384,15 @@ namespace DSC_management
                 comboBox7.SelectedItem = "Yes";
             }//return
             {
+                comboBox4.Items.Add("");
+                comboBox4.SelectedItem = "";
+
+                comboBox6.Items.Add("");
+                comboBox6.SelectedItem = "";
+
+
+            }
+            {
                 comboBox5.Items.Clear();
                 comboBox5.Items.Add("-Select-");
 
@@ -430,6 +457,8 @@ namespace DSC_management
             label28.Visible = true;
             label29.Visible = true;
             label30.Visible = true;
+                label31.Visible = true;
+
 
                 textBox2.Visible = true;
             textBox3.Visible = true;
@@ -452,9 +481,10 @@ namespace DSC_management
             textBox20.Visible = true;
             textBox21.Visible = true;
             textBox22.Visible = true;
+                textBox23.Visible = true;
 
 
-            dateTimePicker1.Visible = true;
+                dateTimePicker1.Visible = true;
             dateTimePicker2.Visible = true;
             dateTimePicker3.Visible = true;
 
@@ -558,6 +588,9 @@ namespace DSC_management
 
             dateTimePicker3.Enabled = false;
         }
+
+
+            changeDG();
         }
 
         private void button6_MouseClick(object sender, MouseEventArgs e)
@@ -613,6 +646,7 @@ namespace DSC_management
                 label28.Visible = false;
                 label29.Visible = false;
                 label30.Visible = false;
+                label31.Visible = false;
 
                 textBox2.Visible = false;
                 textBox3.Visible = false;
@@ -635,6 +669,7 @@ namespace DSC_management
                 textBox20.Visible = false;
                 textBox21.Visible = false;
                 textBox22.Visible = false;
+                textBox23.Visible = false;
 
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
@@ -775,6 +810,7 @@ namespace DSC_management
                 label28.Visible = false;
                 label29.Visible = false;
                 label30.Visible = false;
+                label31.Visible = false;
 
                 textBox1.Visible = true;
                 textBox2.Visible = false;
@@ -798,6 +834,7 @@ namespace DSC_management
                 textBox20.Visible = false;
                 textBox21.Visible = false;
                 textBox22.Visible = false;
+                textBox23.Visible = false;
 
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
@@ -947,6 +984,7 @@ namespace DSC_management
                 label28.Visible = false;
                 label29.Visible = false;
                 label30.Visible = false;
+                label31.Visible = false;
 
                 textBox1.Visible = true;
                 textBox2.Visible = false;
@@ -970,6 +1008,7 @@ namespace DSC_management
                 textBox20.Visible = false;
                 textBox21.Visible = false;
                 textBox22.Visible = false;
+                textBox23.Visible = false;
 
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
@@ -1139,6 +1178,7 @@ namespace DSC_management
                 label28.Visible = false;
                 label29.Visible = false;
                 label30.Visible = false;
+                label31.Visible = false;
 
 
                 textBox1.Text = "";
@@ -1164,6 +1204,7 @@ namespace DSC_management
                 textBox20.Visible = false;
                 textBox21.Visible = false;
                 textBox22.Visible = false;
+                textBox23.Visible = false;
 
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
@@ -1536,7 +1577,7 @@ namespace DSC_management
                     }
                     else
                     {
-                        sqlite_cmd.CommandText =  ;
+                        sqlite_cmd.CommandText = "INSERT INTO transaction_master (location_ref,owner_name, inward_date,inward_by,receive_mode,activity,dsc_uid,dsc_model,dsc_make,dsc_color,inward_charge,return_init,autoreturn_date,autoreturn_days,remarks1) VALUES('" + textBox1.Text + "','" + comboBox4.SelectedItem.ToString() + "',date('" + dateTimePicker1.Value.ToString("yyyy-dd-MM") + "'),'" + comboBox1.SelectedItem.ToString() + "','" + comboBox2.SelectedItem.ToString() + "','" + comboBox3.SelectedItem.ToString() + "','" + textBox4.Text + "','" + comboBox4.SelectedItem.ToString() + "','" + comboBox5.SelectedItem.ToString() + "','" + comboBox6.SelectedItem.ToString() + "','" + textBox2.Text + "','" + (comboBox7.SelectedItem.ToString().Equals("Yes") ? "1" : "0") + "',date('" + (textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-dd-MM") : dateTimePicker2.Value.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-dd-MM")) + "'),'" + textBox3.Text + "','" + textBox23.Text + "'); ";
 
                         try
                         {
@@ -1567,7 +1608,7 @@ namespace DSC_management
             }
             else
             {
-                
+                button1_MouseClick(sender, e);
                 changeDG();
             }
         }
@@ -1778,6 +1819,84 @@ namespace DSC_management
                 sqlite_datareader.Close();
 
             }
+
+            if (but_stat == 11)
+            {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                updt = 0;
+                
+                dataGridView1.ColumnCount = 25      ;
+                dataGridView1.Columns[0].Name = "ID";
+                dataGridView1.Columns[1].Name = "Location Reference";
+                dataGridView1.Columns[2].Name = "Owner Name";
+                dataGridView1.Columns[3].Name = "Transaction Date";
+                dataGridView1.Columns[4].Name = "Inward Date";
+                dataGridView1.Columns[5].Name = "Inward By";
+                dataGridView1.Columns[6].Name = "Receive Mode";
+                dataGridView1.Columns[7].Name = "Activity";
+                dataGridView1.Columns[8].Name = "DSC UID";
+                dataGridView1.Columns[9].Name = "DSC Model";//
+                dataGridView1.Columns[10].Name = "DSC Make";
+                dataGridView1.Columns[11].Name = "DSC Color";
+                dataGridView1.Columns[12].Name = "Inward Charge";
+                dataGridView1.Columns[13].Name = "Return Initialization";
+                dataGridView1.Columns[14].Name = "Autoreturn Date";
+               
+                dataGridView1.Columns[15].Name = "Autoreturn days";
+                dataGridView1.Columns[16].Name = "Outward Date";
+                dataGridView1.Columns[17].Name = "Outward Mode";
+                dataGridView1.Columns[18].Name = "Outward By";
+                dataGridView1.Columns[19].Name = "Outward Charge";
+                dataGridView1.Columns[20].Name = "Outward Collected By";
+                dataGridView1.Columns[21].Name = "Courier Name";
+                dataGridView1.Columns[22].Name = "Courier Track ID";
+                dataGridView1.Columns[23].Name = "Last Modified";
+                dataGridView1.Columns[24].Name = "Remarks";
+               
+                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 order by datetime(last_modified) desc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+
+                    
+
+                             dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                            sqlite_datareader["location_ref"] + "",
+                            sqlite_datareader["owner_name"] + "",
+                            sqlite_datareader["trans_date"] + "",
+                            sqlite_datareader["inward_date"] + "",
+                            sqlite_datareader["inward_by"]+"",
+                            sqlite_datareader["receive_mode"]+"",
+                            sqlite_datareader["activity"]+"",
+                            sqlite_datareader["dsc_uid"]+"",
+                            sqlite_datareader["dsc_model"]+"",
+                            sqlite_datareader["dsc_make"]+"",
+                            sqlite_datareader["dsc_color"]+"",
+                            sqlite_datareader["inward_charge"]+"",
+                            (sqlite_datareader["return_init"]+"").Equals("0")?"False":"True",                        
+                            sqlite_datareader["autoreturn_date"]+"",
+                            sqlite_datareader["autoreturn_days"]+"",
+                            sqlite_datareader["outward_date"]+"",
+                            sqlite_datareader["outward_mode"]+"",
+                            sqlite_datareader["outward_by"]+"",
+                            sqlite_datareader["outward_charges"]+"",
+                            sqlite_datareader["outward_collected_by"]+"",
+                            sqlite_datareader["courier_name"]+"",
+                            sqlite_datareader["courier_track_id"]+"",
+                            sqlite_datareader["last_modified"]+"",
+                            sqlite_datareader["remarks1"]+"",
+
+                             });
+
+                }
+
+                sqlite_datareader.Close();
+
+
+            }
+
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -1961,6 +2080,7 @@ namespace DSC_management
                 textBox20.Text = "";
                 textBox21.Text = "";
                 textBox22.Text = "";
+                textBox23.Text = "";
 
                 dateTimePicker1.Value = DateTime.Today;
                 dateTimePicker2.Value = DateTime.Today;
@@ -2328,6 +2448,7 @@ namespace DSC_management
                 textBox20.Text = "";
                 textBox21.Text = "";
                 textBox22.Text = "";
+                textBox23.Text = "";
 
                 dateTimePicker1.Value = DateTime.Today;
                 dateTimePicker2.Value = DateTime.Today;
@@ -2448,6 +2569,30 @@ namespace DSC_management
 
             }
 
+        }
+
+        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(!comboBox14.SelectedItem.Equals("-Select-"))
+            {
+
+                sqlite_cmd.CommandText = "SELECT default_inward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+                while(sqlite_datareader.Read())
+                {
+                    SQLiteCommand cmd = m_dbConnection.CreateCommand(); 
+                    cmd.CommandText= "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_inward_mode"];
+                    SQLiteDataReader dd=cmd.ExecuteReader();
+                    dd.Read();
+                   // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
+                    comboBox2.SelectedItem= dd["id"]+"." + dd["transport_mode"]+" ("+ dd["company_name"]+")";
+                   
+
+                }
+                sqlite_datareader.Close();
+
+            }
         }
     }
 }

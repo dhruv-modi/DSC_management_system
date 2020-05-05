@@ -57,12 +57,15 @@ namespace DSC_management
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add("-Select-");
                 comboBox1.SelectedItem = "-Select-";
+                comboBox13.Items.Clear();
+                comboBox13.Items.Add("-Select-");
+                comboBox13.SelectedItem = "-Select-";
                 sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
-                    comboBox1.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["emp_name"] );
-
+                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                    comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
                 }
                 sqlite_datareader.Close();
             }//employee
@@ -71,11 +74,17 @@ namespace DSC_management
                 comboBox2.Items.Add("-Select-");
 
                 comboBox2.SelectedItem = "-Select-";
+                comboBox12.Items.Clear();
+                comboBox12.Items.Add("-Select-");
+
+                comboBox12.SelectedItem = "-Select-";
+
                 sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
                     comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                    comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
                 }
                 sqlite_datareader.Close();
@@ -1601,24 +1610,54 @@ namespace DSC_management
 
             if (but_stat == 11 && inco == 1)
             {
-                if(comboBox15.SelectedItem.Equals("True"))
+                if (comboBox15.SelectedItem.Equals("True"))
                 {
-                    MessageBox.Show(id + "");
-                    sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='0' where id='"+id+"';";
-
-
-                    try
+                    if((MessageBox.Show("Do you want to make this transaction invalid ?", "Confirmation Needed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString()).Equals("Yes"))
                     {
+                        sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='1', record_open='0' where id='" + id + "';";
+                        try
+                        {
 
-                        int it = sqlite_cmd.ExecuteNonQuery();
+                            int it = sqlite_cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception e1)
+                        {
+                            MessageBox.Show(e1 + "");
+                        }
                     }
-                    catch (Exception e1)
-                    {
-                        MessageBox.Show(e1 + "");
-                    }
+                   
+
                 }
+                else if (comboBox12.SelectedItem.Equals("-Select-"))
+                {
+                    MessageBox.Show("Please select an outward mode");
+                    stat = 1;
 
+                }
+                else if (comboBox13.SelectedItem.Equals("-Select-"))
+                {
+                    MessageBox.Show("Please select a valid value in outward by");
+                    stat = 1;
+
+                }
+                else if ((dateTimePicker3.Value - dateTimePicker1.Value).Days < 0)
+                {
+                    MessageBox.Show("Outward Date should not be before Inward Date");
+                    stat = 1;
+                }
+                else if(textBox20.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("Please a name of person who collected");
+                    stat = 1;
+                }
+                else
+                {
+
+
+                }
             }
+
+            
 
 
 
@@ -1881,7 +1920,7 @@ namespace DSC_management
                 dataGridView1.Columns[23].Name = "Last Modified";
                 dataGridView1.Columns[24].Name = "Remarks";
                
-                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 order by datetime(last_modified) desc";
+                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 and record_open='1' order by datetime(last_modified) desc";
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
@@ -2277,25 +2316,34 @@ namespace DSC_management
                     comboBox1.Items.Clear();
                     comboBox1.Items.Add("-Select-");
                     comboBox1.SelectedItem = "-Select-";
+                    comboBox13.Items.Clear();
+                    comboBox13.Items.Add("-Select-");
+                    comboBox13.SelectedItem = "-Select-";
                     sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
                     sqlite_datareader = sqlite_cmd.ExecuteReader();
                     while (sqlite_datareader.Read())
                     {
                         comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
-
+                        comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
                     }
-                    sqlite_datareader.Close();
+                   
                 }//employee
                 {
                     comboBox2.Items.Clear();
                     comboBox2.Items.Add("-Select-");
 
                     comboBox2.SelectedItem = "-Select-";
+                    comboBox12.Items.Clear();
+                    comboBox12.Items.Add("-Select-");
+
+                    comboBox12.SelectedItem = "-Select-";
+
                     sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
                     sqlite_datareader = sqlite_cmd.ExecuteReader();
                     while (sqlite_datareader.Read())
                     {
                         comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                        comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
                     }
                     sqlite_datareader.Close();
@@ -2692,6 +2740,25 @@ namespace DSC_management
             }
             else if(but_stat == 11 && inco == 1 && !comboBox14.SelectedItem.Equals("-Select-")) 
             {
+
+
+
+                sqlite_cmd.CommandText = "SELECT default_outward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+                while (sqlite_datareader.Read())
+                {
+                    SQLiteCommand cmd = m_dbConnection.CreateCommand();
+                    cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_outward_mode"];
+                    SQLiteDataReader dd = cmd.ExecuteReader();
+                    dd.Read();
+                    // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
+                    comboBox12.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
+
+
+                }
+                sqlite_datareader.Close();
+
                 button12.Text = "Submit";
                 button13.Text = "Reset";
                 
@@ -2808,6 +2875,15 @@ namespace DSC_management
             else
             {
                 comboBox15.BackColor = System.Drawing.Color.GreenYellow;
+            }
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+            if ((dateTimePicker3.Value - dateTimePicker1.Value).Days < 0)
+            {
+                MessageBox.Show("Outward Date should not be before Inward Date");
             }
         }
     }

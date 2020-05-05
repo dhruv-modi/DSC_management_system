@@ -223,7 +223,8 @@
             this.button5.TabIndex = 23;
             this.button5.Text = "EXIT";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
+
+           this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
             // 
             // button4
             // 
@@ -857,6 +858,7 @@
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(157, 23);
             this.dateTimePicker3.TabIndex = 82;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // label26
             // 

@@ -114,6 +114,8 @@
             this.comboBox15 = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox23 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,8 +225,7 @@
             this.button5.TabIndex = 23;
             this.button5.Text = "EXIT";
             this.button5.UseVisualStyleBackColor = true;
-
-           this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
+            this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
             // 
             // button4
             // 
@@ -526,6 +527,7 @@
             this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button12.AutoSize = true;
             this.button12.BackColor = System.Drawing.Color.YellowGreen;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.Location = new System.Drawing.Point(1044, 586);
             this.button12.Name = "button12";
@@ -540,6 +542,7 @@
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button13.AutoSize = true;
             this.button13.BackColor = System.Drawing.Color.IndianRed;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.Location = new System.Drawing.Point(1044, 492);
             this.button13.Name = "button13";
@@ -1012,12 +1015,40 @@
             this.textBox23.Size = new System.Drawing.Size(662, 23);
             this.textBox23.TabIndex = 97;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.DarkKhaki;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.Navy;
+            this.label32.Location = new System.Drawing.Point(1047, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(129, 31);
+            this.label32.TabIndex = 98;
+            this.label32.Text = "Pending:";
+            this.label32.DoubleClick += new System.EventHandler(this.label32_DoubleClick);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.DarkKhaki;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Crimson;
+            this.label33.Location = new System.Drawing.Point(1172, 20);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(30, 31);
+            this.label33.TabIndex = 99;
+            this.label33.Text = "0";
+            this.label33.DoubleClick += new System.EventHandler(this.label33_DoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.label32);
             this.Controls.Add(this.textBox23);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.comboBox15);
@@ -1203,6 +1234,8 @@
         private System.Windows.Forms.ComboBox comboBox15;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
     }
 }
 

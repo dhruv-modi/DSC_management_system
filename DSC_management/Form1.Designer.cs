@@ -441,6 +441,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(111, 23);
             this.textBox2.TabIndex = 41;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label11
             // 
@@ -478,6 +479,7 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(157, 23);
             this.dateTimePicker2.TabIndex = 45;
             this.dateTimePicker2.Value = new System.DateTime(2020, 4, 16, 0, 0, 0, 0);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label13
             // 
@@ -496,6 +498,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(94, 23);
             this.textBox3.TabIndex = 47;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // label14
             // 
@@ -587,6 +590,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(176, 23);
             this.textBox4.TabIndex = 55;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // textBox5
             // 
@@ -614,6 +618,7 @@
             this.textBox7.Size = new System.Drawing.Size(392, 23);
             this.textBox7.TabIndex = 58;
             this.textBox7.Visible = false;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // textBox8
             // 
@@ -701,6 +706,7 @@
             this.textBox13.Size = new System.Drawing.Size(176, 23);
             this.textBox13.TabIndex = 67;
             this.textBox13.Visible = false;
+            this.textBox13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox13_KeyPress);
             // 
             // textBox14
             // 
@@ -710,6 +716,7 @@
             this.textBox14.Size = new System.Drawing.Size(176, 23);
             this.textBox14.TabIndex = 68;
             this.textBox14.Visible = false;
+            this.textBox14.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox14_KeyPress);
             // 
             // label21
             // 
@@ -730,6 +737,7 @@
             this.textBox15.Size = new System.Drawing.Size(176, 23);
             this.textBox15.TabIndex = 70;
             this.textBox15.Visible = false;
+            this.textBox15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox15_KeyPress);
             // 
             // textBox16
             // 
@@ -900,6 +908,7 @@
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(176, 23);
             this.textBox19.TabIndex = 87;
+            this.textBox19.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox19_KeyPress);
             // 
             // textBox20
             // 
@@ -981,6 +990,7 @@
             this.comboBox15.Name = "comboBox15";
             this.comboBox15.Size = new System.Drawing.Size(159, 24);
             this.comboBox15.TabIndex = 95;
+            this.comboBox15.SelectedIndexChanged += new System.EventHandler(this.comboBox15_SelectedIndexChanged);
             // 
             // label31
             // 
@@ -1054,7 +1064,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboBox6);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label8);
@@ -1092,6 +1101,7 @@
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.comboBox5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Form1";

@@ -1540,7 +1540,7 @@ namespace DSC_management
             if(but_stat==11 && inco==0)
             {
 
-                if (updt == 0)
+                
                 {
                    
                     if (textBox1.Text.Trim().Equals(""))
@@ -1575,9 +1575,14 @@ namespace DSC_management
                         MessageBox.Show("Please select dsc make");
                         stat = 1;
                     }
+                    else if ((dateTimePicker2.Value - dateTimePicker1.Value).Days < 0)
+                    {
+                        MessageBox.Show("Please select a valid return date");
+                    }
+                    
                     else
                     {
-                        sqlite_cmd.CommandText = "INSERT INTO transaction_master (location_ref,owner_name, inward_date,inward_by,receive_mode,activity,dsc_uid,dsc_model,dsc_make,dsc_color,inward_charge,return_init,autoreturn_date,autoreturn_days,remarks1) VALUES('" + textBox1.Text + "','" + comboBox4.SelectedItem.ToString() + "',date('" + dateTimePicker1.Value.ToString("yyyy-dd-MM") + "'),'" + comboBox1.SelectedItem.ToString() + "','" + comboBox2.SelectedItem.ToString() + "','" + comboBox3.SelectedItem.ToString() + "','" + textBox4.Text + "','" + comboBox4.SelectedItem.ToString() + "','" + comboBox5.SelectedItem.ToString() + "','" + comboBox6.SelectedItem.ToString() + "','" + textBox2.Text + "','" + (comboBox7.SelectedItem.ToString().Equals("Yes") ? "1" : "0") + "',date('" + (textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-dd-MM") : dateTimePicker2.Value.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-dd-MM")) + "'),'" + textBox3.Text + "','" + textBox23.Text + "'); ";
+                        sqlite_cmd.CommandText = "INSERT INTO transaction_master (location_ref,owner_name, inward_date,inward_by,receive_mode,activity,dsc_uid,dsc_model,dsc_make,dsc_color,inward_charge,return_init,autoreturn_date,autoreturn_days,remarks1) VALUES('" + textBox1.Text + "','" + comboBox14.SelectedItem.ToString() + "',date('" + dateTimePicker1.Value.ToString("yyyy-dd-MM") + "'),'" + comboBox1.SelectedItem.ToString() + "','" + comboBox2.SelectedItem.ToString() + "','" + comboBox3.SelectedItem.ToString() + "','" + textBox4.Text + "','" + comboBox4.SelectedItem.ToString() + "','" + comboBox5.SelectedItem.ToString() + "','" + comboBox6.SelectedItem.ToString() + "','" + textBox2.Text + "','" + (comboBox7.SelectedItem.ToString().Equals("Yes") ? "1" : "0") + "',date('" + (textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-dd-MM") : dateTimePicker2.Value.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-dd-MM")) + "'),'" + textBox3.Text + "','" + textBox23.Text + "'); ";
 
                         try
                         {
@@ -1594,6 +1599,26 @@ namespace DSC_management
 
             }
 
+            if (but_stat == 11 && inco == 1)
+            {
+                if(comboBox15.SelectedItem.Equals("True"))
+                {
+                    MessageBox.Show(id + "");
+                    sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='0' where id='"+id+"';";
+
+
+                    try
+                    {
+
+                        int it = sqlite_cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception e1)
+                    {
+                        MessageBox.Show(e1 + "");
+                    }
+                }
+
+            }
 
 
 
@@ -1601,14 +1626,16 @@ namespace DSC_management
 
 
 
-
-            if (stat == 1)
+                if (stat == 1)
             {
 
             }
             else
             {
-                button1_MouseClick(sender, e);
+                if (but_stat == 11 && inco==0)
+                {
+                    button1_MouseClick(sender, e);
+                }
                 changeDG();
             }
         }
@@ -1916,15 +1943,67 @@ namespace DSC_management
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            id=Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value+"");
-            updt = 1;
-            button12.Text = "Update";
-            button13.Text = "Cancel";
-            updtTable();
+            if (but_stat == 11 && inco == 0)
+            { }
+            else
+            {MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value + "");
+                id = Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value + "");
+                updt = 1;
+                button12.Text = "Update";
+                button13.Text = "Cancel";
+                updtTable();
+            }
         }
 
         private void updtTable()
         {
+
+            if (but_stat == 11 && inco == 1)
+            {
+                SQLiteCommand sqlite_cmd1;
+                SQLiteDataReader sqlite_datareader1;
+                
+                    sqlite_cmd1 = m_dbConnection.CreateCommand();
+
+
+                    sqlite_cmd1.CommandText = "SELECT * FROM transaction_master where id =" + id;
+                sqlite_datareader1 = sqlite_cmd1.ExecuteReader();
+                sqlite_datareader1.Read();
+                //comboBox4.SelectedItem= sqlite_datareader["owner_name"] + "";
+         
+                textBox1.Text = sqlite_datareader1["location_ref"] + "";
+                dateTimePicker1.Value = Convert.ToDateTime(sqlite_datareader1["inward_date"] + "");
+
+                comboBox1.SelectedItem = sqlite_datareader1["inward_by"] + "";
+                comboBox2.SelectedItem = sqlite_datareader1["receive_mode"] + "";
+                comboBox3.SelectedItem = sqlite_datareader1["activity"] + "";
+                textBox4.Text = sqlite_datareader1["dsc_uid"] + "";
+                comboBox4.SelectedItem = sqlite_datareader1["dsc_model"] + "";
+                comboBox5.SelectedItem = sqlite_datareader1["dsc_make"] + "";
+                comboBox6.SelectedItem = sqlite_datareader1["dsc_color"] + "";
+                textBox2.Text = sqlite_datareader1["inward_charge"] + "";
+                comboBox7.SelectedItem= (sqlite_datareader1["return_init"] + "").Equals("1")?"Yes":"No";
+                textBox3.Text = sqlite_datareader1["autoreturn_days"] + "";
+                MessageBox.Show(sqlite_datareader1["autoreturn_date"] + "");
+                //dateTimePicker2.Value= Convert.ToDateTime(sqlite_datareader1["autoreturn_date"] + "");
+                textBox23.Text= sqlite_datareader1["remarks1"] + "";
+
+                //comboBox3.SelectedItem = (sqlite_datareader1["active"] + "").Equals("1") ? "Active" : "Inactive";
+                sqlite_datareader1.Close();
+                label11.Enabled = false;
+                label8.Enabled = false;
+                label10.Enabled = false;
+                comboBox4.Enabled = false;
+                comboBox6.Enabled = false;
+                button12.Enabled = true;
+                button13.Enabled = true;
+                comboBox15.Items.Clear();
+                comboBox15.Items.Add("True");
+                comboBox15.Items.Add("False");
+                comboBox15.SelectedItem = "False";
+                comboBox15.BackColor = System.Drawing.Color.GreenYellow;
+            }
+
             if (but_stat == 6)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM employee_master where id =" + id;
@@ -2058,6 +2137,11 @@ namespace DSC_management
                 comboBox11.SelectedItem = "Active";
 
             }
+            if(but_stat==11 && inco==1)
+            {
+                button12.Enabled = false;
+                button13.Enabled = false;
+            }
         }
 
         private void button5_MouseClick(object sender, MouseEventArgs e)
@@ -2067,7 +2151,7 @@ namespace DSC_management
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-
+            
             button1.BackColor= System.Drawing.Color.GreenYellow;
             button2.BackColor= System.Drawing.Color.Tomato;
             inco = 0;
@@ -2161,7 +2245,8 @@ namespace DSC_management
         }
             {
                 but_stat = 11;
-
+                button12.Enabled = true;
+                button13.Enabled = true;
                 button1.Enabled = true;
                 button2.Enabled = true;
 
@@ -2431,6 +2516,7 @@ namespace DSC_management
                     dateTimePicker3.Enabled = false;
                 }
             }//code from transc button
+            changeDG();
         }
 
         private void button2_MouseClick(object sender, MouseEventArgs e)
@@ -2440,6 +2526,15 @@ namespace DSC_management
             button2.BackColor = System.Drawing.Color.GreenYellow;
 
             {
+
+                comboBox15.Items.Clear();
+                comboBox15.ResetText();
+                comboBox15.BackColor = System.Drawing.Color.White;
+                button12.Enabled = false;
+                button13.Enabled = false;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+                label11.Enabled = false;
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
@@ -2572,26 +2667,147 @@ namespace DSC_management
         }
 
         private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(!comboBox14.SelectedItem.Equals("-Select-"))
+        { if (but_stat == 11 && inco == 0)
             {
-
-                sqlite_cmd.CommandText = "SELECT default_inward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-
-                while(sqlite_datareader.Read())
+                if (!comboBox14.SelectedItem.Equals("-Select-"))
                 {
-                    SQLiteCommand cmd = m_dbConnection.CreateCommand(); 
-                    cmd.CommandText= "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_inward_mode"];
-                    SQLiteDataReader dd=cmd.ExecuteReader();
-                    dd.Read();
-                   // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
-                    comboBox2.SelectedItem= dd["id"]+"." + dd["transport_mode"]+" ("+ dd["company_name"]+")";
-                   
+
+                    sqlite_cmd.CommandText = "SELECT default_inward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+                    while (sqlite_datareader.Read())
+                    {
+                        SQLiteCommand cmd = m_dbConnection.CreateCommand();
+                        cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_inward_mode"];
+                        SQLiteDataReader dd = cmd.ExecuteReader();
+                        dd.Read();
+                        // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
+                        comboBox2.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
+
+
+                    }
+                    sqlite_datareader.Close();
 
                 }
+            }
+            else if(but_stat == 11 && inco == 1 && !comboBox14.SelectedItem.Equals("-Select-")) 
+            {
+                button12.Text = "Submit";
+                button13.Text = "Reset";
+                
+
+                dataGridView1.ColumnCount = 10;
+                dataGridView1.Columns[0].Name = "ID";
+                dataGridView1.Columns[1].Name = "Location Reference";
+                
+                dataGridView1.Columns[2].Name = "Activity";
+                dataGridView1.Columns[3].Name = "DSC UID";
+                dataGridView1.Columns[4].Name = "DSC Model";
+                dataGridView1.Columns[5].Name = "DSC Make";
+                dataGridView1.Columns[6].Name = "DSC Color";
+                dataGridView1.Columns[7].Name = "Inward Date";
+                dataGridView1.Columns[8].Name = "Inward By";
+                dataGridView1.Columns[9].Name = "Remarks";
+                
+                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 and owner_name='"+comboBox14.SelectedItem+ "' order  by datetime(last_modified) desc";
+                
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+
+
+
+                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                            sqlite_datareader["location_ref"] + "",
+                            sqlite_datareader["activity"] + "",
+                              sqlite_datareader["dsc_uid"]+"",
+                            sqlite_datareader["dsc_model"]+"",
+                            sqlite_datareader["dsc_make"]+"",
+                            sqlite_datareader["dsc_color"]+"",
+                            sqlite_datareader["inward_date"] + "",
+                            sqlite_datareader["inward_by"]+"",
+                            sqlite_datareader["remarks1"]+"",
+
+                             });
+
+                }
+
                 sqlite_datareader.Close();
 
+
+            
+
+
+        } 
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if ((dateTimePicker2.Value - dateTimePicker1.Value).Days < 0)
+            {
+                MessageBox.Show("Please select a valid date");
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox19_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox13_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(but_stat==9)
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox14_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (but_stat == 9 || but_stat==10)
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }
+        }
+
+        private void textBox15_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void comboBox15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox15.SelectedItem.Equals("True"))
+            {
+                comboBox15.BackColor = System.Drawing.Color.Red;
+
+            }
+            else
+            {
+                comboBox15.BackColor = System.Drawing.Color.GreenYellow;
             }
         }
     }

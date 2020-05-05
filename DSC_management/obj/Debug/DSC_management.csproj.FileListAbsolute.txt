@@ -12,3 +12,4 @@ C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\System.Data.S
 C:\Users\Epos\source\repos\DSC_management\DSC_management\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.csproj.CopyComplete
 C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form1.resources
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form2.resources

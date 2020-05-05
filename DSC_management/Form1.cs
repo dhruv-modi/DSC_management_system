@@ -3120,5 +3120,11 @@ namespace DSC_management
             pending();
             pendingdg();
         }
+
+        private void button14_MouseClick(object sender, MouseEventArgs e)
+        {
+            Form2 f2 = new Form2(m_dbConnection,this);
+            f2.Show();
+        }
     }
 }

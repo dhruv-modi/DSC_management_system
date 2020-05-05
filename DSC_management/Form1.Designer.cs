@@ -116,6 +116,7 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1041,12 +1042,28 @@
             this.label33.Text = "0";
             this.label33.DoubleClick += new System.EventHandler(this.label33_DoubleClick);
             // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.AutoSize = true;
+            this.button14.BackColor = System.Drawing.Color.Plum;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button14.Location = new System.Drawing.Point(1053, 402);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(179, 53);
+            this.button14.TabIndex = 100;
+            this.button14.Text = "EXTRA FEATURES";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button14_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.textBox23);
@@ -1138,6 +1155,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DSC Management System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1236,6 +1254,7 @@
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button button14;
     }
 }
 

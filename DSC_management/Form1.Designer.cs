@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -119,6 +120,10 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -522,9 +527,9 @@
             this.button12.BackColor = System.Drawing.Color.YellowGreen;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(1044, 586);
+            this.button12.Location = new System.Drawing.Point(1044, 553);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(192, 76);
+            this.button12.Size = new System.Drawing.Size(192, 55);
             this.button12.TabIndex = 50;
             this.button12.Text = "SUBMIT";
             this.button12.UseVisualStyleBackColor = false;
@@ -539,7 +544,7 @@
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.Location = new System.Drawing.Point(1044, 492);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(192, 76);
+            this.button13.Size = new System.Drawing.Size(192, 55);
             this.button13.TabIndex = 51;
             this.button13.Text = "RESET";
             this.button13.UseVisualStyleBackColor = false;
@@ -1038,7 +1043,7 @@
             // 
             this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button14.AutoSize = true;
-            this.button14.BackColor = System.Drawing.Color.Plum;
+            this.button14.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button14.Location = new System.Drawing.Point(1053, 284);
@@ -1078,12 +1083,56 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 30000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.White;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(1097, 656);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(96, 24);
+            this.label34.TabIndex = 103;
+            this.label34.Text = "00:00 PM";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.White;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.Black;
+            this.label35.Location = new System.Drawing.Point(1085, 621);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(127, 24);
+            this.label35.TabIndex = 104;
+            this.label35.Text = "01 Jan, 2020";
+            // 
+            // label36
+            // 
+            this.label36.BackColor = System.Drawing.Color.White;
+            this.label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label36.Enabled = false;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(1053, 619);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(183, 62);
+            this.label36.TabIndex = 105;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.label34);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button14);
@@ -1097,7 +1146,6 @@
             this.Controls.Add(this.label29);
             this.Controls.Add(this.textBox22);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.textBox21);
             this.Controls.Add(this.textBox20);
             this.Controls.Add(this.textBox19);
             this.Controls.Add(this.comboBox13);
@@ -1158,11 +1206,8 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox17);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.comboBox11);
@@ -1174,6 +1219,10 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.textBox21);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -1280,6 +1329,10 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
     }
 }
 

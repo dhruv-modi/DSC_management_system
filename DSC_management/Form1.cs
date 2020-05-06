@@ -38,12 +38,78 @@ namespace DSC_management
 
 
             InitializeComponent();
-            
-            
+
+            //timer1_Tick(this,);
             
             
 
             pending();
+            {
+                button11.TabIndex = 0;
+                button6.TabIndex = 1;
+                button7.TabIndex = 2;
+                button8.TabIndex = 3;
+                button9.TabIndex = 4;
+                button10.TabIndex = 5;
+                textBox1.TabIndex = 6;
+                comboBox14.TabIndex = 7;
+                dateTimePicker1.TabIndex = 8;
+                textBox7.TabIndex = 9;
+                comboBox1.TabIndex = 10;
+                comboBox2.TabIndex = 11;
+                textBox8.TabIndex = 12;
+                textBox2.TabIndex = 13;
+                comboBox3.TabIndex = 14;
+                textBox9.TabIndex = 15;
+                textBox10.TabIndex = 16;
+                textBox11.TabIndex = 17;
+                textBox12.TabIndex = 18;
+                textBox4.TabIndex = 19;
+                textBox14.TabIndex = 19;
+                comboBox5.TabIndex = 20;
+                textBox13.TabIndex = 21;
+                comboBox4.TabIndex = 22;
+                comboBox6.TabIndex = 23;
+                comboBox7.TabIndex = 24;
+                textBox14.TabIndex = 25;
+                textBox15.TabIndex = 26;
+                dateTimePicker2.TabIndex = 27;
+                textBox16.TabIndex = 28;
+                textBox3.TabIndex = 29;
+                textBox17.TabIndex = 30;
+                dateTimePicker3.TabIndex = 31;
+                textBox18.TabIndex = 32;
+                comboBox12.TabIndex = 33;
+                comboBox13.TabIndex = 34;
+                textBox19.TabIndex = 35;
+                comboBox8.TabIndex = 36;
+                textBox20.TabIndex = 37;
+                comboBox9.TabIndex = 38;
+                textBox21.TabIndex = 39;
+                comboBox10.TabIndex = 40;
+                textBox22.TabIndex = 41;
+                comboBox15.TabIndex = 42;
+                textBox23.TabIndex = 43;
+                button1.TabIndex = 44;
+                button2.TabIndex = 45;
+                button4.TabIndex = 46;
+                button14.TabIndex = 47;
+                button15.TabIndex = 48;
+                button3.TabIndex = 49;
+                button5.TabIndex = 50;
+                button13.TabIndex = 51;
+                button12.TabIndex = 52;
+
+
+
+
+
+
+
+
+
+
+            }
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
             dateTimePicker3.Value = DateTime.Today;
@@ -3160,6 +3226,13 @@ namespace DSC_management
         private void button14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            label34.Text = DateTime.Now.ToString("hh:mm tt");
+            label35.Text = DateTime.Now.ToString("dd MMM, yyyy");
         }
     }
 }

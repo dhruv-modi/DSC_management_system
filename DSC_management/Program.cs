@@ -36,7 +36,7 @@ namespace DSC_management
                 System.IO.StreamReader file1 = new System.IO.StreamReader(".\\backup.conf");
                 String line = file1.ReadLine();
                 file1.Close();
-                if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 30)
+                if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 10)
                 {
                     
                     File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
@@ -47,6 +47,7 @@ namespace DSC_management
 
                     }
                 }
+                    
             }
             if (File.Exists(".\\dsc_management.sqlite"))
             {

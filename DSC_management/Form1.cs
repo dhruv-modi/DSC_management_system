@@ -16,6 +16,7 @@ namespace DSC_management
     public partial class Form1 : Form
     {
         int inco = 0;
+        int pendaler = 0;
         int id = 0;
         int updt = 0;
         Form3 f3;
@@ -25,6 +26,7 @@ namespace DSC_management
         int but_stat = 0;
         public Form1(SQLiteConnection m_db)
         {
+
             f3 = new Form3();
             f3.Show();
             Thread.Sleep(3000);
@@ -1756,6 +1758,7 @@ namespace DSC_management
                 }
                 pending();
                 alert();
+                pendaler = 0;
             }
 
 
@@ -2170,7 +2173,7 @@ namespace DSC_management
                 comboBox15.BackColor = System.Drawing.Color.GreenYellow;
             }
 
-            if (but_stat == 6)
+            else if (but_stat == 6)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM employee_master where id =" + id;
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -2183,7 +2186,7 @@ namespace DSC_management
                 sqlite_datareader.Close();
 
             }
-            if (but_stat==7)
+            else if (but_stat==7)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM activity_master where id ="+id;
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -2198,7 +2201,7 @@ namespace DSC_management
                 sqlite_datareader.Close();
             
             }
-            if (but_stat == 8)
+            else if (but_stat == 8)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM make_master where id =" + id;
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -2214,7 +2217,7 @@ namespace DSC_management
                 sqlite_datareader.Close();
 
             }
-            if (but_stat == 10)
+            else if (but_stat == 10)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM transportation_master where id =" + id;
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -2234,8 +2237,7 @@ namespace DSC_management
                 sqlite_datareader.Close();
 
             }
-
-            if (but_stat == 9)
+            else if (but_stat == 9)
             {
                 sqlite_cmd.CommandText = "SELECT * FROM owner_master where id =" + id;
                 sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -2286,6 +2288,7 @@ namespace DSC_management
         private void button13_Click(object sender, EventArgs e)
         {
             updt = 0;
+            pendaler = 0;
             button12.Text = "Submit";
             button13.Text = "Reset";
 
@@ -2874,7 +2877,7 @@ namespace DSC_management
 
                 }
             }
-            else if(but_stat == 11 && inco == 1 && !comboBox14.SelectedItem.Equals("-Select-")) 
+            else if(but_stat == 11 && inco == 1 && !comboBox14.SelectedItem.Equals("-Select-") && pendaler==0) 
             {
 
 
@@ -3057,7 +3060,7 @@ namespace DSC_management
         {
             but_stat = 11;
             inco = 1;
-
+            pendaler = 1;
 
             {
                 inco = 1;
@@ -3254,13 +3257,13 @@ namespace DSC_management
 
         private void label37_DoubleClick(object sender, EventArgs e)
         {
-           
+            pendaler = 1;
             but_stat = 11;
             inco = 1;
 
 
             {
-                inco = 1;
+               
                 button1.BackColor = System.Drawing.Color.Tomato;
                 button2.BackColor = System.Drawing.Color.GreenYellow;
 
@@ -3414,5 +3417,95 @@ namespace DSC_management
         {
 
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.Enter))
+            {
+                button12_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Back))
+            {
+                button13_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D1))
+            {
+                button11_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D2))
+            {
+                button6_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D3))
+            {
+                button7_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D4))
+            {
+                button8_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D5))
+            {
+                button9_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.D6))
+            {
+                button10_MouseClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.B))
+            {
+                button15_Click(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.I))
+            {
+                button3_Click(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.A))
+            {
+                label37_DoubleClick(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                label32_DoubleClick(null, null);
+                return true;
+            }
+            if(but_stat==11)
+            {
+                if (keyData == (Keys.Control | Keys.D9))
+                {
+                    button1_MouseClick(null, null);
+                    return true;
+                }
+                if (keyData == (Keys.Control | Keys.D0))
+                {
+                    button2_MouseClick(null, null);
+                    return true;
+                }
+            }
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                this.Close();
+                return true;
+            }
+
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }

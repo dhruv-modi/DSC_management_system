@@ -143,7 +143,7 @@
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.Location = new System.Drawing.Point(13, 12);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(178, 53);
+            this.button11.Size = new System.Drawing.Size(136, 39);
             this.button11.TabIndex = 17;
             this.button11.Text = "Transaction";
             this.button11.UseVisualStyleBackColor = false;
@@ -154,9 +154,9 @@
             this.button10.AutoSize = true;
             this.button10.BackColor = System.Drawing.Color.Tomato;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(853, 12);
+            this.button10.Location = new System.Drawing.Point(603, 12);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(180, 53);
+            this.button10.Size = new System.Drawing.Size(118, 39);
             this.button10.TabIndex = 16;
             this.button10.Text = "Transport";
             this.button10.UseVisualStyleBackColor = false;
@@ -167,9 +167,9 @@
             this.button9.AutoSize = true;
             this.button9.BackColor = System.Drawing.Color.Tomato;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(699, 12);
+            this.button9.Location = new System.Drawing.Point(511, 12);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(148, 53);
+            this.button9.Size = new System.Drawing.Size(86, 39);
             this.button9.TabIndex = 15;
             this.button9.Text = "Owner";
             this.button9.UseVisualStyleBackColor = false;
@@ -180,9 +180,9 @@
             this.button8.AutoSize = true;
             this.button8.BackColor = System.Drawing.Color.Tomato;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(521, 12);
+            this.button8.Location = new System.Drawing.Point(395, 12);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(172, 53);
+            this.button8.Size = new System.Drawing.Size(110, 39);
             this.button8.TabIndex = 14;
             this.button8.Text = "Make";
             this.button8.UseVisualStyleBackColor = false;
@@ -193,9 +193,9 @@
             this.button7.AutoSize = true;
             this.button7.BackColor = System.Drawing.Color.Tomato;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(342, 12);
+            this.button7.Location = new System.Drawing.Point(278, 12);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(173, 53);
+            this.button7.Size = new System.Drawing.Size(111, 39);
             this.button7.TabIndex = 13;
             this.button7.Text = "Activity";
             this.button7.UseVisualStyleBackColor = false;
@@ -206,9 +206,9 @@
             this.button6.AutoSize = true;
             this.button6.BackColor = System.Drawing.Color.Tomato;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(197, 12);
+            this.button6.Location = new System.Drawing.Point(155, 12);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(139, 53);
+            this.button6.Size = new System.Drawing.Size(117, 39);
             this.button6.TabIndex = 12;
             this.button6.Text = "Employee";
             this.button6.UseVisualStyleBackColor = false;
@@ -532,7 +532,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(192, 55);
             this.button12.TabIndex = 50;
-            this.button12.Text = "Submit";
+            this.button12.Text = "Submit ";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button12_MouseClick);
             // 
@@ -1128,15 +1128,15 @@
             // 
             // label37
             // 
-            this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Red;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.Navy;
-            this.label37.Location = new System.Drawing.Point(1089, 53);
+            this.label37.Location = new System.Drawing.Point(1074, 52);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(107, 31);
+            this.label37.Size = new System.Drawing.Size(128, 32);
             this.label37.TabIndex = 106;
             this.label37.Text = "ALERT";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label37.Visible = false;
             this.label37.DoubleClick += new System.EventHandler(this.label37_DoubleClick);
             // 
@@ -1249,6 +1249,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

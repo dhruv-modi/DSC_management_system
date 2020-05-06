@@ -38,6 +38,7 @@ namespace DSC_management
         private void Form4_FormClosing(object sender, FormClosingEventArgs e)
         {
             f1.Enabled = true;
+
         }
     }
 }

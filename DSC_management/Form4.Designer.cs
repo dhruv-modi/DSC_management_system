@@ -102,10 +102,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 140);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(85, 140);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(188, 17);
+            this.label6.Size = new System.Drawing.Size(170, 15);
             this.label6.TabIndex = 6;
             this.label6.Text = "dhruvmodi97@gmail.com";
             // 
@@ -114,7 +114,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(36, 188);
+            this.button1.Location = new System.Drawing.Point(42, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(277, 38);
             this.button1.TabIndex = 7;

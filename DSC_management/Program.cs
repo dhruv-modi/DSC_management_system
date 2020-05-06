@@ -20,8 +20,35 @@ namespace DSC_management
             Application.SetCompatibleTextRenderingDefault(false);
             SQLiteConnection m_dbConnection;
 
+            System.IO.Directory.CreateDirectory("backup");
 
-            if (File.Exists("dsc_management.sqlite"))
+            if (!File.Exists(".\\backup.conf"))
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                {
+                    file.WriteLine(DateTime.Now);
+                }
+
+            }
+            else
+            {
+
+                System.IO.StreamReader file1 = new System.IO.StreamReader(".\\backup.conf");
+                String line = file1.ReadLine();
+                file1.Close();
+                if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 30)
+                {
+                    
+                    File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                    {
+                        file.WriteLine(DateTime.Now);
+
+                    }
+                }
+            }
+            if (File.Exists(".\\dsc_management.sqlite"))
             {
 
                 // MessageBox.Show("Hello");

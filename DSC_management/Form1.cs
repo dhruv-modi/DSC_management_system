@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DSC_management
 {
@@ -3152,7 +3153,8 @@ namespace DSC_management
 
         private void button15_Click(object sender, EventArgs e)
         {
-
+            File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
+            MessageBox.Show("Backup was created successfully");
         }
 
         private void button14_Click(object sender, EventArgs e)

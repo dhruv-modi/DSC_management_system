@@ -124,6 +124,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,7 +145,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(178, 53);
             this.button11.TabIndex = 17;
-            this.button11.Text = "TRANSACTION";
+            this.button11.Text = "Transaction";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button11_MouseClick);
             // 
@@ -157,7 +158,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(180, 53);
             this.button10.TabIndex = 16;
-            this.button10.Text = "TRANSPORT";
+            this.button10.Text = "Transport";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button10_MouseClick);
             // 
@@ -170,7 +171,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(148, 53);
             this.button9.TabIndex = 15;
-            this.button9.Text = "OWNER";
+            this.button9.Text = "Owner";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button9_MouseClick);
             // 
@@ -183,7 +184,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(172, 53);
             this.button8.TabIndex = 14;
-            this.button8.Text = "DSC MAKE";
+            this.button8.Text = "Make";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button8_MouseClick);
             // 
@@ -196,7 +197,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(173, 53);
             this.button7.TabIndex = 13;
-            this.button7.Text = "ACTIVITY";
+            this.button7.Text = "Activity";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button7_MouseClick);
             // 
@@ -209,7 +210,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(139, 53);
             this.button6.TabIndex = 12;
-            this.button6.Text = "EMPLOYEE";
+            this.button6.Text = "Employee";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button6_MouseClick);
             // 
@@ -232,7 +233,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(179, 53);
             this.button5.TabIndex = 23;
-            this.button5.Text = "EXIT";
+            this.button5.Text = "Exit";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
             // 
@@ -246,7 +247,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(179, 53);
             this.button4.TabIndex = 22;
-            this.button4.Text = "REPORT";
+            this.button4.Text = "Report";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -259,7 +260,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(179, 53);
             this.button2.TabIndex = 20;
-            this.button2.Text = "OUTGOING";
+            this.button2.Text = "Outgoing";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
             // 
@@ -273,7 +274,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(179, 53);
             this.button1.TabIndex = 19;
-            this.button1.Text = "INCOMING";
+            this.button1.Text = "Incoming";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
@@ -531,7 +532,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(192, 55);
             this.button12.TabIndex = 50;
-            this.button12.Text = "SUBMIT";
+            this.button12.Text = "Submit";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button12_MouseClick);
             // 
@@ -546,7 +547,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(192, 55);
             this.button13.TabIndex = 51;
-            this.button13.Text = "RESET";
+            this.button13.Text = "Reset";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             this.button13.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button13_MouseClick);
@@ -1019,11 +1020,12 @@
             this.label32.BackColor = System.Drawing.Color.DarkKhaki;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.Navy;
-            this.label32.Location = new System.Drawing.Point(1047, 20);
+            this.label32.Location = new System.Drawing.Point(1058, 9);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(129, 31);
             this.label32.TabIndex = 98;
             this.label32.Text = "Pending:";
+            this.label32.Click += new System.EventHandler(this.label32_Click);
             this.label32.DoubleClick += new System.EventHandler(this.label32_DoubleClick);
             // 
             // label33
@@ -1032,7 +1034,7 @@
             this.label33.BackColor = System.Drawing.Color.DarkKhaki;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.Crimson;
-            this.label33.Location = new System.Drawing.Point(1172, 20);
+            this.label33.Location = new System.Drawing.Point(1183, 9);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(30, 31);
             this.label33.TabIndex = 99;
@@ -1050,7 +1052,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(179, 53);
             this.button14.TabIndex = 100;
-            this.button14.Text = "EXTRA FEATURES";
+            this.button14.Text = "Extra Features";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             this.button14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button14_MouseClick);
@@ -1065,7 +1067,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(83, 53);
             this.button3.TabIndex = 101;
-            this.button3.Text = "ABOUT";
+            this.button3.Text = "About";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -1079,7 +1081,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(90, 53);
             this.button15.TabIndex = 102;
-            this.button15.Text = "BACKUP";
+            this.button15.Text = "Backup";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -1095,7 +1097,7 @@
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(1097, 656);
+            this.label34.Location = new System.Drawing.Point(1091, 645);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(96, 24);
             this.label34.TabIndex = 103;
@@ -1107,7 +1109,7 @@
             this.label35.BackColor = System.Drawing.Color.White;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.Black;
-            this.label35.Location = new System.Drawing.Point(1085, 621);
+            this.label35.Location = new System.Drawing.Point(1075, 621);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(127, 24);
             this.label35.TabIndex = 104;
@@ -1119,10 +1121,24 @@
             this.label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label36.Enabled = false;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(1053, 619);
+            this.label36.Location = new System.Drawing.Point(1044, 619);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(183, 62);
+            this.label36.Size = new System.Drawing.Size(192, 62);
             this.label36.TabIndex = 105;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Red;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.Navy;
+            this.label37.Location = new System.Drawing.Point(1089, 53);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(107, 31);
+            this.label37.TabIndex = 106;
+            this.label37.Text = "ALERT";
+            this.label37.Visible = false;
+            this.label37.DoubleClick += new System.EventHandler(this.label37_DoubleClick);
             // 
             // Form1
             // 
@@ -1130,6 +1146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.label37);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label34);
@@ -1333,6 +1350,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
     }
 }
 

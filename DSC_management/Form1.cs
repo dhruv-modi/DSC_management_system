@@ -44,6 +44,7 @@ namespace DSC_management
             
 
             pending();
+            alert();
             {
                 button11.TabIndex = 0;
                 button6.TabIndex = 1;
@@ -1754,6 +1755,7 @@ namespace DSC_management
 
                 }
                 pending();
+                alert();
             }
 
 
@@ -2109,7 +2111,7 @@ namespace DSC_management
             if (but_stat == 11 && inco == 0)
             { }
             else
-            {MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value + "");
+            {//MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value + "");
                 id = Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value + "");
                 updt = 1;
                 button12.Text = "Update";
@@ -3036,6 +3038,21 @@ namespace DSC_management
             label33.Text = sqlite_datareader["count(*)"] + "";
             sqlite_datareader.Close();
         }
+        private void alert()
+        {
+            sqlite_cmd.CommandText = "select count(*) from transaction_master where (julianday(autoreturn_date) - julianday('now')) < 1 and record_open = 1 and wrong_entry = 0;";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            sqlite_datareader.Read();
+            if( Int32.Parse(sqlite_datareader["count(*)"] + "")>0)
+            {
+                label37.Visible = true;
+            }
+            else
+            {
+                label37.Visible = false;
+            }
+            sqlite_datareader.Close();
+        }
         private void pendingdg()
         {
             but_stat = 11;
@@ -3233,6 +3250,169 @@ namespace DSC_management
             
             label34.Text = DateTime.Now.ToString("hh:mm tt");
             label35.Text = DateTime.Now.ToString("dd MMM, yyyy");
+        }
+
+        private void label37_DoubleClick(object sender, EventArgs e)
+        {
+           
+            but_stat = 11;
+            inco = 1;
+
+
+            {
+                inco = 1;
+                button1.BackColor = System.Drawing.Color.Tomato;
+                button2.BackColor = System.Drawing.Color.GreenYellow;
+
+                {
+
+                    comboBox15.Items.Clear();
+                    comboBox15.ResetText();
+                    comboBox15.BackColor = System.Drawing.Color.White;
+                    button12.Enabled = false;
+                    button13.Enabled = false;
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                    label11.Enabled = false;
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox19.Text = "";
+                    textBox20.Text = "";
+                    textBox21.Text = "";
+                    textBox22.Text = "";
+                    textBox23.Text = "";
+
+                    dateTimePicker1.Value = DateTime.Today;
+                    dateTimePicker2.Value = DateTime.Today;
+                    dateTimePicker3.Value = DateTime.Today;
+                    comboBox14.SelectedItem = "-Select-";
+                    comboBox1.SelectedItem = "-Select-";
+                    comboBox2.SelectedItem = "-Select-";
+                    comboBox3.SelectedItem = "-Select-";
+                    comboBox5.SelectedItem = "-Select-";
+                    comboBox4.SelectedItem = "";
+                    comboBox6.SelectedItem = "";
+                    comboBox7.SelectedItem = "Yes";
+                    comboBox12.SelectedItem = "-Select-";
+                    comboBox13.SelectedItem = "-Select-";
+                    comboBox15.SelectedItem = "No";
+
+
+                    label3.Enabled = false;
+                    label4.Enabled = false;
+                    label5.Enabled = false;
+                    label6.Enabled = false;
+                    label7.Enabled = false;
+                    label8.Enabled = false;
+                    label9.Enabled = false;
+                    label10.Enabled = false;
+                    label12.Enabled = false;
+                    label13.Enabled = false;
+                    label14.Enabled = false;
+                    label15.Enabled = false;
+                    label17.Enabled = false;
+                    label18.Enabled = false;
+                    label19.Enabled = false;
+                    label20.Enabled = false;
+
+
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = false;
+                    textBox3.Enabled = false;
+                    textBox4.Enabled = false;
+                    textBox10.Enabled = false;
+                    textBox11.Enabled = false;
+                    textBox12.Enabled = false;
+
+
+
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = false;
+                    comboBox3.Enabled = false;
+                    comboBox4.Enabled = false;
+                    comboBox5.Enabled = false;
+                    comboBox6.Enabled = false;
+                    comboBox7.Enabled = false;
+
+
+                    dateTimePicker1.Enabled = false;
+                    dateTimePicker2.Enabled = false;
+
+
+                    label22.Enabled = true;
+                    label23.Enabled = true;
+                    label24.Enabled = true;
+                    label25.Enabled = true;
+                    label26.Enabled = true;
+                    label27.Enabled = true;
+                    label28.Enabled = true;
+                    label30.Enabled = true;
+
+                    textBox19.Enabled = true;
+                    textBox20.Enabled = true;
+                    textBox21.Enabled = true;
+                    textBox22.Enabled = true;
+
+
+                    comboBox12.Enabled = true;
+                    comboBox13.Enabled = true;
+                    comboBox15.Enabled = true;
+
+                    dateTimePicker3.Enabled = true;
+                }
+            }
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            dataGridView1.ColumnCount = 12;
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Location Reference";
+            dataGridView1.Columns[2].Name = "Owner";
+            dataGridView1.Columns[3].Name = "Activity";
+            dataGridView1.Columns[4].Name = "DSC UID";
+            dataGridView1.Columns[5].Name = "DSC Model";
+            dataGridView1.Columns[6].Name = "DSC Make";
+            dataGridView1.Columns[7].Name = "DSC Color";
+            dataGridView1.Columns[8].Name = "Inward Date";
+            dataGridView1.Columns[9].Name = "Inward By";
+            dataGridView1.Columns[10].Name = "Return Date";
+            dataGridView1.Columns[11].Name = "Remarks";
+
+            sqlite_cmd.CommandText = "select * from transaction_master where (julianday(autoreturn_date)-julianday('now'))<1 and record_open=1 and wrong_entry=0;  order  by datetime(last_modified) desc";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+
+
+
+                dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                            sqlite_datareader["location_ref"] + "",
+                            sqlite_datareader["owner_name"] + "",
+                            sqlite_datareader["activity"] + "",
+                              sqlite_datareader["dsc_uid"]+"",
+                            sqlite_datareader["dsc_model"]+"",
+                            sqlite_datareader["dsc_make"]+"",
+                            sqlite_datareader["dsc_color"]+"",
+                            sqlite_datareader["inward_date"] + "",
+                            sqlite_datareader["inward_by"]+"",
+                            sqlite_datareader["autoreturn_date"]+"",
+                            sqlite_datareader["remarks1"]+"",
+
+                             });
+
+            }
+
+            sqlite_datareader.Close();
+            
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

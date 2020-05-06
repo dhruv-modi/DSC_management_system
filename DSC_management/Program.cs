@@ -18,15 +18,17 @@ namespace DSC_management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             SQLiteConnection m_dbConnection;
 
 
             if (File.Exists("dsc_management.sqlite"))
             {
-               // MessageBox.Show("Hello");
+
+                // MessageBox.Show("Hello");
                 m_dbConnection = new SQLiteConnection("Data Source=dsc_management.sqlite;Version=3;");
                 m_dbConnection.Open();
+
+
 
             }
             else
@@ -70,12 +72,12 @@ namespace DSC_management
                 catch (Exception e)
                 {
 
-                    MessageBox.Show("programlog.txt", "Main form " + e + Environment.NewLine);
+                    MessageBox.Show("programlog.txt", "Main method " + e + Environment.NewLine);
 
 
                 }
 
-              
+               
             }
             Application.Run(new Form1(m_dbConnection));
         }

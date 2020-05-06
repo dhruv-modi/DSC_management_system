@@ -14,7 +14,7 @@ namespace DSC_management
 {
     public partial class Form2 : Form
     {
-
+       
         SQLiteCommand sqlite_cmd;
         SQLiteConnection m_dbConnection;
         SQLiteDataReader sqlite_datareader;
@@ -84,7 +84,7 @@ namespace DSC_management
                     xlWorkSheet.Cells[1, 27] = "Wrong Entry";
                     xlWorkSheet.Cells[1, 28] = "Remarks";
 
-                    string data = String.Empty;
+                    
                     int i = 1;
 
                     sqlite_cmd.CommandText = "SELECT * FROM transaction_master";
@@ -92,10 +92,20 @@ namespace DSC_management
                     sqlite_datareader = sqlite_cmd.ExecuteReader();
                     while (sqlite_datareader.Read()) // Reading Rows
                     {
+                        
                         for (int j = 0; j <= sqlite_datareader.FieldCount - 1; j++) // Looping throw colums
                         {
-                            data = sqlite_datareader.GetValue(j).ToString();
-                            xlWorkSheet.Cells[i + 1, j + 1] = data;
+                            if ((j == 2 || j == 5 || j == 6 || j == 7 || j == 10 || j == 17 || j == 18) && !(sqlite_datareader.GetValue(j).ToString().Equals("")) )
+                            {
+                                // MessageBox.Show(sqlite_datareader.GetValue(j).ToString());
+
+                                xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString().Split('.')[1];
+                            }
+                            else
+                            {
+                                xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString(); 
+
+                            }
                         }
                         i++;
                     }

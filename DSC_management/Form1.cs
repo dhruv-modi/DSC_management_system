@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
@@ -16,12 +17,17 @@ namespace DSC_management
         int inco = 0;
         int id = 0;
         int updt = 0;
+        Form3 f3;
         SQLiteCommand sqlite_cmd;
         SQLiteConnection m_dbConnection;
         SQLiteDataReader sqlite_datareader;
         int but_stat = 0;
         public Form1(SQLiteConnection m_db)
         {
+            f3 = new Form3();
+            f3.Show();
+            Thread.Sleep(2000);
+            f3.Hide();
             m_dbConnection = m_db;
             sqlite_cmd = m_db.CreateCommand();
             
@@ -31,6 +37,11 @@ namespace DSC_management
 
 
             InitializeComponent();
+            
+            
+            
+            
+
             pending();
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
@@ -3125,6 +3136,11 @@ namespace DSC_management
         {
             Form2 f2 = new Form2(m_dbConnection,this);
             f2.Show();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

@@ -26,8 +26,8 @@ namespace DSC_management
         {
             f3 = new Form3();
             f3.Show();
-            Thread.Sleep(2000);
-            f3.Hide();
+            Thread.Sleep(3000);
+            f3.Close();
             m_dbConnection = m_db;
             sqlite_cmd = m_db.CreateCommand();
             
@@ -3141,6 +3141,23 @@ namespace DSC_management
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form4 f2 = new Form4( this);
+            f2.Show();
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

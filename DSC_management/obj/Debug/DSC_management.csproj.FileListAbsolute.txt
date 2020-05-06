@@ -14,3 +14,4 @@ C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_managemen
 C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form1.resources
 C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form2.resources
 C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form3.resources
+C:\Users\Epos\source\repos\DSC_management\DSC_management\obj\Debug\DSC_management.Form4.resources

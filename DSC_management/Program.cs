@@ -21,7 +21,7 @@ namespace DSC_management
             SQLiteConnection m_dbConnection;
 
            
-            if (File.Exists(".\\dsc_management.sqlite"))
+            if (File.Exists(System.IO.Directory.GetCurrentDirectory() +"\\dsc_management.sqlite"))
             {
 
                 // MessageBox.Show("Hello");
@@ -58,9 +58,10 @@ namespace DSC_management
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
-                    sql = "CREATE TABLE `transaction_master` ( `record_id` INTEGER PRIMARY KEY AUTOINCREMENT, `location_ref` varchar ( 50 ), `trans_date` datetime, `inward_date` datetime, `inward_by` varchar ( 30 ), `receive_mode` varchar ( 30 ), `activity_id` varchar ( 50 ), `dsc_uid` varchar ( 20 ), `dsc_model` varchar ( 30 ), `dsc_make` varchar ( 30 ), `dsc_colour` varchar ( 30 ), `inward_charge` INTEGER, `return_init` Integer ( 1 ), `autoreturn_date` datetime, `autoreturn_days` INTEGER, `outward_date` datetime, `outward_mode` varchar(30), `outward_by` varchar ( 30 ), `outward_charges` INTEGER, `outward_collected_by` INTEGER, `courier_name` varchar ( 30 ), `courier_track_id` INTEGER, `dsc_stayed` INTEGER, `record_open` INTEGER DEFAULT 1, `last_modified` datetime, `wrong_entry` INTEGER DEFAULT 0, `remarks1` varchar ( 100 ), `remarks2` varchar ( 100 ), `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
+                    sql = "CREATE TABLE `activity_master` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`activity` varchar ( 20 ),`active` INTEGER DEFAULT 1,`updated` INTEGER DEFAULT current_timestamp,`usr_char_1` varchar ( 10 ),`usr_char_2` varchar ( 20 ),`usr_char_3` varchar ( 50 ),`usr_int_1` INTEGER,`usr_int_2` INTEGER,`usr_int_3` INTEGER,`usr_dec_1` decimal,`usr_dec_2` decimal,`usr_dec_3` decimal,`usr_dt_1` datetime,`usr_dt_2` datetime,`usr_dt_3` datetime)";
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
+
 
                     sql = "CREATE TABLE 'transportation_master' ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `company_name` varchar ( 30 ), `contact_num` varchar ( 12 ), `person_of_contact` varchar ( 30 ), `transport_mode` varchar ( 30 ), `fixed_price` INTEGER, `active` INTEGER DEFAULT 1, `updated` datetime DEFAULT current_timestamp, `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime );";
                     command.CommandText = sql;
@@ -72,7 +73,7 @@ namespace DSC_management
                 catch (Exception e)
                 {
 
-                    MessageBox.Show("programlog.txt", "Main method " + e + Environment.NewLine);
+                    MessageBox.Show(" "+ e + Environment.NewLine);
 
 
                 }
@@ -86,11 +87,11 @@ namespace DSC_management
             }
 
 
-            System.IO.Directory.CreateDirectory(".\\backup");
-            System.IO.Directory.CreateDirectory(".\\reports");
-            if (!File.Exists(".\\backup.conf"))
+            System.IO.Directory.CreateDirectory(System.IO.Directory.GetCurrentDirectory() +"\\backup");
+            System.IO.Directory.CreateDirectory(System.IO.Directory.GetCurrentDirectory() +"\\reports");
+            if (!File.Exists(System.IO.Directory.GetCurrentDirectory() +"\\backup.conf"))
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() +"\\backup.conf", false))
                 {
                     file.WriteLine(DateTime.Now);
                 }
@@ -99,15 +100,15 @@ namespace DSC_management
             else
             {
 
-                System.IO.StreamReader file1 = new System.IO.StreamReader(".\\backup.conf");
+                System.IO.StreamReader file1 = new System.IO.StreamReader(System.IO.Directory.GetCurrentDirectory() +"\\backup.conf");
                 String line = file1.ReadLine();
                 file1.Close();
                 if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 10)
                 {
 
-                    File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
+                    File.Copy(System.IO.Directory.GetCurrentDirectory() +"dsc_management.sqlite", Path.Combine(System.IO.Directory.GetCurrentDirectory() +"\\backup\\ ", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() +"\\backup.conf", false))
                     {
                         file.WriteLine(DateTime.Now);
 

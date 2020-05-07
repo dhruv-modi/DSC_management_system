@@ -86,31 +86,41 @@ namespace DSC_management
 
                     
                     int i = 1;
-
-                    sqlite_cmd.CommandText = "SELECT * FROM transaction_master";
-
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read()) // Reading Rows
+                    try
                     {
-                        
-                        for (int j = 0; j <= sqlite_datareader.FieldCount - 1; j++) // Looping throw colums
+                        sqlite_cmd.CommandText = "SELECT * FROM transaction_master";
+
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read()) // Reading Rows
                         {
-                            if ((j == 2 || j == 5 || j == 6 || j == 7 || j == 10 || j == 17 || j == 18) && !(sqlite_datareader.GetValue(j).ToString().Equals("")) )
-                            {
-                                // MessageBox.Show(sqlite_datareader.GetValue(j).ToString());
 
-                                xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString().Split('.')[1];
-                            }
-                            else
+                            for (int j = 0; j <= sqlite_datareader.FieldCount - 1; j++) // Looping throw colums
                             {
-                                xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString(); 
+                                if ((j == 2 || j == 5 || j == 6 || j == 7 || j == 10 || j == 17 || j == 18) && !(sqlite_datareader.GetValue(j).ToString().Equals("")))
+                                {
+                                    // MessageBox.Show(sqlite_datareader.GetValue(j).ToString());
 
+                                    xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString().Split('.')[1];
+                                }
+                                else
+                                {
+                                    xlWorkSheet.Cells[i + 1, j + 1] = sqlite_datareader.GetValue(j).ToString();
+
+                                }
                             }
+                            i++;
                         }
-                        i++;
+
+                        sqlite_datareader.Close();
                     }
-
-
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form2.cs:120:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
 
 
                     try

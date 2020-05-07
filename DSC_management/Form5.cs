@@ -99,7 +99,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form5.cs:104:" + e1 + "\n\n");
                     }

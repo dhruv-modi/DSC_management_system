@@ -134,7 +134,7 @@ namespace DSC_management
                     sqlite_datareader.Close();
                 }catch(Exception e)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:139:" + e + "\n\n");
                     }
@@ -160,7 +160,7 @@ namespace DSC_management
                     sqlite_datareader.Close();
                 }catch(Exception e)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:164:" + e + "\n\n");
                     }
@@ -190,7 +190,7 @@ namespace DSC_management
                 }
                 catch (Exception e)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:193:" + e + "\n\n");
                     }
@@ -215,7 +215,7 @@ namespace DSC_management
                 }
                 catch (Exception e)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:217:" + e + "\n\n");
                     }
@@ -246,7 +246,7 @@ namespace DSC_management
                 }
                 catch (Exception e)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:247:" + e + "\n\n");
                     }
@@ -476,7 +476,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:477:" + e1+"\n\n" );
                     }
@@ -500,7 +500,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:504:" + e1 + "\n\n");
                     }
@@ -525,7 +525,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:528:" + e1 + "\n\n");
                     }
@@ -551,7 +551,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:553:" + e1 + "\n\n");
                     }
@@ -591,7 +591,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:596:" + e1 + "\n\n");
                     }
@@ -1308,7 +1308,7 @@ namespace DSC_management
             }
             catch (Exception e1)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                 {
                     file.WriteLine(DateTime.Now + ":Form1.cs:1313:" + e1 + "\n\n");
                 }
@@ -1515,7 +1515,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1520:" + e1 + "\n\n");
                         }
@@ -1543,7 +1543,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1548:" + e1 + "\n\n");
                         }
@@ -1573,7 +1573,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1578:" + e1 + "\n\n");
                         }
@@ -1600,7 +1600,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1605:" + e1 + "\n\n");
                         }
@@ -1630,7 +1630,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1635:" + e1 + "\n\n");
                         }
@@ -1656,7 +1656,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1661:" + e1 + "\n\n");
                         }
@@ -1688,7 +1688,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1693:" + e1 + "\n\n");
                         }
@@ -1714,7 +1714,7 @@ namespace DSC_management
                         }
                         catch (Exception e1)
                         {
-                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                             {
                                 file.WriteLine(DateTime.Now + ":Form1.cs:1719:" + e1 + "\n\n");
                             }
@@ -1745,7 +1745,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1756:" + e1 + "\n\n");
                         }
@@ -1772,7 +1772,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1777:" + e1 + "\n\n");
                         }
@@ -1842,7 +1842,7 @@ namespace DSC_management
                         }
                         catch (Exception e1)
                         {
-                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                             {
                                 file.WriteLine(DateTime.Now + ":Form1.cs:1847:" + e1 + "\n\n");
                             }
@@ -1869,7 +1869,7 @@ namespace DSC_management
                         }
                         catch (Exception e1)
                         {
-                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                             {
                                 file.WriteLine(DateTime.Now + ":Form1.cs:1874:" + e1 + "\n\n");
                             }
@@ -1913,7 +1913,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:1918:" + e1 + "\n\n");
                         }
@@ -2002,7 +2002,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2007:" + e1 + "\n\n");
                     }
@@ -2099,7 +2099,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2104:" + e1 + "\n\n");
                     }
@@ -2138,7 +2138,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2143:" + e1 + "\n\n");
                     }
@@ -2172,7 +2172,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2177:" + e1 + "\n\n");
                     }
@@ -2206,7 +2206,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2211:" + e1 + "\n\n");
                     }
@@ -2291,7 +2291,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2296:" + e1 + "\n\n");
                     }
@@ -2388,7 +2388,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2393:" + e1 + "\n\n");
                     }
@@ -2424,7 +2424,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2429:" + e1 + "\n\n");
                     }
@@ -2449,7 +2449,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2434:" + e1 + "\n\n");
                     }
@@ -2475,7 +2475,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2480:" + e1 + "\n\n");
                     }
@@ -2506,7 +2506,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2511:" + e1 + "\n\n");
                     }
@@ -2563,7 +2563,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:2568:" + e1 + "\n\n");
                     }
@@ -2742,7 +2742,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:2747:" + e1 + "\n\n");
                         }
@@ -2769,7 +2769,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:2774:" + e1 + "\n\n");
                         }
@@ -2799,7 +2799,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:2804:" + e1 + "\n\n");
                         }
@@ -2824,7 +2824,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:2829:" + e1 + "\n\n");
                         }
@@ -2855,7 +2855,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:2860:" + e1 + "\n\n");
                         }
@@ -3185,7 +3185,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:3190:" + e1 + "\n\n");
                     }
@@ -3228,7 +3228,7 @@ namespace DSC_management
                     }
                     catch (Exception e1)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                         {
                             file.WriteLine(DateTime.Now + ":Form1.cs:3233:" + e1 + "\n\n");
                         }
@@ -3261,7 +3261,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:3266:" + e1 + "\n\n");
                     }
@@ -3313,7 +3313,7 @@ namespace DSC_management
                 }
                 catch (Exception e1)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                     {
                         file.WriteLine(DateTime.Now + ":Form1.cs:3318:" + e1 + "\n\n");
                     }
@@ -3423,7 +3423,7 @@ namespace DSC_management
             }
             catch (Exception e1)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                 {
                     file.WriteLine(DateTime.Now + ":Form1.cs:3428:" + e1 + "\n\n");
                 }
@@ -3449,7 +3449,7 @@ namespace DSC_management
             }
             catch (Exception e1)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                 {
                     file.WriteLine(DateTime.Now + ":Form1.cs:3454:" + e1 + "\n\n");
                 }
@@ -3611,7 +3611,7 @@ namespace DSC_management
             }
             catch (Exception e1)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                 {
                     file.WriteLine(DateTime.Now + ":Form1.cs:3616:" + e1 + "\n\n");
                 }
@@ -3822,7 +3822,7 @@ namespace DSC_management
             }
             catch (Exception e1)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                 {
                     file.WriteLine(DateTime.Now + ":Form1.cs:3827:" + e1 + "\n\n");
                 }

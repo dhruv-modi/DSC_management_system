@@ -1918,13 +1918,65 @@ namespace DSC_management
 
             if (but_stat == 11 && inco == 1)
             {
-                if (comboBox15.SelectedItem.Equals("True"))
+                if (comboBox14.SelectedItem.Equals("-Select-"))
                 {
-                    if((MessageBox.Show("Do you want to make this transaction invalid ?", "Confirmation Needed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString()).Equals("Yes"))
+                    MessageBox.Show("Please select an owner");
+                }
+                else
+                {
+                    if (comboBox15.SelectedItem.Equals("True"))
                     {
-                        try { 
-                        sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='1', record_open='0' where id='" + id + "';";
-                        
+                        if ((MessageBox.Show("Do you want to make this transaction invalid ?", "Confirmation Needed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString()).Equals("Yes"))
+                        {
+                            try
+                            {
+                                sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='1', record_open='0' where id='" + id + "';";
+
+
+                                int it = sqlite_cmd.ExecuteNonQuery();
+                            }
+                            catch (Exception e1)
+                            {
+                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
+                                {
+                                    file.WriteLine(DateTime.Now + ":Form1.cs:1874:" + e1 + "\n\n");
+                                }
+                                MessageBox.Show(" " + e1);
+                            }
+                        }
+
+
+                    }
+                    else if (comboBox12.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select an outward mode");
+                        stat = 1;
+
+                    }
+                    else if (comboBox13.SelectedItem.Equals("-Select-"))
+                    {
+                        MessageBox.Show("Please select a valid value in outward by");
+                        stat = 1;
+
+                    }
+                    else if ((dateTimePicker3.Value - dateTimePicker1.Value).Days < 0)
+                    {
+                        MessageBox.Show("Outward Date should not be before Inward Date");
+                        stat = 1;
+                    }
+                    else if (textBox20.Text.Trim().Equals(""))
+                    {
+                        MessageBox.Show("Please a name of person who collected");
+                        stat = 1;
+                    }
+                    else
+                    {
+
+                        try
+                        {
+                            sqlite_cmd.CommandText = "update transaction_master set outward_date=date('" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "'),outward_mode='" + comboBox12.SelectedItem.ToString() + "',outward_by='" + comboBox13.SelectedItem.ToString() + "',outward_charges='" + textBox19.Text + "',outward_collected_by='" + textBox20.Text + "',courier_name='" + textBox21.Text + "',courier_track_id='" + textBox22.Text + "',dsc_stayed='" + (dateTimePicker3.Value - dateTimePicker1.Value).Days + "',record_open='0',remarks1='" + textBox23.Text + "' where id='" + id + "';";
+
+
 
                             int it = sqlite_cmd.ExecuteNonQuery();
                         }
@@ -1932,66 +1984,22 @@ namespace DSC_management
                         {
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
                             {
-                                file.WriteLine(DateTime.Now + ":Form1.cs:1874:" + e1 + "\n\n");
+                                file.WriteLine(DateTime.Now + ":Form1.cs:1918:" + e1 + "\n\n");
                             }
                             MessageBox.Show(" " + e1);
                         }
+
+
                     }
-                   
-
+                    pending();
+                    alert();
+                    pendaler = 0;
                 }
-                else if (comboBox12.SelectedItem.Equals("-Select-"))
-                {
-                    MessageBox.Show("Please select an outward mode");
-                    stat = 1;
-
-                }
-                else if (comboBox13.SelectedItem.Equals("-Select-"))
-                {
-                    MessageBox.Show("Please select a valid value in outward by");
-                    stat = 1;
-
-                }
-                else if ((dateTimePicker3.Value - dateTimePicker1.Value).Days < 0)
-                {
-                    MessageBox.Show("Outward Date should not be before Inward Date");
-                    stat = 1;
-                }
-                else if(textBox20.Text.Trim().Equals(""))
-                {
-                    MessageBox.Show("Please a name of person who collected");
-                    stat = 1;
-                }
-                else
-                {
-
-                    try { 
-                    sqlite_cmd.CommandText = "update transaction_master set outward_date=date('" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "'),outward_mode='" + comboBox12.SelectedItem.ToString() + "',outward_by='" + comboBox13.SelectedItem.ToString() + "',outward_charges='" + textBox19.Text + "',outward_collected_by='" + textBox20.Text + "',courier_name='" + textBox21.Text + "',courier_track_id='" + textBox22.Text + "',dsc_stayed='" + (dateTimePicker3.Value - dateTimePicker1.Value).Days + "',record_open='0',remarks1='" + textBox23.Text + "' where id='" + id + "';"; 
-
-                   
-
-                        int it = sqlite_cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception e1)
-                    {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\log\\DSC.log", true))
-                        {
-                            file.WriteLine(DateTime.Now + ":Form1.cs:1918:" + e1 + "\n\n");
-                        }
-                        MessageBox.Show(" " + e1);
-                    }
 
 
-                }
-                pending();
-                alert();
-                pendaler = 0;
+
+
             }
-
-
-
-
-
 
 
 
@@ -3961,6 +3969,16 @@ namespace DSC_management
                 button9_MouseClick(null, null);
                 return true;
             }
+            if (keyData == (Keys.Control | Keys.R))
+            {
+                button4_Click(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.E))
+            {
+                button14_MouseClick(null, null);
+                return true;
+            }
             if (keyData == (Keys.Control | Keys.D6))
             {
                 button10_MouseClick(null, null);
@@ -3986,6 +4004,8 @@ namespace DSC_management
                 label32_DoubleClick(null, null);
                 return true;
             }
+
+
             if(but_stat==11)
             {
                 if (keyData == (Keys.Control | Keys.D9))

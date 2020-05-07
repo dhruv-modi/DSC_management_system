@@ -40,5 +40,17 @@ namespace DSC_management
             f1.Enabled = true;
 
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                this.Close();
+                return true;
+            }
+
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

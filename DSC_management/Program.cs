@@ -20,35 +20,7 @@ namespace DSC_management
             Application.SetCompatibleTextRenderingDefault(false);
             SQLiteConnection m_dbConnection;
 
-            System.IO.Directory.CreateDirectory("backup");
-
-            if (!File.Exists(".\\backup.conf"))
-            {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
-                {
-                    file.WriteLine(DateTime.Now);
-                }
-
-            }
-            else
-            {
-
-                System.IO.StreamReader file1 = new System.IO.StreamReader(".\\backup.conf");
-                String line = file1.ReadLine();
-                file1.Close();
-                if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 10)
-                {
-                    
-                    File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
-
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
-                    {
-                        file.WriteLine(DateTime.Now);
-
-                    }
-                }
-                    
-            }
+           
             if (File.Exists(".\\dsc_management.sqlite"))
             {
 
@@ -68,7 +40,7 @@ namespace DSC_management
                 m_dbConnection.Open();
                 try
                 {
-                    string sql = "CREATE TABLE transaction_master ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `location_ref` varchar ( 50 ), `owner_name` varchar ( 30 ), `trans_date` datetime DEFAULT current_timestamp, `inward_date` date, `inward_by` varchar ( 30 ), `receive_mode` varhcar ( 30 ), `activity` varchar ( 30 ), `dsc_uid` varchar ( 20 ), `dsc_model` varchar ( 30 ), `dsc_make` varchar ( 30 ), `dsc_color` varchar ( 30 ), `inward_charge` INTEGER, `return_init` Integer ( 1 ) DEFAULT 1, `autoreturn_date` date, `autoreturn_days` INTEGER, `outward_date` date, `outward_mode` varchar ( 30 ), `outward_by` varchar ( 30 ), `outward_charges` INTEGER, `outward_collected_by` varchar ( 20 ), `courier_name` varchar ( 30 ), `courier_track_id` varchar ( 30 ), `dsc_stayed` INTEGER, `record_open` INTEGER DEFAULT 1, `last_modified` datetime DEFAULT current_timestamp, `wrong_entry` INTEGER DEFAULT 0, `remarks1` varchar ( 100 ), `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime )";
+                    string sql = "CREATE TABLE 'transaction_master' ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `location_ref` varchar ( 50 ), `owner_name` varchar ( 30 ), `trans_date` datetime DEFAULT current_timestamp, `inward_date` date, `inward_by` varchar ( 30 ), `receive_mode` varhcar ( 30 ), `activity` varchar ( 30 ), `dsc_uid` varchar ( 20 ), `dsc_model` varchar ( 30 ), `dsc_make` varchar ( 30 ), `dsc_color` varchar ( 30 ), `inward_charge` INTEGER, `return_init` Integer ( 1 ) DEFAULT 1, `autoreturn_date` date, `autoreturn_days` INTEGER, `outward_date` date, `outward_mode` varchar ( 30 ), `outward_by` varchar ( 30 ), `outward_charges` INTEGER, `outward_collected_by` varchar ( 20 ), `courier_name` varchar ( 30 ), `courier_track_id` varchar ( 30 ), `dsc_stayed` INTEGER, `record_open` INTEGER DEFAULT 1, `last_modified` datetime DEFAULT current_timestamp, `wrong_entry` INTEGER DEFAULT 0, `remarks1` varchar ( 100 ), `report_count` INTEGER DEFAULT 0, `report_date` date, `report_name` varchar ( 30 ), `usr_char_1` varchar ( 10 ), `usr_char_2` varchar ( 20 ), `usr_char_3` varchar ( 50 ), `usr_int_1` INTEGER, `usr_int_2` INTEGER, `usr_int_3` INTEGER, `usr_dec_1` decimal, `usr_dec_2` decimal, `usr_dec_3` decimal, `usr_dt_1` datetime, `usr_dt_2` datetime, `usr_dt_3` datetime )";
                     SQLiteCommand command = m_dbConnection.CreateCommand();
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
@@ -105,8 +77,46 @@ namespace DSC_management
 
                 }
 
+
+
+
+
+
                
             }
+
+
+            System.IO.Directory.CreateDirectory(".\\backup");
+            System.IO.Directory.CreateDirectory(".\\reports");
+            if (!File.Exists(".\\backup.conf"))
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                {
+                    file.WriteLine(DateTime.Now);
+                }
+
+            }
+            else
+            {
+
+                System.IO.StreamReader file1 = new System.IO.StreamReader(".\\backup.conf");
+                String line = file1.ReadLine();
+                file1.Close();
+                if (line == null || (DateTime.Now - DateTime.Parse(line)).Days > 10)
+                {
+
+                    File.Copy("dsc_management.sqlite", Path.Combine(@".\\backup\", "bkp_" + DateTime.Now.ToString("ddMMMMyyyy_HH_mm_ss") + ".bkp"), true);
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(".\\backup.conf", false))
+                    {
+                        file.WriteLine(DateTime.Now);
+
+                    }
+                }
+
+            }
+
+
             Application.Run(new Form1(m_dbConnection));
         }
     }

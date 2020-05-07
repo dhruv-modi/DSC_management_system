@@ -3507,5 +3507,11 @@ namespace DSC_management
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form5 f2 = new Form5(this,m_dbConnection);
+            f2.Show();
+
+        }
     }
 }

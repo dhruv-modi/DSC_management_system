@@ -116,23 +116,30 @@ namespace DSC_management
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
             dateTimePicker3.Value = DateTime.Today;
-            //MessageBox.Show((dateTimePicker1.Value.ToString("yyyy-MM-dd")));
-           
-                //== (dateTimePicker1.Value.Month) )? "0" + dateTimePicker1.Value.Month : dateTimePicker1.Value.Month);
-                //   MessageBox.Show(dateTimePicker1.Value.Year + "-" + (dateTimePicker1.Value.Month.ToString().Length == 1) ? "0" + dateTimePicker1.Value.Month : dateTimePicker1.Value.Month + "-" + dateTimePicker1.Value.Day);
             {
                 comboBox14.Items.Clear();
                 comboBox14.Items.Add("-Select-");
 
                 comboBox14.SelectedItem = "-Select-";
                 sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
-                {
-                    comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
 
+                try
+                {
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+
+                    }
+                    sqlite_datareader.Close();
+                }catch(Exception e)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:139:" + e + "\n\n");
+                    }
+                    MessageBox.Show(" " + e);
                 }
-                sqlite_datareader.Close();
             }//owner
             {
                 comboBox1.Items.Clear();
@@ -141,14 +148,24 @@ namespace DSC_management
                 comboBox13.Items.Clear();
                 comboBox13.Items.Add("-Select-");
                 comboBox13.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
-                    comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                    sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                        comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                    }
+                    sqlite_datareader.Close();
+                }catch(Exception e)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:164:" + e + "\n\n");
+                    }
+                    MessageBox.Show(" " + e );
                 }
-                sqlite_datareader.Close();
             }//employee
             {
                 comboBox2.Items.Clear();
@@ -159,31 +176,51 @@ namespace DSC_management
                 comboBox12.Items.Add("-Select-");
 
                 comboBox12.SelectedItem = "-Select-";
-
-                sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
-                    comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                    sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                        comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
-
+                catch (Exception e)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:193:" + e + "\n\n");
+                    }
+                    MessageBox.Show(" " + e);
+                }
             }//transport
             {
                 comboBox3.Items.Clear();
                 comboBox3.Items.Add("-Select-");
 
                 comboBox3.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox3.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+                    sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox3.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:217:" + e + "\n\n");
+                    }
+                    MessageBox.Show(" " + e);
+                }
             }//activty
             {
                 comboBox7.Items.Clear();
@@ -196,14 +233,25 @@ namespace DSC_management
                 comboBox5.Items.Add("-Select-");
 
                 comboBox5.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+                    sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:247:" + e + "\n\n");
+                    }
+                    MessageBox.Show(" " + e);
+                }
             }//make
             {
                 comboBox4.Items.Add("");
@@ -215,8 +263,7 @@ namespace DSC_management
 
             }
             
-           // MessageBox.Show(textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : dateTimePicker2.Value.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-MM-dd"));
-
+          
             changeDG();
         }
 
@@ -416,41 +463,74 @@ namespace DSC_management
                 comboBox14.Items.Add("-Select-");
 
                 comboBox14.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+                    sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:477:" + e1+"\n\n" );
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }//owner
             {
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add("-Select-");
                 comboBox1.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                    sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:504:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }//employee
             {
                 comboBox2.Items.Clear();
                 comboBox2.Items.Add("-Select-");
 
                 comboBox2.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                    sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:528:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }//transport
             {
@@ -458,14 +538,25 @@ namespace DSC_management
                 comboBox3.Items.Add("-Select-");
                 
                 comboBox3.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                   comboBox3.Items.Add(""+sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+                    sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox3.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:553:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }//activty
             {
                 comboBox7.Items.Clear();
@@ -487,14 +578,25 @@ namespace DSC_management
                 comboBox5.Items.Add("-Select-");
 
                 comboBox5.SelectedItem = "-Select-";
-                sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+                    sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:596:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }//make
 
 
@@ -1188,21 +1290,30 @@ namespace DSC_management
             comboBox10.Items.Add("Inactive");
             comboBox10.SelectedItem = "Active";
 
-            
-            sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            comboBox8.Items.Add("---Select a mode---");
-            comboBox9.Items.Add("---Select a mode---");
-            while (sqlite_datareader.Read())
+            try
             {
-                comboBox8.Items.Add(sqlite_datareader["id"]+"."+sqlite_datareader["transport_mode"]+" ("+ sqlite_datareader["company_name"] + ")");
-                comboBox9.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                comboBox8.Items.Add("---Select a mode---");
+                comboBox9.Items.Add("---Select a mode---");
+                while (sqlite_datareader.Read())
+                {
+                    comboBox8.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                    comboBox9.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
 
+                }
+
+                sqlite_datareader.Close();
             }
-
-            sqlite_datareader.Close();
-
+            catch (Exception e1)
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                {
+                    file.WriteLine(DateTime.Now + ":Form1.cs:1313:" + e1 + "\n\n");
+                }
+                MessageBox.Show(" " + e1);
+            }
 
 
             changeDG();
@@ -1386,143 +1497,172 @@ namespace DSC_management
             {
                 if (updt == 0)
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 0); ";
-                    if (textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show("Activity field cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO activity_master (activity, active) VALUES('" + textBox1.Text + "', 0); ";
+                        if (textBox1.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show("Activity field cannot be empty");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
+
                         }
                     }
-                   
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1520:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
+
                 }
 
 
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update activity_master set activity = '" + textBox1.Text + "', active = '1', updated=current_timestamp where id = " + id : "update activity_master set activity = '" + textBox1.Text + "', active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show("Activity field cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update activity_master set activity = '" + textBox1.Text + "', active = '1', updated=current_timestamp where id = " + id : "update activity_master set activity = '" + textBox1.Text + "', active = '0', updated=current_timestamp where id = " + id;
+                        if (textBox1.Text.Trim().Equals(""))
                         {
+                            MessageBox.Show("Activity field cannot be empty");
+                            stat = 1;
+                        }
+                        else
+                        {
+                                int it = sqlite_cmd.ExecuteNonQuery();
+                           
+                        }
+                    }
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1548:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
 
-                            int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
-                        }
-                    }
-                   
                 }
             }
             if (but_stat == 6)
             {
                 if (updt == 0)
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO employee_master (emp_name, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO employee_master (emp_name, active) VALUES('" + textBox1.Text + "', 0); ";
-                    if (textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show("Emp name cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO employee_master (emp_name, active) VALUES('" + textBox1.Text + "', 1); " : "INSERT INTO employee_master (emp_name, active) VALUES('" + textBox1.Text + "', 0); ";
+                        if (textBox1.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show("Emp name cannot be empty");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-                 
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1578:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
+
                 }
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update employee_master set emp_name = '" + textBox1.Text + "', active = '1', updated=current_timestamp where id = " + id : "update employee_master set emp_name = '" + textBox1.Text + "', active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show("Emp name cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update employee_master set emp_name = '" + textBox1.Text + "', active = '1', updated=current_timestamp where id = " + id : "update employee_master set emp_name = '" + textBox1.Text + "', active = '0', updated=current_timestamp where id = " + id;
+                        if (textBox1.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show("Emp name cannot be empty");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-                    
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1605:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
+
                 }
             }
             if (but_stat == 8)
             {
                 if (updt == 0)
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO make_master (mfg_name, model,color,active) VALUES('" + textBox1.Text + "','" + textBox5.Text + "','" + textBox6.Text + "', 1); " : "INSERT INTO make_master (mfg_name, model,color,active) VALUES('" + textBox1.Text + "','" + textBox5.Text + "','" + textBox6.Text + "', 1); ";
-                    if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals("" ))
+                    try
                     {
-                        MessageBox.Show("Mfg name or color cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "INSERT INTO make_master (mfg_name, model,color,active) VALUES('" + textBox1.Text + "','" + textBox5.Text + "','" + textBox6.Text + "', 1); " : "INSERT INTO make_master (mfg_name, model,color,active) VALUES('" + textBox1.Text + "','" + textBox5.Text + "','" + textBox6.Text + "', 1); ";
+                        if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show("Mfg name or color cannot be empty");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-                   
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1635:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '1', updated=current_timestamp where id = " + id : "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show("Mfg name or color cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox3.SelectedItem.Equals("Active")) ? "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '1', updated=current_timestamp where id = " + id : "update make_master set mfg_name = '" + textBox1.Text + "',model = '" + textBox5.Text + "',color = '" + textBox6.Text + "', active = '0', updated=current_timestamp where id = " + id;
+                        if (textBox1.Text.Trim().Equals("") || textBox6.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show("Mfg name or color cannot be empty");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-                    
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1661:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
+
 
                 }
             }
@@ -1530,27 +1670,30 @@ namespace DSC_management
             {
                 if (updt == 0)
                 {
-                    
-                    if (textBox1.Text.Trim().Equals("---Select a mode---") || comboBox9.SelectedItem.Equals("Active") || comboBox8.SelectedItem.Equals("---Select a mode---"))
+                    try
                     {
-                        MessageBox.Show("Name and inward/outward mode cannot be empty");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        sqlite_cmd.CommandText = (comboBox10.SelectedItem.Equals("Active")) ? "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',1); " : "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',,0); ";
-                        //MessageBox.Show(sqlite_cmd.CommandText);
-                        try
+                        if (textBox1.Text.Trim().Equals("---Select a mode---") || comboBox9.SelectedItem.Equals("Active") || comboBox8.SelectedItem.Equals("---Select a mode---"))
                         {
+                            MessageBox.Show("Name and inward/outward mode cannot be empty");
+                            stat = 1;
+                        }
+                        else
+                        {
+                            sqlite_cmd.CommandText = (comboBox10.SelectedItem.Equals("Active")) ? "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',1); " : "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',,0); ";
+                            //MessageBox.Show(sqlite_cmd.CommandText);
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1693:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }
 
 
@@ -1564,15 +1707,18 @@ namespace DSC_management
                     }
                     else
                     {
+                        try { 
                         sqlite_cmd.CommandText = (comboBox10.SelectedItem.Equals("Active")) ? "update owner_master set owner_name = '" + textBox1.Text + "',address1 = '" + textBox7.Text + "',address2 = '" + textBox8.Text + "',city = '" + textBox9.Text + "',state = '" + textBox10.Text + "',country = '" + textBox11.Text + "',pincode = '" + textBox12.Text + "',sms_contact = '" + textBox4.Text + "',contact_name = '" + textBox13.Text + "',whatsapp_contact = '" + textBox14.Text + "',telegram_contact = '" + textBox15.Text + "',email1 = '" + textBox16.Text + "',email2 = '" + textBox17.Text + "',owner_ref= '" + textBox18.Text + "',default_inward_mode = '" + comboBox8.SelectedItem.ToString().Split('.')[0] + "',default_outward_mode='" + comboBox9.SelectedItem.ToString().Split('.')[0] + "', active = '1', updated=current_timestamp where id = " + id : "update owner_master set owner_name = '" + textBox1.Text + "',address1 = '" + textBox7.Text + "',address2 = '" + textBox8.Text + "',city = '" + textBox9.Text + "',state = '" + textBox10.Text + "',country = '" + textBox11.Text + "',pincode = '" + textBox12.Text + "',sms_contact = '" + textBox4.Text + "',contact_name = '" + textBox13.Text + "',whatsapp_contact = '" + textBox14.Text + "',telegram_contact = '" + textBox15.Text + "',email1 = '" + textBox16.Text + "',email2 = '" + textBox17.Text + "',owner_ref= '" + textBox18.Text + "',default_inward_mode = '" + comboBox8.SelectedItem.ToString().Split('.')[0] + "',default_outward_mode='" + comboBox9.SelectedItem.ToString().Split('.')[0] + "', active = '0', updated=current_timestamp where id = " + id;
-                        try
-                        {
-
+                        
                             int it = sqlite_cmd.ExecuteNonQuery();
                         }
                         catch (Exception e1)
                         {
-                            MessageBox.Show(e1 + "");
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            {
+                                file.WriteLine(DateTime.Now + ":Form1.cs:1719:" + e1 + "\n\n");
+                            }
+                            MessageBox.Show(" " + e1);
                         }
                     }
 
@@ -1582,47 +1728,57 @@ namespace DSC_management
             {
                 if (updt == 0)
                 {
-                    sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "INSERT INTO transportation_master (company_name, contact_num,person_of_contact,transport_mode,fixed_price,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox9.Text + "', '" + textBox4.Text + "','" + textBox14.Text + "', 1); " : "INSERT INTO transportation_master(company_name, contact_num, person_of_contact, transport_mode, fixed_price, active) VALUES('" + textBox1.Text + "', '" + textBox7.Text + "', '" + textBox9.Text + "', '" + textBox4.Text + "', '" + textBox14.Text + "', 0); " ;
-                    if (textBox4.Text.Trim().Equals("")|| textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show(" Transport mode or Company Name cannot be blank");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "INSERT INTO transportation_master (company_name, contact_num,person_of_contact,transport_mode,fixed_price,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox9.Text + "', '" + textBox4.Text + "','" + textBox14.Text + "', 1); " : "INSERT INTO transportation_master(company_name, contact_num, person_of_contact, transport_mode, fixed_price, active) VALUES('" + textBox1.Text + "', '" + textBox7.Text + "', '" + textBox9.Text + "', '" + textBox4.Text + "', '" + textBox14.Text + "', 0); ";
+                        if (textBox4.Text.Trim().Equals("") || textBox1.Text.Trim().Equals(""))
                         {
+                            MessageBox.Show(" Transport mode or Company Name cannot be blank");
+                            stat = 1;
+                        }
+                        else
+                        {
+                            
+                                int it = sqlite_cmd.ExecuteNonQuery();
+                           
+                        }
+                    }
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1756:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
 
-                            int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
-                        }
-                    }
-                    
                 }
                 else
                 {
-                    sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '1', updated=current_timestamp where id = " + id : "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '0', updated=current_timestamp where id = " + id;
-                    if (textBox4.Text.Trim().Equals("") || textBox1.Text.Trim().Equals(""))
+                    try
                     {
-                        MessageBox.Show(" Transport mode or Company Name cannot be blank");
-                        stat = 1;
-                    }
-                    else
-                    {
-                        try
+                        sqlite_cmd.CommandText = (comboBox11.SelectedItem.Equals("Active")) ? "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '1', updated=current_timestamp where id = " + id : "update transportation_master set company_name = '" + textBox1.Text + "',contact_num = '" + textBox7.Text + "',person_of_contact = '" + textBox9.Text + "', transport_mode = '" + textBox4.Text + "', fixed_price = '" + textBox14.Text + "',active = '0', updated=current_timestamp where id = " + id;
+                        if (textBox4.Text.Trim().Equals("") || textBox1.Text.Trim().Equals(""))
+                        {
+                            MessageBox.Show(" Transport mode or Company Name cannot be blank");
+                            stat = 1;
+                        }
+                        else
                         {
 
                             int it = sqlite_cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception e1)
-                        {
-                            MessageBox.Show(e1 + "");
+
                         }
                     }
-                 
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1777:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
+
 
                 }
             }
@@ -1673,22 +1829,24 @@ namespace DSC_management
                     
                     else
                     {
-                        MessageBox.Show((textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : DateTime.Today.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-MM-dd")));
-                        
+                        //MessageBox.Show((textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : DateTime.Today.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-MM-dd")));
+                        try { 
                         sqlite_cmd.CommandText = "INSERT INTO transaction_master (location_ref,owner_name, inward_date,inward_by,receive_mode,activity,dsc_uid,dsc_model,dsc_make,dsc_color,inward_charge,return_init,autoreturn_date," +
                             "autoreturn_days,remarks1) VALUES('" + textBox1.Text + "','" + comboBox14.SelectedItem.ToString() + "',date('" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "')," +
                             "'" + comboBox1.SelectedItem.ToString() + "','" + comboBox2.SelectedItem.ToString() + "','" + comboBox3.SelectedItem.ToString() + "','" + textBox4.Text + "','" + comboBox4.SelectedItem.ToString() + "'," +
                             "'" + comboBox5.SelectedItem.ToString() + "','" + comboBox6.SelectedItem.ToString() + "','" + textBox2.Text + "','" + (comboBox7.SelectedItem.ToString().Equals("Yes") ? "1" : "0") + "'" +
                             ",date('" + (textBox3.Text.Equals("") ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : DateTime.Today.AddDays(Convert.ToDouble(textBox3.Text)).ToString("yyyy-MM-dd")) + "'),'" + textBox3.Text + "','" + textBox23.Text + "'); ";
 
-                        try
-                        {
-
+                    
                             int it = sqlite_cmd.ExecuteNonQuery();
                         }
                         catch (Exception e1)
                         {
-                            MessageBox.Show(e1 + "");
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            {
+                                file.WriteLine(DateTime.Now + ":Form1.cs:1847:" + e1 + "\n\n");
+                            }
+                            MessageBox.Show(" " + e1);
                         }
                     }
                     pending();
@@ -1703,15 +1861,19 @@ namespace DSC_management
                 {
                     if((MessageBox.Show("Do you want to make this transaction invalid ?", "Confirmation Needed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).ToString()).Equals("Yes"))
                     {
+                        try { 
                         sqlite_cmd.CommandText = "update transaction_master set wrong_entry ='1', record_open='0' where id='" + id + "';";
-                        try
-                        {
+                        
 
                             int it = sqlite_cmd.ExecuteNonQuery();
                         }
                         catch (Exception e1)
                         {
-                            MessageBox.Show(e1 + "");
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                            {
+                                file.WriteLine(DateTime.Now + ":Form1.cs:1874:" + e1 + "\n\n");
+                            }
+                            MessageBox.Show(" " + e1);
                         }
                     }
                    
@@ -1742,16 +1904,20 @@ namespace DSC_management
                 else
                 {
 
+                    try { 
                     sqlite_cmd.CommandText = "update transaction_master set outward_date=date('" + dateTimePicker3.Value.ToString("yyyy-MM-dd") + "'),outward_mode='" + comboBox12.SelectedItem.ToString() + "',outward_by='" + comboBox13.SelectedItem.ToString() + "',outward_charges='" + textBox19.Text + "',outward_collected_by='" + textBox20.Text + "',courier_name='" + textBox21.Text + "',courier_track_id='" + textBox22.Text + "',dsc_stayed='" + (dateTimePicker3.Value - dateTimePicker1.Value).Days + "',record_open='0',remarks1='" + textBox23.Text + "' where id='" + id + "';"; 
 
-                    try
-                    {
+                   
 
                         int it = sqlite_cmd.ExecuteNonQuery();
                     }
                     catch (Exception e1)
                     {
-                        MessageBox.Show(e1 + "");
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:1918:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
                     }
 
 
@@ -1822,17 +1988,26 @@ namespace DSC_management
                 dataGridView1.Columns[5].Name = "Fixed Price";
                 dataGridView1.Columns[6].Name = "Status";
 
-
-                sqlite_cmd.CommandText = "SELECT * FROM transportation_master order by datetime(updated) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["company_name"] + "", sqlite_datareader["contact_num"] + "", sqlite_datareader["person_of_contact"] + "", sqlite_datareader["transport_mode"] + "", "₹ "+sqlite_datareader["fixed_price"] ,(sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
+                    sqlite_cmd.CommandText = "SELECT * FROM transportation_master order by datetime(updated) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["company_name"] + "", sqlite_datareader["contact_num"] + "", sqlite_datareader["person_of_contact"] + "", sqlite_datareader["transport_mode"] + "", "₹ " + sqlite_datareader["fixed_price"], (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
 
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2007:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             if (but_stat == 9)
@@ -1878,26 +2053,28 @@ namespace DSC_management
                 dataGridView1.Columns[16].Name = "Default Outward Mode";
                 dataGridView1.Columns[17].Name = "Active Status";
 
-                SQLiteDataReader dr;
-                sqlite_cmd.CommandText = "SELECT * FROM owner_master order by datetime(updated) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
+                    SQLiteDataReader dr;
+                    sqlite_cmd.CommandText = "SELECT * FROM owner_master order by datetime(updated) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
 
-                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"]; 
-                   
-                    dr = sqlite_cmd1.ExecuteReader();
-                    dr.Read();
-                    String inc = dr["transport_mode"] +" ( "+dr["company_name"] +" )";
-                    dr.Close();
-                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
-                    dr = sqlite_cmd1.ExecuteReader();
-                    dr.Read();
-                    String outw = dr["transport_mode"] + " ( " + dr["company_name"] + " )";
-                    dr.Close();
+                        sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
 
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                        dr = sqlite_cmd1.ExecuteReader();
+                        dr.Read();
+                        String inc = dr["transport_mode"] + " ( " + dr["company_name"] + " )";
+                        dr.Close();
+                        sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
+                        dr = sqlite_cmd1.ExecuteReader();
+                        dr.Read();
+                        String outw = dr["transport_mode"] + " ( " + dr["company_name"] + " )";
+                        dr.Close();
+
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                         sqlite_datareader["owner_name"] + "",
                         sqlite_datareader["address1"] + "",
                         sqlite_datareader["address2"] + "",
@@ -1916,10 +2093,18 @@ namespace DSC_management
                         outw,
                         (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
 
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2104:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             if (but_stat==8)
@@ -1939,15 +2124,26 @@ namespace DSC_management
                 dataGridView1.Columns[2].Name = "model";
                 dataGridView1.Columns[3].Name = "color";
                 dataGridView1.Columns[4].Name = "Active Status";
-                sqlite_cmd.CommandText = "SELECT * FROM make_master order by datetime(updated) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["mfg_name"] + "", sqlite_datareader["model"] + "", sqlite_datareader["color"] + "",(sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
+                    sqlite_cmd.CommandText = "SELECT * FROM make_master order by datetime(updated) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["mfg_name"] + "", sqlite_datareader["model"] + "", sqlite_datareader["color"] + "", (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
 
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2143:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             if (but_stat == 6)
@@ -1962,16 +2158,26 @@ namespace DSC_management
                 dataGridView1.Columns[0].Name = "ID";
                 dataGridView1.Columns[1].Name = "Emp Name";
                 dataGridView1.Columns[2].Name = "Active Status";
-
-                sqlite_cmd.CommandText = "SELECT * FROM employee_master order by datetime(updated) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["emp_name"] + "", (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
+                    sqlite_cmd.CommandText = "SELECT * FROM employee_master order by datetime(updated) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["emp_name"] + "", (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
 
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2177:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             if (but_stat==7)
@@ -1986,17 +2192,26 @@ namespace DSC_management
                 dataGridView1.Columns[0].Name = "ID";
                 dataGridView1.Columns[1].Name = "Activity";
                 dataGridView1.Columns[2].Name = "Active Status";
-
-                sqlite_cmd.CommandText = "SELECT * FROM activity_master order by datetime(updated) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",sqlite_datareader["activity"] + "", (sqlite_datareader["active"] + "").Equals("1")?"Active":"Inactive" });
-                   
+                    sqlite_cmd.CommandText = "SELECT * FROM activity_master order by datetime(updated) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "", sqlite_datareader["activity"] + "", (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive" });
+
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2211:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
 
             if (but_stat == 11)
@@ -2032,15 +2247,16 @@ namespace DSC_management
                 dataGridView1.Columns[22].Name = "Courier Track ID";
                 dataGridView1.Columns[23].Name = "Last Modified";
                 dataGridView1.Columns[24].Name = "Remarks";
-               
-                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 and record_open='1' order by datetime(last_modified) desc";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM transaction_master where wrong_entry=0 and record_open='1' order by datetime(last_modified) desc";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
-                    
 
-                             dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                             sqlite_datareader["location_ref"] + "",
                             sqlite_datareader["owner_name"] + "",
                             sqlite_datareader["trans_date"] + "",
@@ -2053,7 +2269,7 @@ namespace DSC_management
                             sqlite_datareader["dsc_make"]+"",
                             sqlite_datareader["dsc_color"]+"",
                             sqlite_datareader["inward_charge"]+"",
-                            (sqlite_datareader["return_init"]+"").Equals("0")?"False":"True",                        
+                            (sqlite_datareader["return_init"]+"").Equals("0")?"False":"True",
                             sqlite_datareader["autoreturn_date"]+"",
                             sqlite_datareader["autoreturn_days"]+"",
                             sqlite_datareader["outward_date"]+"",
@@ -2068,11 +2284,19 @@ namespace DSC_management
 
                              });
 
+                    }
+
+                    sqlite_datareader.Close();
+
                 }
-
-                sqlite_datareader.Close();
-
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2296:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
 
 
@@ -2128,37 +2352,48 @@ namespace DSC_management
 
             if (but_stat == 11 && inco == 1)
             {
-                SQLiteCommand sqlite_cmd1;
-                SQLiteDataReader sqlite_datareader1;
-                
+                try
+                {
+                    SQLiteCommand sqlite_cmd1;
+                    SQLiteDataReader sqlite_datareader1;
+
                     sqlite_cmd1 = m_dbConnection.CreateCommand();
 
 
                     sqlite_cmd1.CommandText = "SELECT * FROM transaction_master where id =" + id;
-                sqlite_datareader1 = sqlite_cmd1.ExecuteReader();
-                sqlite_datareader1.Read();
-                //comboBox4.SelectedItem= sqlite_datareader["owner_name"] + "";
-         
-                textBox1.Text = sqlite_datareader1["location_ref"] + "";
-                dateTimePicker1.Value = Convert.ToDateTime(sqlite_datareader1["inward_date"] + "");
-                comboBox14.SelectedItem= sqlite_datareader1["owner_name"] + "";
-               
-                comboBox1.SelectedItem = sqlite_datareader1["inward_by"] + "";
-                comboBox2.SelectedItem = sqlite_datareader1["receive_mode"] + "";
-                comboBox3.SelectedItem = sqlite_datareader1["activity"] + "";
-                textBox4.Text = sqlite_datareader1["dsc_uid"] + "";
-                comboBox4.SelectedItem = sqlite_datareader1["dsc_model"] + "";
-                comboBox5.SelectedItem = sqlite_datareader1["dsc_make"] + "";
-                comboBox6.SelectedItem = sqlite_datareader1["dsc_color"] + "";
-                textBox2.Text = sqlite_datareader1["inward_charge"] + "";
-                comboBox7.SelectedItem= (sqlite_datareader1["return_init"] + "").Equals("1")?"Yes":"No";
-                textBox3.Text = sqlite_datareader1["autoreturn_days"] + "";
-             //   MessageBox.Show(sqlite_datareader1["autoreturn_date"] + "");
-                //dateTimePicker2.Value= Convert.ToDateTime(sqlite_datareader1["autoreturn_date"] + "");
-                textBox23.Text= sqlite_datareader1["remarks1"] + "";
+                    sqlite_datareader1 = sqlite_cmd1.ExecuteReader();
+                    sqlite_datareader1.Read();
+                    //comboBox4.SelectedItem= sqlite_datareader["owner_name"] + "";
 
-                //comboBox3.SelectedItem = (sqlite_datareader1["active"] + "").Equals("1") ? "Active" : "Inactive";
-                sqlite_datareader1.Close();
+                    textBox1.Text = sqlite_datareader1["location_ref"] + "";
+                    dateTimePicker1.Value = Convert.ToDateTime(sqlite_datareader1["inward_date"] + "");
+                    comboBox14.SelectedItem = sqlite_datareader1["owner_name"] + "";
+
+                    comboBox1.SelectedItem = sqlite_datareader1["inward_by"] + "";
+                    comboBox2.SelectedItem = sqlite_datareader1["receive_mode"] + "";
+                    comboBox3.SelectedItem = sqlite_datareader1["activity"] + "";
+                    textBox4.Text = sqlite_datareader1["dsc_uid"] + "";
+                    comboBox4.SelectedItem = sqlite_datareader1["dsc_model"] + "";
+                    comboBox5.SelectedItem = sqlite_datareader1["dsc_make"] + "";
+                    comboBox6.SelectedItem = sqlite_datareader1["dsc_color"] + "";
+                    textBox2.Text = sqlite_datareader1["inward_charge"] + "";
+                    comboBox7.SelectedItem = (sqlite_datareader1["return_init"] + "").Equals("1") ? "Yes" : "No";
+                    textBox3.Text = sqlite_datareader1["autoreturn_days"] + "";
+                    //   MessageBox.Show(sqlite_datareader1["autoreturn_date"] + "");
+                    //dateTimePicker2.Value= Convert.ToDateTime(sqlite_datareader1["autoreturn_date"] + "");
+                    textBox23.Text = sqlite_datareader1["remarks1"] + "";
+
+                    //comboBox3.SelectedItem = (sqlite_datareader1["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    sqlite_datareader1.Close();
+                }
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2393:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
                 label11.Enabled = false;
                 label8.Enabled = false;
                 label10.Enabled = false;
@@ -2175,113 +2410,165 @@ namespace DSC_management
 
             else if (but_stat == 6)
             {
-                sqlite_cmd.CommandText = "SELECT * FROM employee_master where id =" + id;
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    textBox1.Text = sqlite_datareader["emp_name"] + "";
+                    sqlite_cmd.CommandText = "SELECT * FROM employee_master where id =" + id;
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        textBox1.Text = sqlite_datareader["emp_name"] + "";
 
-                    comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                        comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2429:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
             else if (but_stat==7)
             {
-                sqlite_cmd.CommandText = "SELECT * FROM activity_master where id ="+id;
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM activity_master where id =" + id;
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
 
-                    textBox1.Text = sqlite_datareader["activity"] + "";
-                    comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                        textBox1.Text = sqlite_datareader["activity"] + "";
+                        comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    }
+
+                    sqlite_datareader.Close();
                 }
-
-                sqlite_datareader.Close();
-            
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2434:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
             else if (but_stat == 8)
             {
-                sqlite_cmd.CommandText = "SELECT * FROM make_master where id =" + id;
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM make_master where id =" + id;
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
 
-                    textBox1.Text = sqlite_datareader["mfg_name"] + "";
-                    textBox5.Text = sqlite_datareader["model"] + "";
-                    textBox6.Text = sqlite_datareader["color"] + "";
-                    comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                        textBox1.Text = sqlite_datareader["mfg_name"] + "";
+                        textBox5.Text = sqlite_datareader["model"] + "";
+                        textBox6.Text = sqlite_datareader["color"] + "";
+                        comboBox3.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2480:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             else if (but_stat == 10)
             {
-                sqlite_cmd.CommandText = "SELECT * FROM transportation_master where id =" + id;
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM transportation_master where id =" + id;
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
 
-                    textBox1.Text = sqlite_datareader["company_name"] + "";
-                    textBox7.Text = sqlite_datareader["contact_num"] + "";
-                    textBox9.Text = sqlite_datareader["person_of_contact"] + "";
-                    textBox4.Text = sqlite_datareader["transport_mode"] + "";
-                    textBox14.Text = sqlite_datareader["fixed_price"] + "";
+                        textBox1.Text = sqlite_datareader["company_name"] + "";
+                        textBox7.Text = sqlite_datareader["contact_num"] + "";
+                        textBox9.Text = sqlite_datareader["person_of_contact"] + "";
+                        textBox4.Text = sqlite_datareader["transport_mode"] + "";
+                        textBox14.Text = sqlite_datareader["fixed_price"] + "";
 
 
-                    comboBox11.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                        comboBox11.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2511:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
 
             }
             else if (but_stat == 9)
             {
-                sqlite_cmd.CommandText = "SELECT * FROM owner_master where id =" + id;
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM owner_master where id =" + id;
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
-                    textBox1.Text = sqlite_datareader["owner_name"] + "";
-                    textBox7.Text = sqlite_datareader["address1"] + "";
-                    textBox8.Text = sqlite_datareader["address2"] + "";
-                    textBox9.Text = sqlite_datareader["city"] + "";
-                    textBox10.Text = sqlite_datareader["state"] + "";
-                    textBox11.Text = sqlite_datareader["country"] + "";
-                    textBox12.Text = sqlite_datareader["pincode"] + "";
-                    textBox4.Text = sqlite_datareader["sms_contact"] + "";
-                    textBox13.Text = sqlite_datareader["contact_name"] + "";
-                    textBox14.Text = sqlite_datareader["whatsapp_contact"] + "";
-                    textBox15.Text = sqlite_datareader["telegram_contact"] + "";
-                    textBox16.Text = sqlite_datareader["email1"] + "";
-                    textBox17.Text = sqlite_datareader["email2"] + "";
-                    textBox18.Text = sqlite_datareader["owner_ref"] + "";
+                        textBox1.Text = sqlite_datareader["owner_name"] + "";
+                        textBox7.Text = sqlite_datareader["address1"] + "";
+                        textBox8.Text = sqlite_datareader["address2"] + "";
+                        textBox9.Text = sqlite_datareader["city"] + "";
+                        textBox10.Text = sqlite_datareader["state"] + "";
+                        textBox11.Text = sqlite_datareader["country"] + "";
+                        textBox12.Text = sqlite_datareader["pincode"] + "";
+                        textBox4.Text = sqlite_datareader["sms_contact"] + "";
+                        textBox13.Text = sqlite_datareader["contact_name"] + "";
+                        textBox14.Text = sqlite_datareader["whatsapp_contact"] + "";
+                        textBox15.Text = sqlite_datareader["telegram_contact"] + "";
+                        textBox16.Text = sqlite_datareader["email1"] + "";
+                        textBox17.Text = sqlite_datareader["email2"] + "";
+                        textBox18.Text = sqlite_datareader["owner_ref"] + "";
 
-                    SQLiteDataReader dr;
-                    SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
+                        SQLiteDataReader dr;
+                        SQLiteCommand sqlite_cmd1 = m_dbConnection.CreateCommand();
 
-                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
-                    dr = sqlite_cmd1.ExecuteReader();
-                    dr.Read();
+                        sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_inward_mode"];
+                        dr = sqlite_cmd1.ExecuteReader();
+                        dr.Read();
 
-                    comboBox8.SelectedItem = sqlite_datareader["default_inward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")";
-                    dr.Close();
+                        comboBox8.SelectedItem = sqlite_datareader["default_inward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")";
+                        dr.Close();
 
-                    sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
-                    dr = sqlite_cmd1.ExecuteReader();
-                    dr.Read();
+                        sqlite_cmd1.CommandText = "SELECT company_name,transport_mode FROM transportation_master where id=" + sqlite_datareader["default_outward_mode"];
+                        dr = sqlite_cmd1.ExecuteReader();
+                        dr.Read();
 
-                    comboBox9.SelectedItem = sqlite_datareader["default_outward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")";
-                    dr.Close();
+                        comboBox9.SelectedItem = sqlite_datareader["default_outward_mode"] + "." + dr["transport_mode"] + " (" + dr["company_name"] + ")";
+                        dr.Close();
 
 
 
-                    comboBox10.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                        comboBox10.SelectedItem = (sqlite_datareader["active"] + "").Equals("1") ? "Active" : "Inactive";
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:2568:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
         }
 
@@ -2442,14 +2729,25 @@ namespace DSC_management
                     comboBox14.Items.Add("-Select-");
 
                     comboBox14.SelectedItem = "-Select-";
-                    sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
+                        sqlite_cmd.CommandText = "SELECT id,owner_name FROM owner_master where active=1 order by owner_name asc";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read())
+                        {
+                            comboBox14.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["owner_name"] + "");
 
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:2747:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }//owner
                 {
                     comboBox1.Items.Clear();
@@ -2458,14 +2756,25 @@ namespace DSC_management
                     comboBox13.Items.Clear();
                     comboBox13.Items.Add("-Select-");
                     comboBox13.SelectedItem = "-Select-";
-                    sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
-                        comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                        sqlite_cmd.CommandText = "SELECT id,emp_name FROM employee_master where active=1  order by emp_name asc";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read())
+                        {
+                            comboBox1.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                            comboBox13.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["emp_name"]);
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:2774:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }//employee
                 {
                     comboBox2.Items.Clear();
@@ -2476,31 +2785,51 @@ namespace DSC_management
                     comboBox12.Items.Add("-Select-");
 
                     comboBox12.SelectedItem = "-Select-";
-
-                    sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
-                        comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                        sqlite_cmd.CommandText = "SELECT id,company_name,transport_mode FROM transportation_master where active=1 order by transport_mode asc";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read())
+                        {
+                            comboBox2.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
+                            comboBox12.Items.Add(sqlite_datareader["id"] + "." + sqlite_datareader["transport_mode"] + " (" + sqlite_datareader["company_name"] + ")");
 
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
-
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:2804:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }//transport
                 {
                     comboBox3.Items.Clear();
                     comboBox3.Items.Add("-Select-");
 
                     comboBox3.SelectedItem = "-Select-";
-                    sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        comboBox3.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
+                        sqlite_cmd.CommandText = "SELECT id,activity FROM activity_master where active=1 order by activity asc ";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read())
+                        {
+                            comboBox3.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["activity"]);
 
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:2829:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }//activty
                 {
                     comboBox7.Items.Clear();
@@ -2513,14 +2842,25 @@ namespace DSC_management
                     comboBox5.Items.Add("-Select-");
 
                     comboBox5.SelectedItem = "-Select-";
-                    sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
+                        sqlite_cmd.CommandText = "SELECT id,mfg_name FROM make_master where active=1 order by mfg_name asc ";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+                        while (sqlite_datareader.Read())
+                        {
+                            comboBox5.Items.Add("" + sqlite_datareader["id"] + "." + sqlite_datareader["mfg_name"]);
 
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:2860:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
                 }//make
 
 
@@ -2830,17 +3170,27 @@ namespace DSC_management
 
                 comboBox4.SelectedItem = "";
                 comboBox6.SelectedItem = "";
-
-                sqlite_cmd.CommandText = "SELECT model,color FROM make_master where id="+comboBox5.Text.Split('.')[0]+" ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
-                    comboBox4.Items.Add("" + sqlite_datareader["model"] );
-                    comboBox6.Items.Add("" + sqlite_datareader["color"]);
-                 
+                    sqlite_cmd.CommandText = "SELECT model,color FROM make_master where id=" + comboBox5.Text.Split('.')[0] + " ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
+                        comboBox4.Items.Add("" + sqlite_datareader["model"]);
+                        comboBox6.Items.Add("" + sqlite_datareader["color"]);
 
+
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:3190:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
             }
             else
             {
@@ -2858,22 +3208,32 @@ namespace DSC_management
             {
                 if (!comboBox14.SelectedItem.Equals("-Select-"))
                 {
-
-                    sqlite_cmd.CommandText = "SELECT default_inward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
-                    sqlite_datareader = sqlite_cmd.ExecuteReader();
-
-                    while (sqlite_datareader.Read())
+                    try
                     {
-                        SQLiteCommand cmd = m_dbConnection.CreateCommand();
-                        cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_inward_mode"];
-                        SQLiteDataReader dd = cmd.ExecuteReader();
-                        dd.Read();
-                        // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
-                        comboBox2.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
+                        sqlite_cmd.CommandText = "SELECT default_inward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
+                        sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+                        while (sqlite_datareader.Read())
+                        {
+                            SQLiteCommand cmd = m_dbConnection.CreateCommand();
+                            cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_inward_mode"];
+                            SQLiteDataReader dd = cmd.ExecuteReader();
+                            dd.Read();
+                            // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
+                            comboBox2.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
 
 
+                        }
+                        sqlite_datareader.Close();
                     }
-                    sqlite_datareader.Close();
+                    catch (Exception e1)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                        {
+                            file.WriteLine(DateTime.Now + ":Form1.cs:3233:" + e1 + "\n\n");
+                        }
+                        MessageBox.Show(" " + e1);
+                    }
 
                 }
             }
@@ -2881,23 +3241,32 @@ namespace DSC_management
             {
 
 
-
-                sqlite_cmd.CommandText = "SELECT default_outward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-
-                while (sqlite_datareader.Read())
+                try
                 {
-                    SQLiteCommand cmd = m_dbConnection.CreateCommand();
-                    cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_outward_mode"];
-                    SQLiteDataReader dd = cmd.ExecuteReader();
-                    dd.Read();
-                    // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
-                    comboBox12.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
+                    sqlite_cmd.CommandText = "SELECT default_outward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+                    while (sqlite_datareader.Read())
+                    {
+                        SQLiteCommand cmd = m_dbConnection.CreateCommand();
+                        cmd.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + sqlite_datareader["default_outward_mode"];
+                        SQLiteDataReader dd = cmd.ExecuteReader();
+                        dd.Read();
+                        // MessageBox.Show(dd["id"] + "." + sqlite_datareader["default_inward_mode"]);
+                        comboBox12.SelectedItem = dd["id"] + "." + dd["transport_mode"] + " (" + dd["company_name"] + ")";
 
 
+                    }
+                    sqlite_datareader.Close();
                 }
-                sqlite_datareader.Close();
-
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:3266:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
+                }
                 button12.Text = "Submit";
                 button13.Text = "Reset";
                 
@@ -2914,16 +3283,17 @@ namespace DSC_management
                 dataGridView1.Columns[7].Name = "Inward Date";
                 dataGridView1.Columns[8].Name = "Inward By";
                 dataGridView1.Columns[9].Name = "Remarks";
-                
-                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where record_open='1' and wrong_entry='0' and owner_name='"+comboBox14.SelectedItem+ "' order  by datetime(last_modified) desc";
-                
-                sqlite_datareader = sqlite_cmd.ExecuteReader();
-                while (sqlite_datareader.Read())
+                try
                 {
+                    sqlite_cmd.CommandText = "SELECT * FROM transaction_master where record_open='1' and wrong_entry='0' and owner_name='" + comboBox14.SelectedItem + "' order  by datetime(last_modified) desc";
+
+                    sqlite_datareader = sqlite_cmd.ExecuteReader();
+                    while (sqlite_datareader.Read())
+                    {
 
 
 
-                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                        dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                             sqlite_datareader["location_ref"] + "",
                             sqlite_datareader["activity"] + "",
                               sqlite_datareader["dsc_uid"]+"",
@@ -2936,15 +3306,23 @@ namespace DSC_management
 
                              });
 
+                    }
+
+                    sqlite_datareader.Close();
+
+                }
+                catch (Exception e1)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now + ":Form1.cs:3318:" + e1 + "\n\n");
+                    }
+                    MessageBox.Show(" " + e1);
                 }
 
-                sqlite_datareader.Close();
 
 
-            
-
-
-        } 
+            } 
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -3034,27 +3412,49 @@ namespace DSC_management
         }
         private void pending()
         {
-            sqlite_cmd.CommandText = "SELECT count(*) FROM transaction_master where record_open='1' and wrong_entry='0'  order  by datetime(last_modified) desc";
+            try
+            {
+                sqlite_cmd.CommandText = "SELECT count(*) FROM transaction_master where record_open='1' and wrong_entry='0'  order  by datetime(last_modified) desc";
 
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            sqlite_datareader.Read();
-            label33.Text = sqlite_datareader["count(*)"] + "";
-            sqlite_datareader.Close();
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                sqlite_datareader.Read();
+                label33.Text = sqlite_datareader["count(*)"] + "";
+                sqlite_datareader.Close();
+            }
+            catch (Exception e1)
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                {
+                    file.WriteLine(DateTime.Now + ":Form1.cs:3428:" + e1 + "\n\n");
+                }
+                MessageBox.Show(" " + e1);
+            }
         }
         private void alert()
         {
-            sqlite_cmd.CommandText = "select count(*) from transaction_master where (julianday(autoreturn_date) - julianday('now')) < 1 and record_open = 1 and wrong_entry = 0;";
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            sqlite_datareader.Read();
-            if( Int32.Parse(sqlite_datareader["count(*)"] + "")>0)
+            try
             {
-                label37.Visible = true;
+                sqlite_cmd.CommandText = "select count(*) from transaction_master where (julianday(autoreturn_date) - julianday('now')) < 1 and record_open = 1 and wrong_entry = 0;";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                sqlite_datareader.Read();
+                if (Int32.Parse(sqlite_datareader["count(*)"] + "") > 0)
+                {
+                    label37.Visible = true;
+                }
+                else
+                {
+                    label37.Visible = false;
+                }
+                sqlite_datareader.Close();
             }
-            else
+            catch (Exception e1)
             {
-                label37.Visible = false;
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                {
+                    file.WriteLine(DateTime.Now + ":Form1.cs:3454:" + e1 + "\n\n");
+                }
+                MessageBox.Show(" " + e1);
             }
-            sqlite_datareader.Close();
         }
         private void pendingdg()
         {
@@ -3181,16 +3581,17 @@ namespace DSC_management
             dataGridView1.Columns[8].Name = "Inward Date";
             dataGridView1.Columns[9].Name = "Inward By";
             dataGridView1.Columns[10].Name = "Remarks";
-
-            sqlite_cmd.CommandText = "SELECT * FROM transaction_master where record_open='1' and wrong_entry='0'  order  by datetime(last_modified) desc";
-
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
+            try
             {
+                sqlite_cmd.CommandText = "SELECT * FROM transaction_master where record_open='1' and wrong_entry='0'  order  by datetime(last_modified) desc";
+
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
 
 
 
-                dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                             sqlite_datareader["location_ref"] + "",
                             sqlite_datareader["owner_name"] + "",
                             sqlite_datareader["activity"] + "",
@@ -3204,10 +3605,18 @@ namespace DSC_management
 
                              });
 
+                }
+
+                sqlite_datareader.Close();
             }
-
-            sqlite_datareader.Close();
-
+            catch (Exception e1)
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                {
+                    file.WriteLine(DateTime.Now + ":Form1.cs:3616:" + e1 + "\n\n");
+                }
+                MessageBox.Show(" " + e1);
+            }
 
 
 
@@ -3382,16 +3791,17 @@ namespace DSC_management
             dataGridView1.Columns[9].Name = "Inward By";
             dataGridView1.Columns[10].Name = "Return Date";
             dataGridView1.Columns[11].Name = "Remarks";
-
-            sqlite_cmd.CommandText = "select * from transaction_master where (julianday(autoreturn_date)-julianday('now'))<1 and record_open=1 and wrong_entry=0;  order  by datetime(last_modified) desc";
-
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
+            try
             {
+                sqlite_cmd.CommandText = "select * from transaction_master where (julianday(autoreturn_date)-julianday('now'))<1 and record_open=1 and wrong_entry=0;  order  by datetime(last_modified) desc";
+
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
 
 
 
-                dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
+                    dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                             sqlite_datareader["location_ref"] + "",
                             sqlite_datareader["owner_name"] + "",
                             sqlite_datareader["activity"] + "",
@@ -3406,10 +3816,18 @@ namespace DSC_management
 
                              });
 
-            }
+                }
 
-            sqlite_datareader.Close();
-            
+                sqlite_datareader.Close();
+            }
+            catch (Exception e1)
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                {
+                    file.WriteLine(DateTime.Now + ":Form1.cs:3827:" + e1 + "\n\n");
+                }
+                MessageBox.Show(" " + e1);
+            }
 
         }
 

@@ -20,7 +20,7 @@ namespace DSC_management
             Application.SetCompatibleTextRenderingDefault(false);
             SQLiteConnection m_dbConnection;
 
-           
+            
             if (File.Exists(System.IO.Directory.GetCurrentDirectory() +"\\dsc_management.sqlite"))
             {
 
@@ -67,15 +67,18 @@ namespace DSC_management
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
 
-
+                    
 
                 }
                 catch (Exception e)
                 {
-
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Directory.GetCurrentDirectory() + "\\DSC.log", true))
+                    {
+                        file.WriteLine(DateTime.Now+":Program.cs:77:"+e + "\n\n");
+                    }
                     MessageBox.Show(" "+ e + Environment.NewLine);
-
-
+                    
+                    
                 }
 
 

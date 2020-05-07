@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DSC_management
 {
@@ -19,6 +20,9 @@ namespace DSC_management
         int pendaler = 0;
         int id = 0;
         int updt = 0;
+        Regex regex1 = new Regex("^[a-zA-Z]+[a-zA-Z0-9]+[[a-zA-Z0-9-_.!#$%'*+/=?^]{1,20}@[a-zA-Z0-9]{1,20}.[a-zA-Z]{2,3}$");
+
+
         Form3 f3;
         SQLiteCommand sqlite_cmd;
         SQLiteConnection m_dbConnection;
@@ -281,7 +285,7 @@ namespace DSC_management
         {
             
             but_stat = 7;
-
+            textBox1.MaxLength = 30;
             button1.Enabled = false;
             button2.Enabled=false;
 
@@ -445,9 +449,15 @@ namespace DSC_management
         private void button11_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 11;
-
+            pendaler = 0;
             button1.Enabled = true;
             button2.Enabled = true;
+            textBox1.MaxLength = 50;
+            textBox4.MaxLength = 20;
+            textBox20.MaxLength = 30;
+            textBox21.MaxLength = 30;
+            textBox22.MaxLength = 30;
+            textBox23.MaxLength = 100;
 
             button1.BackColor = System.Drawing.Color.GreenYellow;
             button2.BackColor = System.Drawing.Color.Tomato;
@@ -788,7 +798,7 @@ namespace DSC_management
         private void button6_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 6;
-
+            textBox1.MaxLength = 30;
             button1.Enabled = false;
             button2.Enabled = false;
 
@@ -950,7 +960,9 @@ namespace DSC_management
         private void button8_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 8;
-
+            textBox1.MaxLength = 30;
+            textBox7.MaxLength = 30;
+            textBox6.MaxLength = 20;
             button1.Enabled = false;
             button2.Enabled = false;
 
@@ -1114,6 +1126,20 @@ namespace DSC_management
         private void button9_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 9;
+            textBox1.MaxLength = 30;
+            textBox7.MaxLength = 30;
+            textBox8.MaxLength = 30;
+            textBox9.MaxLength = 30;
+            textBox10.MaxLength = 30;
+            textBox11.MaxLength = 30;
+            textBox12.MaxLength = 10;
+            textBox4.MaxLength = 12;
+            textBox13.MaxLength = 30;
+            textBox14.MaxLength = 12;
+            textBox15.MaxLength = 12;
+            textBox16.MaxLength = 100;
+            textBox17.MaxLength = 100;
+            textBox18.MaxLength = 50;
 
             button1.Enabled = false;
             button2.Enabled = false;
@@ -1322,6 +1348,10 @@ namespace DSC_management
         private void button10_MouseClick(object sender, MouseEventArgs e)
         {
             but_stat = 10;
+            textBox1.MaxLength = 30;
+            textBox7.MaxLength = 12;
+            textBox9.MaxLength = 30;
+            textBox4.MaxLength = 30;
 
             button1.BackColor = System.Drawing.Color.White;
             button2.BackColor = System.Drawing.Color.White;
@@ -1335,6 +1365,7 @@ namespace DSC_management
             button1.Enabled = false;
             button2.Enabled = false;
 
+            comboBox11.Items.Clear();
             comboBox11.Items.Add("Active");
             comboBox11.Items.Add("Inactive");
             comboBox11.SelectedItem = "Active";
@@ -1677,6 +1708,31 @@ namespace DSC_management
                             MessageBox.Show("Name and inward/outward mode cannot be empty");
                             stat = 1;
                         }
+                        else if (!textBox4.Text.Equals("") && textBox4.Text.Length < 10)
+                        {
+                            MessageBox.Show(" Contact Number is less than 10 digits");
+                            stat = 1;
+                        }
+                        else if (!textBox14.Text.Equals("") && textBox14.Text.Length < 10)
+                        {
+                            MessageBox.Show(" Contact Number is less than 10 digits");
+                            stat = 1;
+                        }
+                        else if (!textBox15.Text.Equals("") && textBox15.Text.Length < 10)
+                        {
+                            MessageBox.Show(" Contact Number is less than 10 digits");
+                            stat = 1;
+                        }
+                         else if (!textBox17.Text.Equals("") && !regex1.IsMatch(textBox17.Text))
+                        {
+                            MessageBox.Show(" Email address format for email 2 is not correct");
+                            stat = 1;
+                        }
+                        else if (!textBox16.Text.Equals("") && !regex1.IsMatch(textBox16.Text))
+                        {
+                            MessageBox.Show(" Email address format for email 1 is not correct");
+                            stat = 1;
+                        }
                         else
                         {
                             sqlite_cmd.CommandText = (comboBox10.SelectedItem.Equals("Active")) ? "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',1); " : "INSERT INTO owner_master (owner_name,address1,address2,city,state,country,pincode,sms_contact,contact_name,whatsapp_contact,telegram_contact,email1,email2,owner_ref,default_inward_mode,default_outward_mode,active) VALUES('" + textBox1.Text + "','" + textBox7.Text + "','" + textBox8.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox12.Text + "','" + textBox4.Text + "','" + textBox13.Text + "','" + textBox14.Text + "','" + textBox15.Text + "','" + textBox16.Text + "','" + textBox17.Text + "','" + textBox18.Text + "','" + comboBox8.SelectedItem.ToString().Split('.')[0] + "','" + comboBox9.SelectedItem.ToString().Split('.')[0] + "',,0); ";
@@ -1734,6 +1790,11 @@ namespace DSC_management
                         if (textBox4.Text.Trim().Equals("") || textBox1.Text.Trim().Equals(""))
                         {
                             MessageBox.Show(" Transport mode or Company Name cannot be blank");
+                            stat = 1;
+                        }
+                        else if(!textBox7.Text.Equals("") &&  textBox7.Text.Length<10)
+                        {
+                            MessageBox.Show(" Contact Number is less than 10 digits");
                             stat = 1;
                         }
                         else
@@ -2356,8 +2417,10 @@ namespace DSC_management
                 {
                     SQLiteCommand sqlite_cmd1;
                     SQLiteDataReader sqlite_datareader1;
-
+                    SQLiteCommand sqlite_cmd2;
+                    SQLiteDataReader dd1;
                     sqlite_cmd1 = m_dbConnection.CreateCommand();
+                    sqlite_cmd2 = m_dbConnection.CreateCommand();
 
 
                     sqlite_cmd1.CommandText = "SELECT * FROM transaction_master where id =" + id;
@@ -2368,6 +2431,20 @@ namespace DSC_management
                     textBox1.Text = sqlite_datareader1["location_ref"] + "";
                     dateTimePicker1.Value = Convert.ToDateTime(sqlite_datareader1["inward_date"] + "");
                     comboBox14.SelectedItem = sqlite_datareader1["owner_name"] + "";
+
+                    sqlite_cmd2.CommandText = "select default_outward_mode from owner_master where id='" + sqlite_datareader1["owner_name"].ToString().Split('.')[0] + "'";
+                    dd1 = sqlite_cmd2.ExecuteReader();
+                    dd1.Read();
+                    String ss = dd1["default_outward_mode"]+"";
+                    dd1.Close();
+                    
+                    sqlite_cmd2.CommandText = "SELECT id, company_name, transport_mode FROM transportation_master where id = " + ss;
+                    dd1 = sqlite_cmd2.ExecuteReader();
+                    dd1.Read();
+                    comboBox12.SelectedItem = dd1["id"] + "." + dd1["transport_mode"] + " (" + dd1["company_name"] + ")";
+
+
+
 
                     comboBox1.SelectedItem = sqlite_datareader1["inward_by"] + "";
                     comboBox2.SelectedItem = sqlite_datareader1["receive_mode"] + "";
@@ -2406,6 +2483,7 @@ namespace DSC_management
                 comboBox15.Items.Add("False");
                 comboBox15.SelectedItem = "False";
                 comboBox15.BackColor = System.Drawing.Color.GreenYellow;
+              
             }
 
             else if (but_stat == 6)
@@ -3049,6 +3127,7 @@ namespace DSC_management
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
             inco = 1;
+            pendaler = 0;
             button1.BackColor = System.Drawing.Color.Tomato;
             button2.BackColor = System.Drawing.Color.GreenYellow;
 
@@ -3379,7 +3458,10 @@ namespace DSC_management
 
         private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            if (but_stat == 10)
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }
         }
 
         private void comboBox15_SelectedIndexChanged(object sender, EventArgs e)
@@ -3412,6 +3494,7 @@ namespace DSC_management
         }
         private void pending()
         {
+            button11_MouseClick(null, null);
             try
             {
                 sqlite_cmd.CommandText = "SELECT count(*) FROM transaction_master where record_open='1' and wrong_entry='0'  order  by datetime(last_modified) desc";
@@ -3666,6 +3749,7 @@ namespace DSC_management
 
         private void label37_DoubleClick(object sender, EventArgs e)
         {
+            button11_MouseClick(null, null);
             pendaler = 1;
             but_stat = 11;
             inco = 1;
@@ -3930,6 +4014,125 @@ namespace DSC_management
             Form5 f2 = new Form5(this,m_dbConnection);
             f2.Show();
 
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (!textBox3.Text.Equals(""))
+            {
+                if (Int32.Parse(textBox3.Text) > 60)
+                {
+                    MessageBox.Show("This is an alert message as you have entered days value greater than 60");
+                }
+            }
+        }
+
+        private void textBox7_Leave(object sender, EventArgs e)
+        {
+            if (!textBox7.Text.Equals(""))
+            {
+                if (but_stat == 10)
+                {
+                    if (textBox7.Text.Length < 10)
+                    {
+                        MessageBox.Show("Contact Number is less than 10 digits");
+                    }
+                }
+            }
+        }
+
+        private void textBox14_Leave(object sender, EventArgs e)
+        {
+            if (!textBox14.Text.Equals(""))
+            {
+                if (but_stat == 10)
+                {
+                    if (Int32.Parse(textBox14.Text) > 10000)
+                    {
+                        MessageBox.Show("The price value has exceeded 10,000");
+                    }
+
+                }
+
+                if (but_stat == 9)
+                {
+                    if (textBox14.Text.Length < 10)
+                    {
+                        MessageBox.Show("Contact Number is less than 10 digits");
+                    }
+                }
+            }
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            if (!textBox4.Text.Equals(""))
+            {
+                if (but_stat == 9)
+                {
+                    if (textBox4.Text.Length < 10)
+                    {
+                        MessageBox.Show("Contact Number is less than 10 digits");
+                    }
+                }
+            }
+        }
+
+        private void textBox15_Leave(object sender, EventArgs e)
+        {
+            if (!textBox15.Text.Equals(""))
+            {
+                if (but_stat == 9)
+                {
+                    if (textBox15.Text.Length < 10)
+                    {
+                        MessageBox.Show("Contact Number is less than 10 digits");
+                    }
+                }
+            }
+        }
+
+        private void textBox16_Leave(object sender, EventArgs e)
+        {
+            if (!textBox16.Text.Equals(""))
+            {
+                if (!regex1.IsMatch(textBox16.Text))
+                {
+
+                    MessageBox.Show("Your email address format is not correct!");
+
+                }
+            }
+        }
+
+        private void textBox17_Leave(object sender, EventArgs e)
+        {
+            if (!textBox17.Text.Equals(""))
+            {
+                if (!regex1.IsMatch(textBox17.Text))
+                {
+
+                    MessageBox.Show("Your email address format is not correct!");
+
+                }
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if(!textBox2.Text.Equals("") && Int32.Parse(textBox2.Text)>10000)
+            {
+                MessageBox.Show("The amount is greater than 10,000");
+            }
+            
+        }
+
+        private void textBox19_Leave(object sender, EventArgs e)
+        {
+            if (!textBox19.Text.Equals("") && Int32.Parse(textBox19.Text) > 10000)
+            {
+                MessageBox.Show("The amount is greater than 10,000");
+            }
         }
     }
 }

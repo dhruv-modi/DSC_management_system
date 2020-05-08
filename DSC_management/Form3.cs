@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using System.Threading;
 
 namespace DSC_management
 {
@@ -17,11 +18,23 @@ namespace DSC_management
         public Form3()
         {
             InitializeComponent();
-            
-                
-                
-            
-            
+           
+
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

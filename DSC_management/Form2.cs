@@ -182,13 +182,9 @@ namespace DSC_management
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.Enter))
-            {
-                button1_Click(null, null);
-                return true;
-            }
+           
             
-            if (keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Alt | Keys.X))
             {
                 this.Close();
                 return true;

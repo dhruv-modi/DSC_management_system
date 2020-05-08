@@ -73,9 +73,9 @@ namespace DSC_management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap favicon_32x32 {
+        internal static System.Drawing.Bitmap blue1 {
             get {
-                object obj = ResourceManager.GetObject("favicon-32x32", resourceCulture);
+                object obj = ResourceManager.GetObject("blue1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace DSC_management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Untitled1 {
+        internal static System.Drawing.Bitmap favicon_32x32 {
             get {
-                object obj = ResourceManager.GetObject("Untitled1", resourceCulture);
+                object obj = ResourceManager.GetObject("favicon-32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

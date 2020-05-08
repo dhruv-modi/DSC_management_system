@@ -21,7 +21,7 @@ namespace DSC_management
         int id = 0;
         int updt = 0;
         Regex regex1 = new Regex("^[a-zA-Z]+[a-zA-Z0-9]+[[a-zA-Z0-9-_.!#$%'*+/=?^]{1,20}@[a-zA-Z0-9]{1,20}.[a-zA-Z]{2,3}$");
-
+      
 
         Form3 f3;
         SQLiteCommand sqlite_cmd;
@@ -44,10 +44,10 @@ namespace DSC_management
 
 
             InitializeComponent();
-
+            timer1_Tick(null, null);
             //timer1_Tick(this,);
-            
-            
+
+
 
             pending();
             alert();
@@ -2373,7 +2373,15 @@ namespace DSC_management
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_dbConnection.Close();
+            if (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+
+                m_dbConnection.Close();
+            }
         }
 
         private void button13_MouseClick(object sender, MouseEventArgs e)
@@ -3751,8 +3759,8 @@ namespace DSC_management
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-            label34.Text = DateTime.Now.ToString("hh:mm tt");
-            label35.Text = DateTime.Now.ToString("dd MMM, yyyy");
+            label34.Text = DateTime.Now.ToString("HH:mm");
+            label35.Text = DateTime.Now.ToString("dd MMM yyyy");
         }
 
         private void label37_DoubleClick(object sender, EventArgs e)
@@ -3934,92 +3942,80 @@ namespace DSC_management
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.Enter))
+            if (keyData == (Keys.F10))
             {
                 button12_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.Back))
-            {
-                button13_MouseClick(null, null);
-                return true;
-            }
-            if (keyData == (Keys.Control | Keys.D1))
+          
+            if (keyData == (Keys.F2))
             {
                 button11_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.D2))
+            if (keyData == (Keys.F3))
             {
                 button6_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.D3))
+            if (keyData == (Keys.F4))
             {
                 button7_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.D4))
+            if (keyData == (Keys.F5))
             {
                 button8_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.D5))
+            if (keyData == (Keys.F6))
             {
                 button9_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.R))
+            if (keyData == (Keys.Control | Keys.P))
             {
                 button4_Click(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.E))
-            {
-                button14_MouseClick(null, null);
-                return true;
-            }
-            if (keyData == (Keys.Control | Keys.D6))
+            
+            if (keyData == (Keys.F7))
             {
                 button10_MouseClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.B))
-            {
-                button15_Click(null, null);
-                return true;
-            }
-            if (keyData == (Keys.Control | Keys.I))
-            {
-                button3_Click(null, null);
-                return true;
-            }
-            if (keyData == (Keys.Control | Keys.A))
+          
+            
+            if (keyData == (Keys.F11))
             {
                 label37_DoubleClick(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.P))
+            if (keyData == (Keys.F12))
             {
                 label32_DoubleClick(null, null);
                 return true;
             }
 
-
-            if(but_stat==11)
+            if (keyData == (Keys.F1))
             {
-                if (keyData == (Keys.Control | Keys.D9))
+                button16_Click(null, null);
+                return true;
+            }
+            if (but_stat==11)
+            {
+                if (keyData == (Keys.F8))
                 {
                     button1_MouseClick(null, null);
                     return true;
                 }
-                if (keyData == (Keys.Control | Keys.D0))
+                if (keyData == (Keys.F9))
                 {
                     button2_MouseClick(null, null);
                     return true;
                 }
             }
-            if (keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Alt | Keys.X))
             {
                 this.Close();
                 return true;
@@ -4153,6 +4149,12 @@ namespace DSC_management
             {
                 MessageBox.Show("The amount is greater than 10,000");
             }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Form6 f2 = new Form6(this);
+            f2.Show();
         }
     }
 }

@@ -117,23 +117,20 @@ namespace DSC_management
         private void Form5_FormClosing(object sender, FormClosingEventArgs e)
         {
             f1.Enabled = true;
+            f1.BringToFront();
         }
 
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.Enter))
+            if (keyData == (Keys.F10))
             {
                 button1_Click(null, null);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.Back))
-            {
-                textBox1.Text = "";
-                return true;
-            }
+            
           
-            if (keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Alt | Keys.X))
             {
                 this.Close();
                 return true;

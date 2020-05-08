@@ -631,13 +631,14 @@ namespace DSC_management
             label28.Text = "Courier Track id:";
 
             {  label3.Visible = true;
+                label11.Enabled = true;
             label4.Visible = true;
             label5.Visible = true;
             label6.Visible = true;
             label7.Visible = true;
             label8.Visible = true;
             label9.Visible = true;
-            label10.Visible = false;
+            label10.Visible = true;
             label11.Visible = true;
             label12.Visible = true;
             label13.Visible = true;
@@ -705,7 +706,6 @@ namespace DSC_management
             comboBox15.Visible = true;
                 
            
-
             label22.Enabled = false;
             label23.Enabled = false;
             label24.Enabled = false;
@@ -733,7 +733,7 @@ namespace DSC_management
             label7.Enabled = true;
             label8.Enabled = false;
             label9.Enabled = true;
-            label10.Enabled = true;
+            label10.Enabled = false;
             label12.Enabled = true;
             label13.Enabled = true;
             label14.Enabled = true;
@@ -3333,7 +3333,8 @@ namespace DSC_management
             else if(but_stat == 11 && inco == 1 && !comboBox14.SelectedItem.Equals("-Select-") && pendaler==0) 
             {
 
-
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
                 try
                 {
                     sqlite_cmd.CommandText = "SELECT default_outward_mode FROM owner_master where id=" + comboBox14.Text.Split('.')[0] + " ";
@@ -3385,7 +3386,8 @@ namespace DSC_management
                     {
 
 
-
+                        dataGridView1.Rows.Clear();
+                        dataGridView1.Refresh();
                         dataGridView1.Rows.Add(new string[] { sqlite_datareader["id"] + "",
                             sqlite_datareader["location_ref"] + "",
                             sqlite_datareader["activity"] + "",

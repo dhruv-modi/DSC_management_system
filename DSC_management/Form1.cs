@@ -45,9 +45,7 @@ namespace DSC_management
 
             InitializeComponent();
             timer1_Tick(null, null);
-            //timer1_Tick(this,);
-
-
+            
 
             pending();
             alert();

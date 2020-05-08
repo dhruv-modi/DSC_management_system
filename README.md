@@ -1,2 +1,2 @@
-# DSC_managemnet_system
+# DSC_management_system
 Still in testing phase

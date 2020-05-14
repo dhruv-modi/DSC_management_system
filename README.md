@@ -1,2 +1,3 @@
 # DSC_management_system
-Still in testing phase
+Tried implementing inventory module in ERP for Digital Signature Certificate drives.
+Major technologies used are C# and SQLite
